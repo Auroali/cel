@@ -1,15 +1,14 @@
 #pragma once
-#include "../cel/project.h"
+#include <cel/project.h>
 #include <iostream>
-#include "../cel/project_builder.h"
+#include <cel/project_builder.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "../cel/io/shader.h"
-#include "../cel/window.h"
-#include "../cel/cel.h"
-#include "../cel/time.h"
-#include "../cel/io/binary_stream.h"
-#include "../cel/tree.h"
+#include <cel/io/shader.h>
+#include <cel/window.h>
+#include <cel/cel.h>
+#include <cel/time.h>
+#include <cel/io/binary_stream.h>
 
 cel::shader shader;
 
