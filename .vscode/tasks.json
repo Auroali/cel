@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "Cel Build Script",
+			"command": "/home/jacob/.local/bin/cel-build",
+			"args": [
+				"${workspaceFolder}",
+				"${workspaceFolder}/build/cel",
+				"-lglfw",
+				"-lGL",
+				"-ldl"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/clang++"
+		}
+	]
+}	
