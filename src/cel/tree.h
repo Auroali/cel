@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 
+namespace cel {
 /**
  * Wrapper class for a value of type T
  * that can contain sub-nodes
@@ -224,3 +225,4 @@ public:
         return sorted_nodes;
     }
 };
+}

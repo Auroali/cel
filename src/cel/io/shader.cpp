@@ -70,7 +70,7 @@ namespace cel {
             glDeleteShader(frag);
             glDeleteShader(vert);
             std::cout << "Loaded shader " << v << ", " << f << " with ID " << program << std::endl;
-        } catch (std::exception e) {
+        } catch (const std::ifstream::failure& e) {
             std::cout << e.what() << std::endl;
         }
         

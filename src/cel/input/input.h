@@ -140,11 +140,6 @@ namespace cel {
         bool hasMousePos = false;
         double prevMouseX,prevMouseY;
         double mouseXDelta, mouseYDelta;
-        static void mouseUpdateCallback(GLFWwindow* handle, double xpos, double ypos) {
-            if (input_handler* handler = static_cast<input_handler*>(glfwGetWindowUserPointer(handle))) {
-                
-            }
-        }
     public:
         input_handler(GLFWwindow* handle) {
             if(!handle) {

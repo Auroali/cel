@@ -8,18 +8,14 @@
 #include "memory"
 #include "window.h"
 
-#pragma region Cel Error Codes
-
+//Error codes
 #define CEL_ERROR_INIT 1
 
-#pragma endregion
-#pragma region Cel Signals
 
 //Sets ptr to the main camera
 #define CEL_CAM_REQ 0x00
 //Sets ptr to the main shader
 #define CEL_SHADER_REQ 0x01
-#pragma endregion
 
 class cel_app {
 private:

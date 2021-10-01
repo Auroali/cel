@@ -11,9 +11,12 @@ namespace cel {
         static std::vector<project_builder_base*>* projects;
         std::string name;
     public:
+        virtual ~project() {
+            
+        }
         static std::vector<project*> build_projects() {
             std::vector<project*> projects_built;
-            for(int i = 0; i < projects->size(); i++) {
+            for(size_t i = 0; i < projects->size(); ++i) {
                 projects_built.push_back((*projects)[i]->build());
             }
             delete projects;

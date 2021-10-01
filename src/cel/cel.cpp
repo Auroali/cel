@@ -79,7 +79,6 @@ bool cel_app::on_init() {
 
     if(!(handle = glfwCreateWindow(480, 480, "", NULL, NULL))) {
         std::cerr << "Failed to create window!\n";
-        const char* errorPtr = NULL;
         print_glfw_err();
         return false;
     }
