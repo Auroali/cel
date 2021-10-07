@@ -19,4 +19,15 @@ glm::mat4 transform::get_mat4() {
 void transform::set_rot_euler(float x, float y, float z) {
     rot = glm::quat(glm::vec3(x,y,z));
 }
+
+bool object::set_parent(std::weak_ptr<object> new_parent) {
+    // TODO: TBI
+    return false;
+}
+
+object::object(std::weak_ptr<scene> container){
+    this->trans = transform();
+    this->container = container;
+    this->parent = std::weak_ptr<object>();
+}
 }

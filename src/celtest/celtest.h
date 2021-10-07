@@ -9,15 +9,31 @@
 #include <cel/cel.h>
 #include <cel/time.h>
 #include <cel/io/binary_stream.h>
+#include <cel/framework/object.h>
+#include <cel/framework/scene.h>
 
+#include <memory>
 cel::shader shader;
 
 class proj : public cel::project {
 public:
     static cel::project_builder<proj> builder;
     unsigned int vao = 0;
-
+    
     virtual bool init() override {
+        std::shared_ptr<cel::scene> s = std::make_shared<cel::scene>();
+    
+        std::shared_ptr<cel::object> obj1 = std::make_shared<cel::object>(s);
+        std::shared_ptr<cel::object> obj2 = std::make_shared<cel::object>(s);
+        std::shared_ptr<cel::object> obj3 = std::make_shared<cel::object>(s);
+        
+        s->add_object(obj1);
+        s->add_object(obj2);
+        s->add_object(obj3);
+
+        obj3->set_parent(obj1);
+
+        s->get_obj_tree().print_tree();
         float vertices[] = {
             -1,-1,0,
             0,1,0,

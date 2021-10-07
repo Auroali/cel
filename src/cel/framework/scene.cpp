@@ -7,10 +7,14 @@ tree<std::shared_ptr<object>>& scene::get_obj_tree() {
     return objs;
 }
 std::weak_ptr<object> scene::get_object_by_name(const std::string& name) {
-    tree<std::shared_ptr<object>>::iterator begin = objs.begin(), end = objs.end();
-    tree<std::shared_ptr<object>>::iterator it = std::find_if(begin, end, [&](node<std::shared_ptr<object>>* n){
-        return n->val->name == name;
-    });
-    return it != end ? (*it)->val : nullptr;
+    // TODO: TBI
+    return std::weak_ptr<object>();
+}
+node<std::shared_ptr<object>>* scene::get_node_by_object(std::weak_ptr<object> obj) {
+    // TODO: TBI
+    return nullptr;
+}
+void scene::add_object(std::shared_ptr<object> obj) {
+    objs.push_back(node<std::shared_ptr<object>>(obj));
 }
 }

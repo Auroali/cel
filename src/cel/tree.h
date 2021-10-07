@@ -29,7 +29,7 @@ public:
      * @param node the node to add
      * @return The node in the list
      */
-    node<T>& push_back(node<T>& node) {
+    node<T>& push_back(node<T>&& node) {
         nodes.push_back(node);
         return *(nodes.end()-1);
     }
@@ -187,7 +187,7 @@ public:
      * @param node the node to add
      * @return The node from the nodes vector
      */
-    node<T>& push_back(node<T>& node) {
+    node<T>& push_back(node<T>&& node) {
         nodes.push_back(node);
         return *(nodes.end()-1);
     }
