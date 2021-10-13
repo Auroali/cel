@@ -12,8 +12,11 @@
 #include <cel/framework/object.h>
 #include <cel/framework/scene.h>
 
+#include <cel/io/obj_importer.h>
+
 #include <memory>
 cel::shader shader;
+cel::model m(0,0);
 
 class proj : public cel::project {
 public:
@@ -34,6 +37,10 @@ public:
         obj3->set_parent(obj1);
 
         s->get_obj_tree().print_tree();
+
+        cel::io::obj_importer* imp = new cel::io::obj_importer();
+        m = imp->import_from_file("./shaders/ship.obj");
+        delete imp;
         float vertices[] = {
             -1,-1,0,
             0,1,0,
@@ -81,8 +88,7 @@ public:
         cel::shader* m_shader;
         cel::send_signal(CEL_SHADER_REQ, &m_shader);
         m_shader->set_mat4("model", glm::mat4(1.0));
-        glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        m.render();
         glm::mat4 model_ground = glm::mat4(1.0);
         model_ground = glm::translate(model_ground, glm::vec3(0,-5,-2));
         model_ground = glm::rotate(model_ground, glm::radians(90.0f), glm::vec3(1,0,0));
