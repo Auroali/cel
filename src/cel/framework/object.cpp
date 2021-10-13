@@ -1,5 +1,6 @@
 #include "object.h"
 #include "scene.h"
+#include <algorithm>
 
 namespace cel {
 transform* transform::get_parent() {
@@ -20,14 +21,24 @@ void transform::set_rot_euler(float x, float y, float z) {
     rot = glm::quat(glm::vec3(x,y,z));
 }
 
+std::weak_ptr<object> object::get_parent() {
+    return parent;
+}
+
 bool object::set_parent(std::weak_ptr<object> new_parent) {
     if(auto con_locked = container.lock()) {
-        std::vector<node<std::shared_ptr<object>>*> sorted_nodes = con_locked->get_obj_tree().get_sorted();
-        for(auto n : sorted_nodes) {
-            if(auto new_parent_locked = new_parent.lock()) {
-                if(n->val == new_parent_locked)
-                    std::cout << "Hello!" << std::endl;
-            }
+        //shared_ptr to this, to prevent ovject from being deleted while swapping parent nodes
+        std::shared_ptr<object> self_ptr = shared_from_this();
+        
+        node<std::shared_ptr<object>>* new_parent_node = con_locked->get_node_by_object(new_parent);
+        if(new_parent_node) {
+            //Remove the object from the scene, if present
+            con_locked->try_remove_obj(self_ptr);
+
+            //Re-add the object to the scene under the new parent
+            new_parent_node->emplace_back(self_ptr);
+            parent = new_parent;
+            return true;
         }
     }
     return false;

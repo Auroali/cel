@@ -64,7 +64,6 @@ namespace cel::io {
             std::vector<std::string> vstrings(begin, end);
 
             if(vstrings[0] == "f") {
-                std::cout << line << std::endl;
                 vertex v1;
                 vertex v2;
                 vertex v3;

@@ -42,7 +42,7 @@ namespace cel
         transform(glm::vec3 pos, glm::quat rot, glm::vec3 scale) : pos(pos), rot(rot), scale(scale) {}
         transform(glm::vec3 pos) : pos(pos), rot(glm::vec3(0,0,0)), scale(1,1,1) {}
     };
-    class object : std::enable_shared_from_this<object> {
+    class object : public std::enable_shared_from_this<object> {
         std::weak_ptr<scene> container;
         std::weak_ptr<object> parent;
     public:
@@ -51,6 +51,7 @@ namespace cel
 
         object(std::weak_ptr<scene> container);
 
+        std::weak_ptr<object> get_parent();
         bool set_parent(std::weak_ptr<object> new_parent);
     };
 }

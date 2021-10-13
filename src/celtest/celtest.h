@@ -34,7 +34,7 @@ public:
         s->add_object(obj2);
         s->add_object(obj3);
 
-        obj3->set_parent(obj1);
+        obj1->set_parent(obj2);
 
         s->get_obj_tree().print_tree();
 
