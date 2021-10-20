@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <cstddef>
 #include <memory>
-namespace cel::experimental::io {
+namespace cel::io {
 	/**
 	* Wrapper for std::ifstream
 	* to make reading from binary files easier
@@ -24,6 +24,7 @@ namespace cel::experimental::io {
 			return val;
 		}
 		bool eof();
+		std::string read_str(size_t size);
 	};
 	/**
 	* Wrapper for std::ofstream
@@ -33,6 +34,7 @@ namespace cel::experimental::io {
 	private:
 		std::ofstream stream;
 	public:
+		void write_str(const std::string& str);
 		binary_ofstream(std::string path);
 		~binary_ofstream();
 		template<typename T>
@@ -46,5 +48,6 @@ namespace cel::experimental::io {
 			this->write(other);
 			return this;
 		}
+		void seekp(std::streampos pos);
 	};
 }

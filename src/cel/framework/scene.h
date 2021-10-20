@@ -2,7 +2,7 @@
 
 #include "cel/tree.h"
 #include <memory>
-
+#include <filesystem>
 
 
 namespace cel 
@@ -19,5 +19,8 @@ public:
 
     std::weak_ptr<object> get_object_by_name(const std::string& name);
     node<std::shared_ptr<object>>* get_node_by_object(std::weak_ptr<object> obj);
+
+    void write(const std::filesystem::path& path);
+    static std::shared_ptr<scene> read(const std::filesystem::path& path);
 };
 }

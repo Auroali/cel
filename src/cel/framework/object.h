@@ -4,12 +4,13 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <string>
-
+#include <vector>
 
 namespace cel
 {
     
     class scene;
+    class component;
 
     struct transform {
     private:
@@ -45,6 +46,7 @@ namespace cel
     class object : public std::enable_shared_from_this<object> {
         std::weak_ptr<scene> container;
         std::weak_ptr<object> parent;
+        std::vector<std::shared_ptr<component>> components;
     public:
         std::string name;
         transform trans;
@@ -53,5 +55,8 @@ namespace cel
 
         std::weak_ptr<object> get_parent();
         bool set_parent(std::weak_ptr<object> new_parent);
+    
+        void add_component(std::shared_ptr<component> component);
+        std::vector<std::weak_ptr<object>> get_components();
     };
 }

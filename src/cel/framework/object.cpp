@@ -1,6 +1,7 @@
 #include "object.h"
 #include "scene.h"
 #include <algorithm>
+#include "components/component.h"
 
 namespace cel {
 transform* transform::get_parent() {

@@ -24,20 +24,22 @@ public:
     unsigned int vao = 0;
     
     virtual bool init() override {
-        std::shared_ptr<cel::scene> s = std::make_shared<cel::scene>();
-    
-        std::shared_ptr<cel::object> obj1 = std::make_shared<cel::object>(s);
-        std::shared_ptr<cel::object> obj2 = std::make_shared<cel::object>(s);
-        std::shared_ptr<cel::object> obj3 = std::make_shared<cel::object>(s);
+        std::shared_ptr<cel::scene> s = cel::scene::read("./tmp");
+
+        //s->get_obj_tree().print_tree();
+        // std::shared_ptr<cel::object> obj1 = std::make_shared<cel::object>(s);
+        // std::shared_ptr<cel::object> obj2 = std::make_shared<cel::object>(s);
+        // std::shared_ptr<cel::object> obj3 = std::make_shared<cel::object>(s);
         
-        s->add_object(obj1);
-        s->add_object(obj2);
-        s->add_object(obj3);
+        // s->add_object(obj1);
+        // s->add_object(obj2);
+        // s->add_object(obj3);
 
-        obj1->set_parent(obj2);
+        // obj1->set_parent(obj2);
 
-        s->get_obj_tree().print_tree();
+        // s->get_obj_tree().print_tree();
 
+        // s->write("./tmp");
         cel::io::obj_importer* imp = new cel::io::obj_importer();
         m = imp->import_from_file("./shaders/ship.obj");
         delete imp;
