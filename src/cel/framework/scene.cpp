@@ -88,10 +88,35 @@ void scene::write(const std::filesystem::path& path) {
         stream << uint8_t(0);
         write_nodes(stream, n, num_nodes);
     }
+    stream << uint8_t(4);
     stream.seekp(14);
     stream << num_nodes;
 }
 void read_node(std::shared_ptr<scene> ptr, cel::io::binary_ifstream& stream, std::vector<cel::node<std::shared_ptr<object>>*>& node_stack) {
+    // Create the object node
+    node<std::shared_ptr<object>> n(std::make_shared<object>(ptr));
+    size_t name_len = stream.read<size_t>();
+    n.val->name = stream.read_str(name_len);
+    n.val->trans = stream.read<transform>();
+
+    if(!node_stack.empty())
+        n.val->set_parent((*(node_stack.end()-1))->val);
+    // Read and process the instruction byte
+    uint8_t inst = stream.read<uint8_t>();
+    if(inst == 1) {
+        node_stack.push_back(&n);
+        size_t num_nodes = stream.read<size_t>();
+        for(size_t i = 0; i < num_nodes; ++i) {
+            read_node(ptr, stream, node_stack);
+        }
+        if(stream.read<uint8_t>() == 2) {
+            node_stack.pop_back();
+        }
+    }
+    if(!node_stack.empty())
+        (*(node_stack.end()-1))->push_back(n);
+    else
+        ptr->get_obj_tree().push_back(n);
 
 }
 std::shared_ptr<scene> scene::read(const std::filesystem::path& path) {
@@ -105,10 +130,9 @@ std::shared_ptr<scene> scene::read(const std::filesystem::path& path) {
         size_t num_nodes = stream.read<size_t>();
         std::vector<node<std::shared_ptr<object>>*> node_stack;
         tree<std::shared_ptr<object>> scene_objs;
-        for(size_t i = 0; i < num_nodes; ++i) {
+        while(stream.read<uint8_t>() != 4) {
             read_node(scene_ptr, stream, node_stack);
         }
-        std::cout << num_nodes << std::endl;
         return scene_ptr;
     }
     std::cerr << "ERROR: Scene Header Invalid! Are you sure this is the right file? (At '" << std::filesystem::absolute(path) << "', expected '\%CELSCENE\%, got '" << header_txt << "')\n";

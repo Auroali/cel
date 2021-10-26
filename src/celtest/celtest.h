@@ -26,8 +26,11 @@ public:
     
     virtual bool init() override {
         std::shared_ptr<cel::scene> s = cel::scene::read("./tmp");
+        // std::shared_ptr<cel::scene> s = std::make_shared<cel::scene>();
 
-        //s->get_obj_tree().print_tree();
+        s->get_obj_tree().print_tree();
+        for(auto& n : s->get_obj_tree().get_sorted())
+            std::cout << "Name: " << n->val->name << std::endl;
         // std::shared_ptr<cel::object> obj1 = std::make_shared<cel::object>(s);
         // std::shared_ptr<cel::object> obj2 = std::make_shared<cel::object>(s);
         // std::shared_ptr<cel::object> obj3 = std::make_shared<cel::object>(s);
@@ -41,6 +44,7 @@ public:
         // s->get_obj_tree().print_tree();
 
         // s->write("./tmp");
+
         cel::io::obj_importer* imp = new cel::io::obj_importer();
         m = imp->import_from_file("./shaders/ship.obj");
         delete imp;
