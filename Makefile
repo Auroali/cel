@@ -11,7 +11,8 @@ src/cel/io/shader.cpp \
 src/cel/framework/scene.cpp \
 src/cel/framework/object.cpp \
 src/cel/io/obj_importer.cpp \
-src/cel/framework/components/component.cpp
+src/cel/framework/components/component.cpp \
+src/cel/reflect/reflect.cpp
 
 CEL_TEST_SRC=src/celtest/celtest.cpp
 

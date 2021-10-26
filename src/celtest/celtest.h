@@ -11,8 +11,9 @@
 #include <cel/io/binary_stream.h>
 #include <cel/framework/object.h>
 #include <cel/framework/scene.h>
-
 #include <cel/io/obj_importer.h>
+
+#include <cel/reflect/reflect.h>
 
 #include <memory>
 cel::shader shader;
