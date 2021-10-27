@@ -62,6 +62,8 @@ void write_header(cel::io::binary_ofstream& stream) {
 void write_type(cel::io::binary_ofstream& stream, std::shared_ptr<component> ptr, reflection::type* type) {
     stream << type->name.length();
     stream.write_str(type->name);
+    stream << ptr->name.length();
+    stream.write_str(ptr->name);
     // Get and write all members of the component
     // Type doesn't matter here
     for(reflection::member& m : type->members) {
@@ -87,6 +89,9 @@ void write_nodes(cel::io::binary_ofstream& stream, node<std::shared_ptr<object>>
     for(std::weak_ptr<component> comp : _node.val->get_components()) {
         if(auto c = comp.lock()) {
             write_type(stream, c, c->get_type());
+        } else {
+            stream << size_t(0);
+            stream << uint8_t(1);
         }
     }
     // Write sub nodes
@@ -121,13 +126,16 @@ std::shared_ptr<component> read_type(io::binary_ifstream& stream) {
     if(!type)
         throw "Unable to get cel::reflection::type instance for component.";
     std::shared_ptr<component> comp = std::static_pointer_cast<component>(type->factory->make_shared());
+    comp->name = stream.read_str(stream.read<size_t>());
     if(!comp)
         throw "An error occured whilst constructing component.";
     while(stream.read<uint8_t>() != 1) {
         std::string name = stream.read_str(stream.read<size_t>());
         size_t size = stream.read<size_t>();
         char* data = stream.read(size);
-        std::copy(data, data + size, type->get_member(name)->ptr(comp.get()));
+        if(reflection::member* m = type->get_member(name)) {
+            std::copy(data, data + size, m->ptr(comp.get()));
+        }
         delete[] data;
     }
     return comp;

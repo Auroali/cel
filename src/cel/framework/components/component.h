@@ -2,6 +2,7 @@
 #include "../object.h"
 #include <memory>
 #include "../../reflect/reflect.h"
+#include <iostream>
 
 #define REFLECT_COMPONENT() \
 public: \
@@ -15,8 +16,7 @@ cel::reflection::type* Typename::get_type() { \
 	return &Typename::reflect_type_intern; \
 } \
 REFLECT_DEFINE(Typename) \
-REFLECT_MEMBER(trans) \
-REFLECT_MEMBER(name)
+REFLECT_MEMBER(trans)
 
 namespace cel
 {

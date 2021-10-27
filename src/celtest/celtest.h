@@ -46,17 +46,18 @@ public:
 
         // s->add_object(obj1);
         
-        // s->write("./tmp");
-        // for(cel::node<std::shared_ptr<cel::object>>* obj : s->get_obj_tree().get_sorted()) {
-        //     for(std::weak_ptr<cel::component> comp : obj->val->get_components()) {
-        //         if(auto lock = comp.lock()) {
-        //             cel::reflection::type* t = lock->get_type();
-        //             for(cel::reflection::member& mem : t->members) {
-        //                 std::cout << "Name: " << mem.name << " Offset: " << mem.offset << " Size: " << mem.size << std::endl;
-        //             }
-        //         }
-        //     }
-        // }
+        //s->write("./tmp");
+
+        for(cel::node<std::shared_ptr<cel::object>>* obj : s->get_obj_tree().get_sorted()) {
+            for(std::weak_ptr<cel::component> comp : obj->val->get_components()) {
+                if(auto lock = comp.lock()) {
+                    cel::reflection::type* t = lock->get_type();
+                    for(cel::reflection::member& mem : t->members) {
+                        std::cout << "Name: " << mem.name << " Offset: " << mem.offset << " Size: " << mem.size << std::endl;
+                    }
+                }
+            }
+        }
         s->get_obj_tree().print_tree();
         // std::shared_ptr<cel::object> obj1 = std::make_shared<cel::object>(s);
         // std::shared_ptr<cel::object> obj2 = std::make_shared<cel::object>(s);
