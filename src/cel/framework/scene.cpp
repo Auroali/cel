@@ -91,6 +91,7 @@ void write_nodes(cel::io::binary_ofstream& stream, node<std::shared_ptr<object>>
             write_type(stream, c, c->get_type());
         } else {
             stream << size_t(0);
+            stream << size_t(0);
             stream << uint8_t(1);
         }
     }
