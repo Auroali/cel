@@ -23,6 +23,11 @@ namespace cel::io {
 			delete[] bytes;
 			return val;
 		}
+		char* read(size_t size) {
+			char* bytes = new char[size];
+			stream.read(bytes, size);
+			return bytes;
+		}
 		bool eof();
 		std::string read_str(size_t size);
 	};
@@ -41,6 +46,9 @@ namespace cel::io {
 		void write(T& data) {
 			char* bytes = reinterpret_cast<char*>(&data);
 			stream.write(bytes, sizeof(data));
+		}
+		void write(char* data, size_t size) {
+			stream.write(data, size);
 		}
 		bool eof();
 		template<typename T>

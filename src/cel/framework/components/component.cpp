@@ -2,6 +2,6 @@
 
 namespace cel {
     component::component() {
-        this->tans = transform();
+        this->trans = transform();
     }
 }

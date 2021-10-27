@@ -50,4 +50,17 @@ object::object(std::weak_ptr<scene> container){
     this->container = container;
     this->parent = std::weak_ptr<object>();
 }
+void object::add_component(std::shared_ptr<component> component) {
+    component->parent = shared_from_this();
+    components.push_back(component);
+}
+std::vector<std::weak_ptr<component>> object::get_components() {
+    std::vector<std::weak_ptr<component>> comps;
+    comps.reserve(components.size());
+    for(std::shared_ptr<component> c : components) {
+        comps.push_back(c);
+    }
+    return comps;
+    
+}
 }

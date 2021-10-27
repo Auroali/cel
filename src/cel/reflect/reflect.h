@@ -3,6 +3,7 @@
 #include <string>
 #include <cstddef>
 #include <vector>
+#include <memory>
 
 #define REFLECT() \
 private: \
@@ -10,11 +11,12 @@ static cel::reflection::type reflect_type_intern; \
 static void init_reflect(cel::reflection::type*); \
 friend class cel::reflection::solver
 
-#define RELFECT_DEFINE(Typename) \
+#define REFLECT_DEFINE(Typename) \
 cel::reflection::type Typename::reflect_type_intern(#Typename, Typename::init_reflect); \
 void Typename::init_reflect(cel::reflection::type* r_type) { \
     using T = Typename; \
     r_type->size = sizeof(T); \
+    r_type->factory = new cel::reflection::factory<T>(); \
     r_type->members = {
 
 #define REFLECT_MEMBER(member) \
@@ -26,6 +28,21 @@ void Typename::init_reflect(cel::reflection::type* r_type) { \
 }
 
 namespace cel::reflection {
+class _factory {
+public:
+    virtual void* make() { return nullptr; }
+    virtual std::shared_ptr<void> make_shared() { return std::shared_ptr<void>(); }
+    virtual ~_factory() {}
+};
+template<typename T>
+class factory : public _factory {
+public:
+    // It's assumed you will know a base type to cast this to
+    virtual void* make() override { return new T; }
+    virtual std::shared_ptr<void> make_shared() override {
+        return std::static_pointer_cast<void>(std::make_shared<T>());
+    }
+};
 struct member {
     std::string name;
     size_t offset;
@@ -66,6 +83,10 @@ struct type {
     std::string name;
     size_t size;
     std::vector<member> members;
+    _factory* factory;
+    ~type() {
+        delete factory;
+    }
 };
 
 class solver {

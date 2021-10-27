@@ -57,6 +57,6 @@ namespace cel
         bool set_parent(std::weak_ptr<object> new_parent);
     
         void add_component(std::shared_ptr<component> component);
-        std::vector<std::weak_ptr<object>> get_components();
+        std::vector<std::weak_ptr<component>> get_components();
     };
 }

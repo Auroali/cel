@@ -14,10 +14,18 @@
 #include <cel/io/obj_importer.h>
 
 #include <cel/reflect/reflect.h>
+#include <cel/framework/components/component.h>
 
 #include <memory>
 cel::shader shader;
 cel::model m(0,0);
+
+class test_comp : public cel::component {
+    REFLECT_COMPONENT();
+public:
+    int test;
+    int test2;
+};
 
 class proj : public cel::project {
 public:
@@ -27,10 +35,29 @@ public:
     virtual bool init() override {
         std::shared_ptr<cel::scene> s = cel::scene::read("./tmp");
         // std::shared_ptr<cel::scene> s = std::make_shared<cel::scene>();
+        // std::shared_ptr<test_comp> test = std::make_shared<test_comp>();
+        // test->test2 = 231;
+        // test->test = 5;
+        // std::shared_ptr<cel::object> obj1 = std::make_shared<cel::object>(s);
 
+        // test->name = "Comp name lol";
+        // obj1->add_component(test);
+        // obj1->name = "Hello World!";
+
+        // s->add_object(obj1);
+        
+        // s->write("./tmp");
+        // for(cel::node<std::shared_ptr<cel::object>>* obj : s->get_obj_tree().get_sorted()) {
+        //     for(std::weak_ptr<cel::component> comp : obj->val->get_components()) {
+        //         if(auto lock = comp.lock()) {
+        //             cel::reflection::type* t = lock->get_type();
+        //             for(cel::reflection::member& mem : t->members) {
+        //                 std::cout << "Name: " << mem.name << " Offset: " << mem.offset << " Size: " << mem.size << std::endl;
+        //             }
+        //         }
+        //     }
+        // }
         s->get_obj_tree().print_tree();
-        for(auto& n : s->get_obj_tree().get_sorted())
-            std::cout << "Name: " << n->val->name << std::endl;
         // std::shared_ptr<cel::object> obj1 = std::make_shared<cel::object>(s);
         // std::shared_ptr<cel::object> obj2 = std::make_shared<cel::object>(s);
         // std::shared_ptr<cel::object> obj3 = std::make_shared<cel::object>(s);
@@ -45,9 +72,9 @@ public:
 
         // s->write("./tmp");
 
-        cel::io::obj_importer* imp = new cel::io::obj_importer();
-        m = imp->import_from_file("./shaders/ship.obj");
-        delete imp;
+        //cel::io::obj_importer* imp = new cel::io::obj_importer();
+        //m = imp->import_from_file("./shaders/ship.obj");
+        //delete imp;
         float vertices[] = {
             -1,-1,0,
             0,1,0,

@@ -2,6 +2,8 @@
 #include "object.h"
 #include <algorithm>
 #include "../io/binary_stream.h"
+#include "../reflect/reflect.h"
+#include "components/component.h"
 
 #define SCENE_VER 1000
 
@@ -57,6 +59,21 @@ void write_header(cel::io::binary_ofstream& stream) {
     // Num Nodes
     stream << size_t();
 }
+void write_type(cel::io::binary_ofstream& stream, std::shared_ptr<component> ptr, reflection::type* type) {
+    stream << type->name.length();
+    stream.write_str(type->name);
+    // Get and write all members of the component
+    // Type doesn't matter here
+    for(reflection::member& m : type->members) {
+        stream << uint8_t(0);
+        stream << m.name.length();
+        stream.write_str(m.name);
+        stream.write(m.size);
+        stream.write(m.ptr(ptr.get()), m.size);
+    }
+    // Mark the end of member entries
+    stream << uint8_t(1);
+}
 void write_nodes(cel::io::binary_ofstream& stream, node<std::shared_ptr<object>>& _node, size_t& num_nodes) {
     // Write Object Name
     stream << _node.val->name.size();
@@ -64,7 +81,14 @@ void write_nodes(cel::io::binary_ofstream& stream, node<std::shared_ptr<object>>
 
     // Write Transform
     stream << _node.val->trans;
+    stream << _node.val->get_components().size();
 
+    // Write all components
+    for(std::weak_ptr<component> comp : _node.val->get_components()) {
+        if(auto c = comp.lock()) {
+            write_type(stream, c, c->get_type());
+        }
+    }
     // Write sub nodes
     if(!_node.get_nodes().empty()) {
         stream << uint8_t(1);
@@ -92,6 +116,22 @@ void scene::write(const std::filesystem::path& path) {
     stream.seekp(14);
     stream << num_nodes;
 }
+std::shared_ptr<component> read_type(io::binary_ifstream& stream) {
+    reflection::type* type = reflection::solver::get_by_str(stream.read_str(stream.read<size_t>()));
+    if(!type)
+        throw "Unable to get cel::reflection::type instance for component.";
+    std::shared_ptr<component> comp = std::static_pointer_cast<component>(type->factory->make_shared());
+    if(!comp)
+        throw "An error occured whilst constructing component.";
+    while(stream.read<uint8_t>() != 1) {
+        std::string name = stream.read_str(stream.read<size_t>());
+        size_t size = stream.read<size_t>();
+        char* data = stream.read(size);
+        std::copy(data, data + size, type->get_member(name)->ptr(comp.get()));
+        delete[] data;
+    }
+    return comp;
+}
 void read_node(std::shared_ptr<scene> ptr, cel::io::binary_ifstream& stream, std::vector<cel::node<std::shared_ptr<object>>*>& node_stack) {
     // Create the object node
     node<std::shared_ptr<object>> n(std::make_shared<object>(ptr));
@@ -99,6 +139,11 @@ void read_node(std::shared_ptr<scene> ptr, cel::io::binary_ifstream& stream, std
     n.val->name = stream.read_str(name_len);
     n.val->trans = stream.read<transform>();
 
+    size_t size = stream.read<size_t>();
+    for(size_t i = 0; i < size; i++) {
+        n.val->add_component(read_type(stream));
+    }
+    
     if(!node_stack.empty())
         n.val->set_parent((*(node_stack.end()-1))->val);
     // Read and process the instruction byte
@@ -129,10 +174,11 @@ std::shared_ptr<scene> scene::read(const std::filesystem::path& path) {
         std::shared_ptr<scene> scene_ptr = std::make_shared<scene>();
         size_t num_nodes = stream.read<size_t>();
         std::vector<node<std::shared_ptr<object>>*> node_stack;
-        tree<std::shared_ptr<object>> scene_objs;
         while(stream.read<uint8_t>() != 4) {
             read_node(scene_ptr, stream, node_stack);
         }
+        if(scene_ptr->objs.get_sorted().size() != num_nodes)
+            throw "Number of nodes do not match!";
         return scene_ptr;
     }
     std::cerr << "ERROR: Scene Header Invalid! Are you sure this is the right file? (At '" << std::filesystem::absolute(path) << "', expected '\%CELSCENE\%, got '" << header_txt << "')\n";
