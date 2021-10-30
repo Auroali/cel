@@ -67,11 +67,13 @@ void write_type(cel::io::binary_ofstream& stream, std::shared_ptr<component> ptr
     // Get and write all members of the component
     // Type doesn't matter here
     for(reflection::member& m : type->members) {
-        stream << uint8_t(0);
-        stream << m.name.length();
-        stream.write_str(m.name);
-        stream.write(m.size);
-        stream.write(m.ptr(ptr.get()), m.size);
+        if(!m.has_attrib(NOSAVE)) {
+            stream << uint8_t(0);
+            stream << m.name.length();
+            stream.write_str(m.name);
+            stream.write(m.size);
+            stream.write(m.ptr(ptr.get()), m.size);
+        }
     }
     // Mark the end of member entries
     stream << uint8_t(1);
@@ -135,7 +137,8 @@ std::shared_ptr<component> read_type(io::binary_ifstream& stream) {
         size_t size = stream.read<size_t>();
         char* data = stream.read(size);
         if(reflection::member* m = type->get_member(name)) {
-            std::copy(data, data + size, m->ptr(comp.get()));
+            if(!m->has_attrib(NOSAVE))
+                std::copy(data, data + size, m->ptr(comp.get()));
         }
         delete[] data;
     }

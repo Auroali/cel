@@ -20,13 +20,24 @@ void Typename::init_reflect(cel::reflection::type* r_type) { \
     r_type->members = {
 
 #define REFLECT_MEMBER(member) \
-        {#member, offsetof(T, member), sizeof(T::member)},
+        {#member, offsetof(T, member), sizeof(T::member), size_t(0)},
+
+#define REFLECT_MEMBER_WITH(member, attrib) \
+        {#member, offsetof(T, member), sizeof(T::member), size_t(attrib)},
         
 #define REFLECT_END() \
     }; \
     cel::reflection::solver::_register(r_type); \
 }
 
+/**
+ * Reflection Attributes
+ */
+#define NOSAVE 0x01UL
+
+/**
+ * Namespace containing structures used for reflection
+ */
 namespace cel::reflection {
 class _factory {
 public:
@@ -47,6 +58,8 @@ struct member {
     std::string name;
     size_t offset;
     size_t size;
+    size_t attribs;
+    
     ~member() {}
     /**
      * Returns the member as type <T>
@@ -66,6 +79,14 @@ struct member {
     */
     char* ptr(void* obj) {
         return (char*)obj+offset;
+    }
+    /**
+     * Checks whether or not this member has the specified attribute
+     * 
+     * @return whether or not it contains the attribute
+     */
+    bool has_attrib(size_t attrib) {
+        return attribs & attrib;
     }
 };
 struct type {
