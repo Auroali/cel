@@ -39,18 +39,18 @@ namespace cel {
             glDeleteTextures(1, &tex);
         }
         static std::weak_ptr<texture> get_or_load(const std::string& name) {
-            std::map<std::string, std::shared_ptr<texture>>::iterator it = textures.find(name);
+            std::filesystem::path img = std::filesystem::weakly_canonical(std::filesystem::path(name));
+            std::map<std::string, std::shared_ptr<texture>>::iterator it = textures.find(img.string());
             if(it != textures.end())
                 return it->second;
             else {
-                std::filesystem::path img = std::filesystem::path(name);
                 if(std::filesystem::exists(img) && std::filesystem::is_regular_file(img)) {
                     int x,y,channels;
                     unsigned char* data = stbi_load(img.c_str(), &x, &y, &channels, 0);
                     std::shared_ptr<texture> tex = std::make_shared<texture>(data, x, y, channels);
                     stbi_image_free(data);
                     if(tex->is_valid()) {
-                        textures[name] = tex;
+                        textures[img.string()] = tex;
                         return tex;
                     }
                 }

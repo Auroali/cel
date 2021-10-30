@@ -20,10 +20,10 @@ void Typename::init_reflect(cel::reflection::type* r_type) { \
     r_type->members = {
 
 #define REFLECT_MEMBER(member) \
-        {#member, offsetof(T, member), sizeof(T::member), size_t(0)},
+        { #member, offsetof(T, member), sizeof(T::member), size_t(0) },
 
 #define REFLECT_MEMBER_WITH(member, attrib) \
-        {#member, offsetof(T, member), sizeof(T::member), size_t(attrib)},
+        { #member, offsetof(T, member), sizeof(T::member), size_t(attrib) },
         
 #define REFLECT_END() \
     }; \
@@ -33,7 +33,7 @@ void Typename::init_reflect(cel::reflection::type* r_type) { \
 /**
  * Reflection Attributes
  */
-#define NOSAVE 0x01UL
+#define SERIALIZE 0x01UL
 
 /**
  * Namespace containing structures used for reflection

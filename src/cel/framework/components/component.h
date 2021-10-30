@@ -16,8 +16,8 @@ cel::reflection::type* Typename::get_type() { \
 	return &Typename::reflect_type_intern; \
 } \
 REFLECT_DEFINE(Typename) \
-REFLECT_MEMBER_WITH(member, NOSAVE) \
-REFLECT_MEMBER(trans)
+REFLECT_MEMBER(name) \
+REFLECT_MEMBER_WITH(trans, SERIALIZE)
 
 namespace cel
 {
