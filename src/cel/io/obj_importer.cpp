@@ -33,7 +33,7 @@ namespace cel::io {
         glm::vec2 uv;
         glm::vec3 normals;
     };
-    cel::model obj_importer::import_from_file(std::filesystem::path file) {
+    cel::render::model obj_importer::import_from_file(std::filesystem::path file) {
         std::ifstream stream(file);
         std::string line;
 
@@ -122,9 +122,9 @@ namespace cel::io {
         
 
         glBindVertexArray(0);
-        return cel::model(vao,model_data.size());
+        return cel::render::model(vao,model_data.size());
     }
-    void obj_importer::export_to_file(cel::model& m, std::filesystem::path file) {
+    void obj_importer::export_to_file(cel::render::model& m, std::filesystem::path file) {
         std::cout << "Not implemented" << std::endl;
     }
 }

@@ -4,7 +4,7 @@
 #include <cel/project_builder.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <cel/io/shader.h>
+#include <cel/render/shader.h>
 #include <cel/window.h>
 #include <cel/cel.h>
 #include <cel/time.h>
@@ -17,8 +17,7 @@
 #include <cel/framework/components/component.h>
 
 #include <memory>
-cel::shader shader;
-cel::model m(0,0);
+cel::render::model m(0,0);
 
 class test_comp : public cel::component {
     REFLECT_COMPONENT();
@@ -80,14 +79,12 @@ public:
     virtual void render() override {
         //std::cout << "Rendering..." << std::endl;
         //glUseProgram(shader);
-        cel::shader* m_shader;
-        cel::send_signal(CEL_SHADER_REQ, &m_shader);
-        m_shader->set_mat4("model", glm::mat4(1.0));
+        cel::constants::main_shader.set_mat4("model", glm::mat4(1.0));
         m.render();
         glm::mat4 model_ground = glm::mat4(1.0);
         model_ground = glm::translate(model_ground, glm::vec3(0,-5,-2));
         model_ground = glm::rotate(model_ground, glm::radians(90.0f), glm::vec3(1,0,0));
-        m_shader->set_mat4("model", model_ground);
+        cel::constants::main_shader.set_mat4("model", model_ground);
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glBindVertexArray(0);

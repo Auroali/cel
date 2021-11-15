@@ -1,5 +1,5 @@
 #pragma once
-#include "../io/shader.h"
+#include "../render/shader.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -23,7 +23,7 @@ namespace cel {
         virtual void translate(glm::vec3 pos) {}
         virtual void set_rot_euler(double x, double y, double z) {}
         virtual void render_start() {}
-        virtual void shader_setup(cel::shader* shader) {}
+        virtual void shader_setup(cel::render::shader* shader) {}
     };
 
     class camera3d : public camera {
@@ -79,7 +79,7 @@ namespace cel {
             );
             proj_view_matrix = proj * view;
         }
-        virtual void shader_setup(cel::shader* shader) override {
+        virtual void shader_setup(cel::render::shader* shader) override {
             shader->set_mat4("projView", proj_view_matrix);
         }
     };

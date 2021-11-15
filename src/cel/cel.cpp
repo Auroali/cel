@@ -14,21 +14,10 @@ cel_app* cel_app::inst;
 double cel::time::deltaTime = 1;
 double cel::time::fixedDeltaTime = 1.f/60.f;
 
-cel::shader m_shader;
-
 cel::project* cel::project_builder_base::build() {
     return new project();
 }
 std::vector<cel::project_builder_base*>* cel::project::projects;
-// int main() {
-//     std::vector<cel::project*> projs = cel::project::build_projects();
-//     for(cel::project* p : projs) {
-//         p->init();
-//     }
-//     for(cel::project* p : projs) {
-//         delete p;
-//     }
-// }
 
 cel_app::cel_app() : win_main(nullptr) {
     running = true;
@@ -104,7 +93,7 @@ bool cel_app::on_init() {
     glfwSetWindowTitle(handle, projects[0]->get_name().c_str());
     this->cam = std::make_shared<cel::camera3d>();
 
-    m_shader = cel::shader("./shaders/main.vs","./shaders/main.fs");
+    cel::constants::init_shaders();
 
     win_main = cel::window(handle);
     win_main.set_main();
@@ -120,12 +109,12 @@ void cel_app::loop() {
 void cel_app::render() {
     glClearColor(0,0,0,255);
     cam->render_start();
-    glUseProgram(m_shader);
+    glUseProgram(cel::constants::main_shader);
     //Setup viewport
     glViewport(0,0,cel::window::main()->get_width(),cel::window::main()->get_height());
     glClear(GL_COLOR_BUFFER_BIT);
     //Set things up for the shader (view/projection matrix, etc)
-    cam->shader_setup(&m_shader);
+    cam->shader_setup(&cel::constants::main_shader);
     //Call render() for all initialized projects
     for(cel::project* p : projects)
         p->render();
@@ -146,9 +135,6 @@ void cel_app::receive_signal(uint64_t sig, void* ptr) {
     {
     case CEL_CAM_REQ:
         *(cel::camera**)ptr = inst->cam.get();
-        break;
-    case CEL_SHADER_REQ:
-        *(cel::shader**)ptr = &m_shader;
         break;
     default:
         break;

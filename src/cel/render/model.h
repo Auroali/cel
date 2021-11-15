@@ -2,7 +2,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-namespace cel {
+namespace cel::render {
     class model {
         unsigned int vao;
         size_t size;
