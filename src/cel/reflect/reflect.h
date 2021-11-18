@@ -18,7 +18,7 @@ cel::reflection::type Typename::reflect_type_intern(#Typename, Typename::init_re
 void Typename::init_reflect(cel::reflection::type* r_type) { \
     using T = Typename; \
     r_type->size = sizeof(T); \
-    r_type->factory = new cel::reflection::__factory<T>(); \
+    r_type->fact = new cel::reflection::__factory<T>(); \
     r_type->members = {
 
 #define REFLECT_MEMBER(member) \
@@ -116,9 +116,9 @@ struct type {
     std::string name;
     size_t size;
     std::vector<member> members;
-    factory* factory;
+    factory* fact;
     ~type() {
-        delete factory;
+        delete fact;
     }
 };
 

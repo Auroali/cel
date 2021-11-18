@@ -128,7 +128,7 @@ std::shared_ptr<component> read_type(io::binary_ifstream& stream) {
     reflection::type* type = reflection::solver::get_by_str(stream.read_str(stream.read<size_t>()));
     if(!type)
         throw "Unable to get cel::reflection::type instance for component.";
-    std::shared_ptr<component> comp = std::static_pointer_cast<component>(type->factory->make_shared());
+    std::shared_ptr<component> comp = std::static_pointer_cast<component>(type->fact->make_shared());
     comp->name = stream.read_str(stream.read<size_t>());
     if(!comp)
         throw "An error occured whilst constructing component.";
