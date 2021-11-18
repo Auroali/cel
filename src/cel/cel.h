@@ -10,12 +10,10 @@
 
 //Error codes
 #define CEL_ERROR_INIT 1
-
+#define CEL_ERROR_SHADERS 2
 
 //Sets ptr to the main camera
 #define CEL_CAM_REQ 0x00
-//Sets ptr to the main shader
-#define CEL_SHADER_REQ 0x01
 
 class cel_app {
 private:

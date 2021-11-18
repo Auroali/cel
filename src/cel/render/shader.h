@@ -3,7 +3,7 @@
 #include <string>
 #include <glm/glm.hpp>
 
-namespace cel {
+namespace cel::render {
     class shader {
     private:
         uint program;
