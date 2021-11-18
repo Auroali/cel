@@ -6,6 +6,8 @@
 #include <memory>
 
 #define REFLECT() \
+protected: \
+virtual cel::reflection::type* get_type() { return &reflect_type_intern; } \
 private: \
 static cel::reflection::type reflect_type_intern; \
 static void init_reflect(cel::reflection::type*); \
@@ -16,14 +18,14 @@ cel::reflection::type Typename::reflect_type_intern(#Typename, Typename::init_re
 void Typename::init_reflect(cel::reflection::type* r_type) { \
     using T = Typename; \
     r_type->size = sizeof(T); \
-    r_type->factory = new cel::reflection::factory<T>(); \
+    r_type->factory = new cel::reflection::__factory<T>(); \
     r_type->members = {
 
 #define REFLECT_MEMBER(member) \
-        { #member, offsetof(T, member), sizeof(T::member), size_t(0) },
+        { #member, offsetof(T, member), sizeof(T::member), SERIALIZE },
 
 #define REFLECT_MEMBER_WITH(member, attrib) \
-        { #member, offsetof(T, member), sizeof(T::member), size_t(attrib) },
+        { #member, offsetof(T, member), sizeof(T::member), attrib },
         
 #define REFLECT_END() \
     }; \
@@ -39,14 +41,14 @@ void Typename::init_reflect(cel::reflection::type* r_type) { \
  * Namespace containing structures used for reflection
  */
 namespace cel::reflection {
-class _factory {
+class factory {
 public:
     virtual void* make() { return nullptr; }
     virtual std::shared_ptr<void> make_shared() { return std::shared_ptr<void>(); }
-    virtual ~_factory() {}
+    virtual ~factory() {}
 };
 template<typename T>
-class factory : public _factory {
+class __factory : public factory {
 public:
     // It's assumed you will know a base type to cast this to
     virtual void* make() override { return new T; }
@@ -70,6 +72,16 @@ struct member {
     template<typename T>
     T& as(void* ptr) {
         return *((T*)ptr+offset); 
+    }
+    /**
+     * Sets the member to the value 'val'
+     * 
+     * @param ptr the pointer of the object this is a member of
+     * @param val the value to set this member to
+     */
+    template<typename T>
+    void set(void* ptr, T&& val) {
+        *((T*)ptr+offset) = val;
     }
     /**
     * Returns the address of this member in memory
@@ -104,7 +116,7 @@ struct type {
     std::string name;
     size_t size;
     std::vector<member> members;
-    _factory* factory;
+    factory* factory;
     ~type() {
         delete factory;
     }
@@ -122,7 +134,7 @@ public:
     }
     template<typename T>
     static type* get_from(T* ptr) {
-        return &T::reflect_type_intern;
+        return ptr->get_type();
     }
 };
 }

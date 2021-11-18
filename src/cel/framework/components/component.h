@@ -4,19 +4,9 @@
 #include "../../reflect/reflect.h"
 #include <iostream>
 
-#define REFLECT_COMPONENT() \
-public: \
-	virtual cel::reflection::type* get_type() override; \
-private: \
-REFLECT()
-
-
 #define REFLECT_COMPONENT_DEFINE(Typename) \
-cel::reflection::type* Typename::get_type() { \
-	return &Typename::reflect_type_intern; \
-} \
 REFLECT_DEFINE(Typename) \
-REFLECT_MEMBER(name) \
+REFLECT_MEMBER_WITH(name, 0) \
 REFLECT_MEMBER_WITH(trans, SERIALIZE)
 
 namespace cel

@@ -1,6 +1,6 @@
 CC=gcc
 CCX=g++
-CFLAGS=-g3 -Wall -Isrc -Iinclude -Lbuild -lglfw -lGL -ldl
+CFLAGS=-g3 -Wall -Wno-invalid-offsetof -Isrc -Iinclude -Lbuild -lglfw -lGL -ldl
 CXXFLAGS=${CFLAGS}
 
 CEL_SRC=src/glad.c \

@@ -90,7 +90,7 @@ void write_nodes(cel::io::binary_ofstream& stream, node<std::shared_ptr<object>>
     // Write all components
     for(std::weak_ptr<component> comp : _node.val->get_components()) {
         if(auto c = comp.lock()) {
-            write_type(stream, c, c->get_type());
+            write_type(stream, c, cel::reflection::solver::get_from(c.get()));
         } else {
             stream << size_t(0);
             stream << size_t(0);
