@@ -7,6 +7,7 @@ namespace cel::render {
         unsigned int vao;
         size_t size;
     public:
+        model() {}
         model(unsigned int vao, size_t len) {
             this->vao = vao;
             this->size = len;

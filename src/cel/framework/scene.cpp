@@ -1,8 +1,8 @@
 #include "scene.h"
 #include "object.h"
 #include <algorithm>
-#include "../io/binary_stream.h"
-#include "../reflect/reflect.h"
+#include "cel/io/binary_stream.h"
+#include "cel/reflect/reflect.h"
 #include "components/component.h"
 
 #define SCENE_VER 1000

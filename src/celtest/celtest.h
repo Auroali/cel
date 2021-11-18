@@ -77,8 +77,6 @@ public:
         cam->set_rot_euler(glm::radians(pitch),glm::radians(yaw),0);
     }
     virtual void render() override {
-        //std::cout << "Rendering..." << std::endl;
-        //glUseProgram(shader);
         cel::constants::main_shader.set_mat4("model", glm::mat4(1.0));
         m.render();
         glm::mat4 model_ground = glm::mat4(1.0);

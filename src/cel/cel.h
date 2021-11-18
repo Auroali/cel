@@ -9,9 +9,9 @@
 #include "window.h"
 
 //Error codes
-#define CEL_ERROR_INIT 1
-#define CEL_ERROR_SHADERS 2
-
+#define CEL_ERROR_INIT          0x01
+#define CEL_ERROR_SHADERS       0x02
+#define CEL_ERROR_FRAMEBUFFER   0x03
 //Sets ptr to the main camera
 #define CEL_CAM_REQ 0x00
 
@@ -42,4 +42,5 @@ namespace cel {
     inline void send_signal(uint64_t sig, void* ptr) {
         cel_app::receive_signal(sig, ptr);
     }
+    void request_exit(int code);
 }

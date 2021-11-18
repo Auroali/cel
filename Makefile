@@ -1,6 +1,6 @@
 CC=gcc
 CCX=g++
-CFLAGS=-g3 -Wall -Isrc -Iinclude -Lbuild -lglfw -lGL -ldl
+CFLAGS=-g3 -Wall -Isrc -Iinclude -Lbuild -lglfw -lGL -ldl -Wno-unused-function
 CXXFLAGS=${CFLAGS}
 
 CEL_SRC=src/glad.c \
@@ -23,11 +23,15 @@ cel:
 	mkdir -p build
 	${CXX} ${CXXFLAGS} -fPIC -shared -o build/libcel.so ${CEL_SRC}
 
-test_project: cel
+test_project: cel assets
+	$(info Building Test Project...)
+	mkdir -p build	
+	${CXX} ${CXXFLAGS} -lcel -o build/celtest ${CEL_TEST_SRC}
+
+assets:
 	$(info Building Test Project...)
 	mkdir -p build
 	$(info Clearing old shader directory...)
 	rm -rf build/shaders
 	$(info Copying new shader directory...)
 	cp -r shaders build
-	${CXX} ${CXXFLAGS} -lcel -o build/celtest ${CEL_TEST_SRC}

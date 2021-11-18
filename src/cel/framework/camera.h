@@ -1,10 +1,10 @@
 #pragma once
-#include "../render/shader.h"
+#include "cel/render/shader.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "../window.h"
-#include "../constants.h"
+#include "cel/window.h"
+#include "cel/constants.h"
 
 namespace cel {
     class camera {
