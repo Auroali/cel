@@ -20,7 +20,7 @@
 cel::render::model m(0,0);
 
 class test_comp : public cel::component {
-    REFLECT_COMPONENT();
+    REFLECT();
 public:
     int test;
     int test2;
@@ -32,6 +32,7 @@ public:
     unsigned int vao = 0;
     
     virtual bool init() override {
+        
         cel::io::obj_importer* imp = new cel::io::obj_importer();
         m = imp->import_from_file("./shaders/ship.obj");
         delete imp;
