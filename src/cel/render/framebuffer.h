@@ -13,11 +13,11 @@ class framebuffer {
     texture tex;
     friend void cel_app::render();
 public:
-    ~framebuffer();
     framebuffer() {}
     framebuffer(int width, int height);
     void bind();
     void unbind();
-    texture get_texture();
+    void free();
+    texture& get_texture();
 };
 }

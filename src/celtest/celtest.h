@@ -34,7 +34,7 @@ public:
     virtual bool init() override {
         
         cel::io::obj_importer* imp = new cel::io::obj_importer();
-        m = imp->import_from_file("./shaders/ship.obj");
+        m = imp->import_from_file("./assets/utah_teapot.obj");
         delete imp;
         float vertices[] = {
             -1,-1,0,

@@ -46,7 +46,8 @@ namespace cel::io {
             std::istream_iterator<std::string> begin(ss);
             std::istream_iterator<std::string> end;
             std::vector<std::string> vstrings(begin, end);
-
+            if(vstrings.size() <= 0)
+                continue;
             if(vstrings[0] == "v")
                 vertices.push_back(glm::vec3(std::stof(vstrings[1]),std::stof(vstrings[2]),std::stof(vstrings[3])));
             if(vstrings[0] == "vt")
@@ -63,6 +64,8 @@ namespace cel::io {
             std::istream_iterator<std::string> end;
             std::vector<std::string> vstrings(begin, end);
 
+            if(vstrings.size() <= 0)
+                continue;
             if(vstrings[0] == "f") {
                 vertex v1;
                 vertex v2;

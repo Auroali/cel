@@ -142,11 +142,12 @@ void framebuffer::bind() {
 void framebuffer::unbind() {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
-texture framebuffer::get_texture() {
+texture& framebuffer::get_texture() {
     return tex;
 }
-framebuffer::~framebuffer() {
-    if(glIsFramebuffer(buf)) {
+void framebuffer::free() {
+    //std::cout << "Out of scope, destroying..." << std::endl;
+    if(buf != 0 && glIsFramebuffer(buf)) {
         if(glIsRenderbuffer(rbo))
             glDeleteRenderbuffers(1, &rbo);
         if(tex.is_valid())

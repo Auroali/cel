@@ -9,9 +9,11 @@ namespace cel::constants {
     // Shaders
     inline cel::render::shader main_shader;
     inline cel::render::shader quad_shader;
+    inline cel::render::shader basic_shader;
 
     inline void init_shaders() {
-        main_shader = cel::render::shader("./shaders/main.vs", "./shaders/main.fs");
-        quad_shader = cel::render::shader("./shaders/post.vs", "./shaders/post.fs");
+        main_shader = cel::render::shader("./assets/main.vs", "./assets/main.fs");
+        quad_shader = cel::render::shader("./assets/post.vs", "./assets/post.fs");
+        basic_shader = cel::render::shader("./assets/basic.vs", "./assets/basic.fs");
     }
 }

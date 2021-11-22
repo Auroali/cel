@@ -13,7 +13,6 @@ namespace cel::render {
     private:
         unsigned int tex;
         unsigned int w,h;
-        static std::map<std::string, texture> textures;
     public:
         texture() {}
 
@@ -24,11 +23,13 @@ namespace cel::render {
 
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, x, y, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
                 
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, x, y, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+                glGenerateMipmap(GL_TEXTURE_2D);
+
                 w = x;
                 h = y;
 
@@ -38,14 +39,19 @@ namespace cel::render {
         texture(int width, int height) {
             glGenTextures(1, &tex);
             glBindTexture(GL_TEXTURE_2D, tex);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+            
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            glBindTexture(GL_TEXTURE_2D, 0);
+
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+            
             w = width;
             h = height;
-
-            glBindTexture(GL_TEXTURE_2D, 0);
+        }
+        texture(unsigned int id, int width, int height) {
+            tex = id;
+            w = width;
+            h = height;
         }
         void resize(int width, int height) {
             h = height;
@@ -63,21 +69,14 @@ namespace cel::render {
         void free() {
             glDeleteTextures(1, &tex);
         }
-        static std::optional<texture> get_or_load(const std::string& name) {
-            std::filesystem::path img = std::filesystem::weakly_canonical(std::filesystem::path(name));
-            std::map<std::string, texture>::iterator it = textures.find(img.string());
-            if(it != textures.end())
-                return it->second;
-            else {
-                if(std::filesystem::exists(img) && std::filesystem::is_regular_file(img)) {
-                    int x,y,channels;
-                    unsigned char* data = stbi_load(img.c_str(), &x, &y, &channels, 0);
-                    texture tex = texture(data, x, y, channels);
-                    stbi_image_free(data);
-                    if(tex.is_valid()) {
-                        textures[img.string()] = tex;
-                        return tex;
-                    }
+        static std::optional<texture> load(const std::filesystem::path& name) {
+            if(std::filesystem::exists(name) && std::filesystem::is_regular_file(name)) {
+                int x,y,channels;
+                unsigned char* data = stbi_load(name.c_str(), &x, &y, &channels, 0);
+                texture tex = texture(data, x, y, channels);
+                stbi_image_free(data);
+                if(tex.is_valid()) {
+                    return tex;
                 }
             }
             return {};

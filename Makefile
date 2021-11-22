@@ -25,13 +25,11 @@ cel:
 
 test_project: cel assets
 	$(info Building Test Project...)
-	mkdir -p build	
-	${CXX} ${CXXFLAGS} -lcel -o build/celtest ${CEL_TEST_SRC}
-
-assets:
-	$(info Building Test Project...)
 	mkdir -p build
 	$(info Clearing old shader directory...)
-	rm -rf build/shaders
+	rm -rf build/assets
 	$(info Copying new shader directory...)
-	cp -r shaders build
+	cp -r assets build
+	$(info Building Test Project...)
+	mkdir -p build	
+	${CXX} ${CXXFLAGS} -lcel -o build/celtest ${CEL_TEST_SRC}

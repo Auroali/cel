@@ -27,7 +27,6 @@ private:
 public:
     static void receive_signal(uint64_t sig, void* ptr);
     bool on_init();
-    void loop();
     void render();
     void cleanup();
     cel_app();
