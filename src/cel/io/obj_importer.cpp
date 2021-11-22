@@ -73,27 +73,27 @@ namespace cel::io {
                 // Vertex 1
                 std::vector<std::string> face = split(vstrings[1], '/');
                 if(!face[0].empty())
-                    v1.pos = vertices[std::stoi(face[0])-1];
-                if(!face[1].empty())
-                    v1.uv = uvs[std::stoi(face[1])-1];
-                if(!face[2].empty())
-                    v1.normals = normals[std::stoi(face[2])-1];
+                    v1.pos = vertices[std::stoull(face[0])-1];
+                if(face.size() >= 2 && !face[1].empty())
+                    v1.uv = uvs[std::stoull(face[1])-1];
+                if(face.size() >= 3 && !face[2].empty())
+                    v1.normals = normals[std::stoull(face[2])-1];
                 // Vertex 2
                 face = split(vstrings[2], '/');
                 if(!face[0].empty())
-                    v2.pos = vertices[std::stoi(face[0])-1];
-                if(!face[1].empty())
-                    v2.uv = uvs[std::stoi(face[1])-1];
-                if(!face[2].empty())
-                    v2.normals = normals[std::stoi(face[2])-1];
+                    v2.pos = vertices[std::stoull(face[0])-1];
+                if(face.size() >= 2 && !face[1].empty())
+                    v2.uv = uvs[std::stoull(face[1])-1];
+                if(face.size() >= 3 && !face[2].empty())
+                    v2.normals = normals[std::stoull(face[2])-1];
                 // Vertex 3
                 face = split(vstrings[3], '/');
                 if(!face[0].empty())
-                    v3.pos = vertices[std::stoi(face[0])-1];
-                if(!face[1].empty())
-                    v3.uv = uvs[std::stoi(face[1])-1];
-                if(!face[2].empty())
-                    v3.normals = normals[std::stoi(face[2])-1];
+                    v3.pos = vertices[std::stoull(face[0])-1];
+                if(face.size() >= 2 && !face[1].empty())
+                    v3.uv = uvs[std::stoull(face[1])-1];
+                if(face.size() >= 3 && !face[2].empty())
+                    v3.normals = normals[std::stoull(face[2])-1];
                 model_data.push_back(v1);
                 model_data.push_back(v2);
                 model_data.push_back(v3);
