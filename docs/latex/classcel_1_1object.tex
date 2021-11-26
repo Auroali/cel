@@ -1,0 +1,101 @@
+\hypertarget{classcel_1_1object}{}\doxysection{cel\+::object Class Reference}
+\label{classcel_1_1object}\index{cel::object@{cel::object}}
+
+
+{\ttfamily \#include $<$object.\+h$>$}
+
+Inheritance diagram for cel\+::object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcel_1_1object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ \mbox{\hyperlink{classcel_1_1object_a85bae43a07dccb7f7fccd6e2faccbd82}{get\+\_\+parent}} ()
+\begin{DoxyCompactList}\small\item\em Gets the parent object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcel_1_1object_a77408c2b94c6715601c2c6f09b545f6e}{set\+\_\+parent}} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ new\+\_\+parent)
+\begin{DoxyCompactList}\small\item\em Sets the parent object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1object_ac1cfe08933409860dd25f5c47d331c68}{add\+\_\+component}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1component}{component}} $>$ \mbox{\hyperlink{classcel_1_1component}{component}})
+\begin{DoxyCompactList}\small\item\em Adds a component to the object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcel_1_1object_ae0c1cac2776840a8567ebe34995cdf0f}\label{classcel_1_1object_ae0c1cac2776840a8567ebe34995cdf0f}} 
+std\+::vector$<$ std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1component}{component}} $>$ $>$ {\bfseries get\+\_\+components} ()
+\begin{DoxyCompactList}\small\item\em Returns a vector of weak\+\_\+ptrs to all components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcel_1_1object_a679db787d04c0b0b41d257dcba449e5a}\label{classcel_1_1object_a679db787d04c0b0b41d257dcba449e5a}} 
+std\+::string {\bfseries name}
+\item 
+\mbox{\Hypertarget{classcel_1_1object_a1941e11f84f2721c1c57a29320f27cfb}\label{classcel_1_1object_a1941e11f84f2721c1c57a29320f27cfb}} 
+\mbox{\hyperlink{structcel_1_1transform}{transform}} {\bfseries trans}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcel_1_1object_a7b336b709d34fdf6c805ea3fa95dc66b}\label{classcel_1_1object_a7b336b709d34fdf6c805ea3fa95dc66b}} 
+class {\bfseries scene}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Object with a transform and name that can be added to a scene 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcel_1_1object_ac1cfe08933409860dd25f5c47d331c68}\label{classcel_1_1object_ac1cfe08933409860dd25f5c47d331c68}} 
+\index{cel::object@{cel::object}!add\_component@{add\_component}}
+\index{add\_component@{add\_component}!cel::object@{cel::object}}
+\doxysubsubsection{\texorpdfstring{add\_component()}{add\_component()}}
+{\footnotesize\ttfamily void cel\+::object\+::add\+\_\+component (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1component}{component}} $>$}]{component }\end{DoxyParamCaption})}
+
+
+
+Adds a component to the object. 
+
+This will set the component\textquotesingle{}s parent and transform parent to this object and this object\textquotesingle{}s transform
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & the component to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1object_a85bae43a07dccb7f7fccd6e2faccbd82}\label{classcel_1_1object_a85bae43a07dccb7f7fccd6e2faccbd82}} 
+\index{cel::object@{cel::object}!get\_parent@{get\_parent}}
+\index{get\_parent@{get\_parent}!cel::object@{cel::object}}
+\doxysubsubsection{\texorpdfstring{get\_parent()}{get\_parent()}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ cel\+::object\+::get\+\_\+parent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the parent object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::weak\+\_\+ptr$<$object$>$ the parent for this object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1object_a77408c2b94c6715601c2c6f09b545f6e}\label{classcel_1_1object_a77408c2b94c6715601c2c6f09b545f6e}} 
+\index{cel::object@{cel::object}!set\_parent@{set\_parent}}
+\index{set\_parent@{set\_parent}!cel::object@{cel::object}}
+\doxysubsubsection{\texorpdfstring{set\_parent()}{set\_parent()}}
+{\footnotesize\ttfamily bool cel\+::object\+::set\+\_\+parent (\begin{DoxyParamCaption}\item[{std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$}]{new\+\_\+parent }\end{DoxyParamCaption})}
+
+
+
+Sets the parent object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+parent} & the object to set as the parent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if parent was set successfully 
+
+false if parent was not set successfully 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/cel/framework/object.\+h\item 
+src/cel/framework/object.\+cpp\end{DoxyCompactItemize}

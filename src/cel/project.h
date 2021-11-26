@@ -22,12 +22,43 @@ namespace cel {
             delete projects;
             return projects_built;
         }
+        /**
+         * @brief Gets the project's name
+         * 
+         * @return std::string the name of the project
+         */
         std::string get_name() { return name; }
+        /**
+         * @brief Sets the project's name
+         * 
+         * @param name the new project name
+         */
         void set_name(const std::string& name) { this->name = name; }
+        /**
+         * @brief Called once per frame, before fixed_update
+         * 
+         */
         virtual void update() {}
+        /**
+         * @brief Called 1/fixedDeltaTime per second
+         * 
+         * @note The frequency this function is called can be changed with fixedDeltaTime
+         */
         virtual void fixed_update() {}
+        /**
+         * @brief Called when rendering, before rendering the scene
+         * 
+         */
         virtual void render() {}
+        /**
+         * @brief Called after constructing the project
+         * 
+         */
         virtual bool init() { return false; }
+        /**
+         * @brief Called during application exit, before deleting the project
+         * 
+         */
         virtual void shutdown() {}
     };
     //Automatically instantiates and registers project instances

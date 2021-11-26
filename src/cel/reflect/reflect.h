@@ -65,7 +65,7 @@ namespace cel::reflection {
         
         ~member() {}
         /**
-         * Returns the member as type <T>
+         * @brief Returns the member as type <T>
          * 
          * @param ptr the pointer of the object this is a member of
          * @return the member as type <T> 
@@ -75,7 +75,7 @@ namespace cel::reflection {
             return *((T*)ptr+offset); 
         }
         /**
-         * Sets the member to the value 'val'
+         * @brief Sets the member to the value 'val'
          * 
          * @param ptr the pointer of the object this is a member of
          * @param val the value to set this member to
@@ -85,7 +85,7 @@ namespace cel::reflection {
             *((T*)ptr+offset) = val;
         }
         /**
-        * Returns the address of this member in memory
+        * @brief Returns the address of this member in memory
         * 
         * @param obj the pointer to the object this is a member of
         * @return a void* to the member in memory 
@@ -94,7 +94,7 @@ namespace cel::reflection {
             return (char*)obj+offset;
         }
         /**
-         * Checks whether or not this member has the specified attribute
+         * @brief Checks whether or not this member has the specified attribute
          * 
          * @return whether or not it contains the attribute
          */
@@ -108,7 +108,7 @@ namespace cel::reflection {
             func(this);
         }
         /**
-        * Returns a pointer to the member entry specified by 'name'
+        * @brief Returns a pointer to the member entry specified by 'name'
         * 
         * @param name the name of the member
         * @return an optional holding the member, if it exists
@@ -122,17 +122,41 @@ namespace cel::reflection {
             delete fact;
         }
     };
-
+    /**
+     * Utilities for getting reflection info
+     * from various sources
+     */
     class solver {
     private:
         static std::vector<type*> ref_types;
     public:
+        /**
+         * @brief Registers reflection type info
+         * 
+         * @note This is only intented to be used in the REFLECT_END macro
+         * 
+         * @param type pointer to the type info to register
+         */
         static void _register(type* type);
+        /**
+         * @brief Gets reflection type info by class name
+         * 
+         * @param name the name of the class
+         * @return cel::reflection::type* a pointer to the type info 
+         */
         static type* get_by_str(const std::string& name);
         template<typename T>
         static type* get_from() {
             return &T::reflect_type_intern;
         }
+        /**
+         * @brief Gets the reflection type info from a pointer
+         * 
+         * @note The value pointed to by ptr must have reflection implemented
+         *
+         * @param ptr the pointer to get the type info from 
+         * @return cel::reflection::type* a pointer to the type info 
+         */
         template<typename T>
         static type* get_from(T* ptr) {
             return ptr->get_type();

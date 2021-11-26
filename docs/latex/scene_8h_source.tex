@@ -1,0 +1,36 @@
+\hypertarget{scene_8h_source}{}\doxysection{scene.\+h}
+\label{scene_8h_source}\index{src/cel/framework/scene.h@{src/cel/framework/scene.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}cel/tree.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <filesystem>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }cel \{}
+\DoxyCodeLine{8     \textcolor{keyword}{class }object;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1scene}{scene}} : \textcolor{keyword}{public} std::enable\_shared\_from\_this<scene> \{}
+\DoxyCodeLine{14         \mbox{\hyperlink{classcel_1_1tree}{tree<std::shared\_ptr<object>}}> objs;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16         \textcolor{keyword}{static} std::shared\_ptr<scene> active\_scene;}
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{21         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1scene_a0c7bd31aba3fbaf433d2998df8e8550d}{set\_active}}();}
+\DoxyCodeLine{26         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1scene_a4aa04d7439b9d33be31971a8e969f030}{clear\_active}}();}
+\DoxyCodeLine{32         \textcolor{keyword}{static} std::weak\_ptr<scene> \mbox{\hyperlink{classcel_1_1scene_a97cad449fd55eca8670966f3c52b9bf3}{get\_active\_scene}}();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1scene_a7297482dd8540dadffa9aa34d661de82}{add\_object}}(std::shared\_ptr<object> \textcolor{keywordtype}{object});}
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1scene_a08da28d05ee531ab8722a4393b1d92e4}{try\_remove\_obj}}(std::weak\_ptr<object> obj);}
+\DoxyCodeLine{48         }
+\DoxyCodeLine{54         \mbox{\hyperlink{classcel_1_1tree}{tree<std::shared\_ptr<object>}}>\& \mbox{\hyperlink{classcel_1_1scene_a98a0f88edc4c865b3314baaaa4611192}{get\_obj\_tree}}();}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{62         std::weak\_ptr<object> \mbox{\hyperlink{classcel_1_1scene_a87fe819acd83406fec961e779576c14e}{get\_object\_by\_name}}(\textcolor{keyword}{const} std::string\& name);}
+\DoxyCodeLine{69         \mbox{\hyperlink{classcel_1_1node}{node<std::shared\_ptr<object>}}>* \mbox{\hyperlink{classcel_1_1scene_a977cb36fe1c3b394e44dcb837bb28e02}{get\_node\_by\_object}}(std::weak\_ptr<object> obj);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{79         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1scene_af3662db7d69fcf8b3675dca4f21ab070}{write}}(\textcolor{keyword}{const} std::filesystem::path\& path);}
+\DoxyCodeLine{86         \textcolor{keyword}{static} std::shared\_ptr<scene> \mbox{\hyperlink{classcel_1_1scene_a1a203e903bf2641b3258c004c1b6c00f}{read}}(\textcolor{keyword}{const} std::filesystem::path\& path);}
+\DoxyCodeLine{87     \};}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}

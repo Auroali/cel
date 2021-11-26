@@ -1,0 +1,88 @@
+\hypertarget{camera_8h_source}{}\doxysection{camera.\+h}
+\label{camera_8h_source}\index{src/cel/framework/camera.h@{src/cel/framework/camera.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}cel/render/shader.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <glm/gtc/type\_ptr.hpp>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}cel/window.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}cel/globals.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }cel \{}
+\DoxyCodeLine{14     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1camera}{camera}} \{}
+\DoxyCodeLine{15     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{classcel_1_1camera_a5256adb9d29f40a3c9747475ed4beebf}{get\_x}}() \{ \textcolor{keywordflow}{return} 0; \}}
+\DoxyCodeLine{25         \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{classcel_1_1camera_ae6312aa441d4eb34d7c33c091fc7ae38}{get\_y}}() \{ \textcolor{keywordflow}{return} 0; \}}
+\DoxyCodeLine{30         \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{classcel_1_1camera_ad206de901c7c13bcf560c8155556daed}{get\_z}}() \{ \textcolor{keywordflow}{return} 0; \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{36         \textcolor{keyword}{virtual} glm::vec3 \mbox{\hyperlink{classcel_1_1camera_a82eea34f3a871825fd9cae87f5cabc2e}{get\_forward}}() \{ \textcolor{keywordflow}{return} cel::globals::forward; \}}
+\DoxyCodeLine{41         \textcolor{keyword}{virtual} glm::vec3 \mbox{\hyperlink{classcel_1_1camera_a6997a4fcb48239d25c7a68b2ed7db727}{get\_up}}() \{ \textcolor{keywordflow}{return} cel::globals::up; \}}
+\DoxyCodeLine{46         \textcolor{keyword}{virtual} glm::vec3 \mbox{\hyperlink{classcel_1_1camera_a3b40c9c9ecdb0f483455f78ca8074ff7}{get\_right}}() \{ \textcolor{keywordflow}{return} cel::globals::right; \}}
+\DoxyCodeLine{54         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera_a74ebc4b699639f3c88f59258d8f00539}{set\_xyz}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} z) \{\}}
+\DoxyCodeLine{55         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} translate(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} z) \{\}}
+\DoxyCodeLine{61         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera_a0eec77dcc72939a0cf443006b657632d}{set\_xyz}}(glm::vec3 pos) \{\}}
+\DoxyCodeLine{67         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera_aac2368c68f22ce58d7d8bbb0f23ffd08}{translate}}(glm::vec3 pos) \{\}}
+\DoxyCodeLine{76         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera_a954eeac06748cd73e5cc0c1aede080ee}{set\_rot\_euler}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} z) \{\}}
+\DoxyCodeLine{77         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} shader\_setup(\mbox{\hyperlink{classcel_1_1render_1_1shader}{cel::render::shader}}* shader) \{\}}
+\DoxyCodeLine{78     \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{83     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1camera3d}{camera3d}} : \textcolor{keyword}{public} \mbox{\hyperlink{classcel_1_1camera}{camera}} \{}
+\DoxyCodeLine{84     \textcolor{keyword}{private}:}
+\DoxyCodeLine{85         \textcolor{keywordtype}{double} x,y,z;}
+\DoxyCodeLine{86         glm::mat4 proj\_view\_matrix;}
+\DoxyCodeLine{87         glm::vec3 forward = cel::globals::forward,right = cel::globals::right;}
+\DoxyCodeLine{88     \textcolor{keyword}{public}:}
+\DoxyCodeLine{89         \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{classcel_1_1camera3d_a3e7343423681ecba3840829360dc82ee}{get\_x}}()\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} x; \}}
+\DoxyCodeLine{90         \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{classcel_1_1camera3d_a43f3a2dd0b9593a2e8808d992df6e92a}{get\_y}}()\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} y; \}}
+\DoxyCodeLine{91         \textcolor{keyword}{virtual} \textcolor{keywordtype}{double} \mbox{\hyperlink{classcel_1_1camera3d_a4c504a98ae3e23e2bab3b259df0e2d86}{get\_z}}()\textcolor{keyword}{ override }\{ \textcolor{keywordflow}{return} z; \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera3d_aa9f316cacdc6ec905a41a487be40b18b}{set\_xyz}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} z)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{94             this-\/>x = x;}
+\DoxyCodeLine{95             this-\/>y = y;}
+\DoxyCodeLine{96             this-\/>z = z;}
+\DoxyCodeLine{97         \}}
+\DoxyCodeLine{98         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} translate(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} z)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{99             this-\/>x += x;}
+\DoxyCodeLine{100             this-\/>y += y;}
+\DoxyCodeLine{101             this-\/>z += z;}
+\DoxyCodeLine{102         \}}
+\DoxyCodeLine{103         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera3d_a698cb39e573a3e20431f58b99cc15ba5}{set\_xyz}}(glm::vec3 pos)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{104             this-\/>x = pos.x;}
+\DoxyCodeLine{105             this-\/>y = pos.y;}
+\DoxyCodeLine{106             this-\/>z = pos.z;}
+\DoxyCodeLine{107         \}}
+\DoxyCodeLine{108         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera3d_a5fce033ca9759850d394ef88ce8f7e2c}{translate}}(glm::vec3 pos)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{109             this-\/>x += pos.x;}
+\DoxyCodeLine{110             this-\/>y += pos.y;}
+\DoxyCodeLine{111             this-\/>z += pos.z;}
+\DoxyCodeLine{112         \}}
+\DoxyCodeLine{113         \textcolor{keyword}{virtual} glm::vec3 \mbox{\hyperlink{classcel_1_1camera3d_a2a92d74baf8a976149a2eff871c42000}{get\_forward}}()\textcolor{keyword}{ override }\{ }
+\DoxyCodeLine{114             \textcolor{keywordflow}{return} forward; }
+\DoxyCodeLine{115         \}}
+\DoxyCodeLine{116         \textcolor{keyword}{virtual} glm::vec3 \mbox{\hyperlink{classcel_1_1camera3d_af66546f72da275b72559bd7fa12b83f0}{get\_up}}()\textcolor{keyword}{ override }\{ }
+\DoxyCodeLine{117             \textcolor{keywordflow}{return} glm::normalize(glm::cross(forward, right)); }
+\DoxyCodeLine{118         \}}
+\DoxyCodeLine{119         \textcolor{keyword}{virtual} glm::vec3 \mbox{\hyperlink{classcel_1_1camera3d_aa71c6c2b312acf62d54ba82fc0efd03e}{get\_right}}()\textcolor{keyword}{ override }\{ }
+\DoxyCodeLine{120             \textcolor{keywordflow}{return} right;}
+\DoxyCodeLine{121         \}}
+\DoxyCodeLine{122         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera3d_afb5b734da5465d0c6041ceed2d8c2a56}{set\_rot\_euler}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} z)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{123             forward = glm::quat(glm::vec3(x,y,z)) * cel::globals::forward;}
+\DoxyCodeLine{124             right = glm::normalize(glm::cross(forward, cel::globals::up));}
+\DoxyCodeLine{125         \}}
+\DoxyCodeLine{130         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1camera3d_adc3a07c26d822413f46aaf4f18632870}{shader\_setup}}(\mbox{\hyperlink{classcel_1_1render_1_1shader}{cel::render::shader}}* shader)\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{131             glm::vec3 pos = glm::vec3((\textcolor{keywordtype}{float})x, (\textcolor{keywordtype}{float})y, (\textcolor{keywordtype}{float})z);}
+\DoxyCodeLine{132             glm::mat4 proj = glm::perspective(glm::radians(45.0f), (\textcolor{keywordtype}{float})\mbox{\hyperlink{classcel_1_1window_aadfe132103d6cc2ce1718251d33ecff2}{cel::window::main}}()-\/>get\_width() / (\textcolor{keywordtype}{float})\mbox{\hyperlink{classcel_1_1window_aadfe132103d6cc2ce1718251d33ecff2}{cel::window::main}}()-\/>get\_height(), 0.05f, 100.f);}
+\DoxyCodeLine{133             glm::mat4 view = glm::lookAt(}
+\DoxyCodeLine{134                 pos,}
+\DoxyCodeLine{135                 pos + forward, }
+\DoxyCodeLine{136                 cel::globals::up}
+\DoxyCodeLine{137             );}
+\DoxyCodeLine{138             proj\_view\_matrix = proj * view;}
+\DoxyCodeLine{139             shader-\/>set\_mat4(\textcolor{stringliteral}{"{}projView"{}}, proj\_view\_matrix);}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141     \};}
+\DoxyCodeLine{142 \}}
+
+\end{DoxyCode}

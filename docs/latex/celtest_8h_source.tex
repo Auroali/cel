@@ -1,0 +1,101 @@
+\hypertarget{celtest_8h_source}{}\doxysection{celtest.\+h}
+\label{celtest_8h_source}\index{src/celtest/celtest.h@{src/celtest/celtest.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <cel/project.h>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <cel/project\_builder.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <cel/render/shader.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <cel/window.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <cel/cel.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <cel/time.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <cel/io/binary\_stream.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <cel/framework/object.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <cel/framework/scene.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <cel/io/obj\_importer.h>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <cel/reflect/reflect.h>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <cel/framework/components/component.h>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <cel/framework/components/model\_component.h>}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{22 \mbox{\hyperlink{classcel_1_1render_1_1model}{cel::render::model}} m(0,0);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{class }\mbox{\hyperlink{classtest__comp}{test\_comp}} : \textcolor{keyword}{public} \mbox{\hyperlink{classcel_1_1component}{cel::component}} \{}
+\DoxyCodeLine{25     REFLECT();}
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} test;}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} test2;}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{class }\mbox{\hyperlink{classproj}{proj}} : \textcolor{keyword}{public} \mbox{\hyperlink{classcel_1_1project}{cel::project}} \{}
+\DoxyCodeLine{32 \textcolor{keyword}{public}:}
+\DoxyCodeLine{33     \textcolor{keyword}{static} \mbox{\hyperlink{classcel_1_1project__builder}{cel::project\_builder<proj>}} builder;}
+\DoxyCodeLine{34     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vao = 0;}
+\DoxyCodeLine{35     }
+\DoxyCodeLine{36     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classproj_a3a7222594905f5c433d61118511d8a20}{init}}()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{37         std::shared\_ptr<cel::scene> s1 = std::make\_shared<cel::scene>();}
+\DoxyCodeLine{38         std::shared\_ptr<cel::object> obj = std::make\_shared<cel::object>();}
+\DoxyCodeLine{39         obj-\/>add\_component(std::make\_shared<cel::model\_component>(cel::io::import\_obj\_model(\textcolor{stringliteral}{"{}./assets/utah\_teapot.obj"{}})));}
+\DoxyCodeLine{40         s1-\/>add\_object(obj);}
+\DoxyCodeLine{41         s1-\/>set\_active();}
+\DoxyCodeLine{42         \textcolor{keywordtype}{float} vertices[] = \{}
+\DoxyCodeLine{43             -\/1,-\/1,0,}
+\DoxyCodeLine{44             0,1,0,}
+\DoxyCodeLine{45             1,-\/1,0}
+\DoxyCodeLine{46         \};}
+\DoxyCodeLine{47         vao = 0;}
+\DoxyCodeLine{48         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vbo = 0;}
+\DoxyCodeLine{49         glGenVertexArrays(1, \&vao);}
+\DoxyCodeLine{50         glBindVertexArray(vao);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         glGenBuffers(1, \&vbo);}
+\DoxyCodeLine{53         glBindBuffer(GL\_ARRAY\_BUFFER, vbo);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55         glBufferData(GL\_ARRAY\_BUFFER, \textcolor{keyword}{sizeof}(vertices), vertices, GL\_STATIC\_DRAW);}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         glVertexAttribPointer(0, 3, GL\_FLOAT, GL\_FALSE, 3*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{58         glEnableVertexAttribArray(0);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60         glBindVertexArray(0);}
+\DoxyCodeLine{61         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{62     \}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{float} yaw = 0;}
+\DoxyCodeLine{64     \textcolor{keywordtype}{float} pitch = 0;}
+\DoxyCodeLine{65     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classproj_a2a15f2f7a920ebd81840bfcc0ddb6fa0}{fixed\_update}}()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{66         \mbox{\hyperlink{classcel_1_1window_aadfe132103d6cc2ce1718251d33ecff2}{cel::window::main}}()-\/>\mbox{\hyperlink{classcel_1_1window_a6a6d6fa6b592c7bb3ed6519f463e895b}{set\_cursor\_mode}}(cel::cursor\_mode::LOCKED);}
+\DoxyCodeLine{67         \mbox{\hyperlink{classcel_1_1input__handler}{cel::input\_handler}}* handler = \mbox{\hyperlink{classcel_1_1window_aadfe132103d6cc2ce1718251d33ecff2}{cel::window::main}}()-\/>\mbox{\hyperlink{classcel_1_1window_acdf9678ade61742d76d0e5f5eb0ab5f8}{get\_input\_handler}}();}
+\DoxyCodeLine{68         \mbox{\hyperlink{classcel_1_1camera}{cel::camera}}* cam;}
+\DoxyCodeLine{69         cel::send\_signal(CEL\_CAM\_REQ, \&cam);}
+\DoxyCodeLine{70         \textcolor{keywordflow}{if}(handler-\/>key\_down(cel::keyboard::S))}
+\DoxyCodeLine{71             cam-\/>translate(-\/cam-\/>\mbox{\hyperlink{classcel_1_1camera_a82eea34f3a871825fd9cae87f5cabc2e}{get\_forward}}() * (\textcolor{keywordtype}{float})\mbox{\hyperlink{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}{cel::time::fixedDeltaTime}});}
+\DoxyCodeLine{72         \textcolor{keywordflow}{if}(handler-\/>key\_down(cel::keyboard::W))}
+\DoxyCodeLine{73             cam-\/>translate(cam-\/>\mbox{\hyperlink{classcel_1_1camera_a82eea34f3a871825fd9cae87f5cabc2e}{get\_forward}}() * (\textcolor{keywordtype}{float})\mbox{\hyperlink{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}{cel::time::fixedDeltaTime}});}
+\DoxyCodeLine{74         \textcolor{keywordflow}{if}(handler-\/>key\_down(cel::keyboard::A))}
+\DoxyCodeLine{75             cam-\/>translate(-\/cam-\/>\mbox{\hyperlink{classcel_1_1camera_a3b40c9c9ecdb0f483455f78ca8074ff7}{get\_right}}() * (\textcolor{keywordtype}{float}) \mbox{\hyperlink{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}{cel::time::fixedDeltaTime}});}
+\DoxyCodeLine{76         \textcolor{keywordflow}{if}(handler-\/>key\_down(cel::keyboard::D))}
+\DoxyCodeLine{77             cam-\/>translate(cam-\/>\mbox{\hyperlink{classcel_1_1camera_a3b40c9c9ecdb0f483455f78ca8074ff7}{get\_right}}() * (\textcolor{keywordtype}{float}) \mbox{\hyperlink{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}{cel::time::fixedDeltaTime}});}
+\DoxyCodeLine{78         yaw -\/= handler-\/>get\_mouse\_delta\_x() * 10 * \mbox{\hyperlink{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}{cel::time::fixedDeltaTime}};}
+\DoxyCodeLine{79         pitch += handler-\/>get\_mouse\_delta\_y() * 10 * \mbox{\hyperlink{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}{cel::time::fixedDeltaTime}};}
+\DoxyCodeLine{80         pitch = std::clamp(pitch, -\/89.f, 89.f);}
+\DoxyCodeLine{81         cam-\/>\mbox{\hyperlink{classcel_1_1camera_a954eeac06748cd73e5cc0c1aede080ee}{set\_rot\_euler}}(glm::radians(pitch),glm::radians(yaw),0);}
+\DoxyCodeLine{82     \}}
+\DoxyCodeLine{83     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classproj_a33a5b8036ea99e4ea9fa477fd9e87d47}{render}}()\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{84         cel::globals::main\_shader.set\_mat4(\textcolor{stringliteral}{"{}model"{}}, glm::mat4(1.0));}
+\DoxyCodeLine{85         \textcolor{comment}{//m.render();}}
+\DoxyCodeLine{86         glm::mat4 model\_ground = glm::mat4(1.0);}
+\DoxyCodeLine{87         model\_ground = glm::translate(model\_ground, glm::vec3(0,-\/5,-\/2));}
+\DoxyCodeLine{88         model\_ground = glm::rotate(model\_ground, glm::radians(90.0f), glm::vec3(1,0,0));}
+\DoxyCodeLine{89         cel::globals::main\_shader.set\_mat4(\textcolor{stringliteral}{"{}model"{}}, model\_ground);}
+\DoxyCodeLine{90         glBindVertexArray(vao);}
+\DoxyCodeLine{91         glDrawArrays(GL\_TRIANGLES, 0, 3);}
+\DoxyCodeLine{92         glBindVertexArray(0);}
+\DoxyCodeLine{93         }
+\DoxyCodeLine{94     \}}
+\DoxyCodeLine{95 \};}
+
+\end{DoxyCode}

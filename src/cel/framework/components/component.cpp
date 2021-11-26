@@ -15,14 +15,14 @@ namespace cel {
         return model;
     }
     
-    void model_component::set_model(cel::render::model& model) {
+    void model_component::set_model(cel::render::model&& model) {
         this->model = model;
     }
 
     model_component::model_component() {
         
     }
-    model_component::model_component(cel::render::model& m) {
+    model_component::model_component(cel::render::model&& m) {
         this->model = m;
     }
 }

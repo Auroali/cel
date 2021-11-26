@@ -7,6 +7,9 @@
 namespace cel {
     class object;
 
+    /**
+     * Tree-based container for objects
+     */
     class scene : public std::enable_shared_from_this<scene> {
         tree<std::shared_ptr<object>> objs;
 

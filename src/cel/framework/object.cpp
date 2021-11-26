@@ -15,7 +15,7 @@ namespace cel {
         glm::mat4 parent = glm::mat4(1.0);
         if(get_parent() != this)
             parent = get_parent()->get_mat4();
-        return glm::mat4(1.0); // /**parent */ (position * rotation * scale);
+        return parent * (position * rotation * scale);
     }
 
     void transform::set_rot_euler(float x, float y, float z) {

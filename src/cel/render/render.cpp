@@ -46,7 +46,7 @@ namespace cel::render {
         glUniformMatrix4fv(glGetUniformLocation(program, name.c_str()), 1, GL_FALSE, &val[0][0]);
 
     }
-    void shader::set_tex(const std::string& name, int id) {
+    void shader::set_int(const std::string& name, int id) {
         glUniform1i(glGetUniformLocation(program, name.c_str()), id); 
     }
     shader::shader(const std::string& v, const std::string& f) {
@@ -242,7 +242,7 @@ namespace cel::render {
         
         // Render quad
         cel::globals::quad_shader.use();
-        cel::globals::quad_shader.set_tex("sceneTex", 0);
+        cel::globals::quad_shader.set_int("sceneTex", 0);
         glClearColor(0,0.0f,0,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         

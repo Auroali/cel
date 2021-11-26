@@ -1,0 +1,29 @@
+\hypertarget{framebuffer_8h_source}{}\doxysection{framebuffer.\+h}
+\label{framebuffer_8h_source}\index{src/cel/render/framebuffer.h@{src/cel/render/framebuffer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}cel/cel.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}texture.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }cel::render \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1render_1_1framebuffer}{framebuffer}} \{}
+\DoxyCodeLine{11         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} buf;}
+\DoxyCodeLine{12         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} rbo;}
+\DoxyCodeLine{13         \mbox{\hyperlink{classcel_1_1render_1_1texture}{texture}} tex;}
+\DoxyCodeLine{14         \textcolor{keyword}{friend} \textcolor{keywordtype}{void} cel\_app::render();}
+\DoxyCodeLine{15     \textcolor{keyword}{public}:}
+\DoxyCodeLine{16         \mbox{\hyperlink{classcel_1_1render_1_1framebuffer}{framebuffer}}() \{\}}
+\DoxyCodeLine{17         \mbox{\hyperlink{classcel_1_1render_1_1framebuffer}{framebuffer}}(\textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{18         \textcolor{keywordtype}{void} bind();}
+\DoxyCodeLine{19         \textcolor{keywordtype}{void} unbind();}
+\DoxyCodeLine{20         \textcolor{keywordtype}{void} free();}
+\DoxyCodeLine{21         \mbox{\hyperlink{classcel_1_1render_1_1texture}{texture}}\& get\_texture();}
+\DoxyCodeLine{22     \};}
+\DoxyCodeLine{23 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,88 @@
+\hypertarget{classcel_1_1reflection_1_1solver}{}\doxysection{cel\+::reflection\+::solver Class Reference}
+\label{classcel_1_1reflection_1_1solver}\index{cel::reflection::solver@{cel::reflection::solver}}
+
+
+{\ttfamily \#include $<$reflect.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classcel_1_1reflection_1_1solver_a8a5db7e625d5feb2315182d69e5613ee}{\+\_\+register}} (\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} $\ast$\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}})
+\begin{DoxyCompactList}\small\item\em Registers reflection type info. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} $\ast$ \mbox{\hyperlink{classcel_1_1reflection_1_1solver_a266a354cf0c21c8ed5be11a4edff06cd}{get\+\_\+by\+\_\+str}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Gets reflection type info by class name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcel_1_1reflection_1_1solver_a48733df8d610fdb0fe1e9ab8e405e709}\label{classcel_1_1reflection_1_1solver_a48733df8d610fdb0fe1e9ab8e405e709}} 
+{\footnotesize template$<$typename T $>$ }\\static \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} $\ast$ {\bfseries get\+\_\+from} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\static \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} $\ast$ \mbox{\hyperlink{classcel_1_1reflection_1_1solver_aad2aa04f0b939ce5810cb1431092d3d9}{get\+\_\+from}} (T $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em Gets the reflection type info from a pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utilities for getting reflection info from various sources 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcel_1_1reflection_1_1solver_a8a5db7e625d5feb2315182d69e5613ee}\label{classcel_1_1reflection_1_1solver_a8a5db7e625d5feb2315182d69e5613ee}} 
+\index{cel::reflection::solver@{cel::reflection::solver}!\_register@{\_register}}
+\index{\_register@{\_register}!cel::reflection::solver@{cel::reflection::solver}}
+\doxysubsubsection{\texorpdfstring{\_register()}{\_register()}}
+{\footnotesize\ttfamily void cel\+::reflection\+::solver\+::\+\_\+register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} $\ast$}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Registers reflection type info. 
+
+\begin{DoxyNote}{Note}
+This is only intented to be used in the REFLECT\+\_\+\+END macro
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em type} & pointer to the type info to register \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1reflection_1_1solver_a266a354cf0c21c8ed5be11a4edff06cd}\label{classcel_1_1reflection_1_1solver_a266a354cf0c21c8ed5be11a4edff06cd}} 
+\index{cel::reflection::solver@{cel::reflection::solver}!get\_by\_str@{get\_by\_str}}
+\index{get\_by\_str@{get\_by\_str}!cel::reflection::solver@{cel::reflection::solver}}
+\doxysubsubsection{\texorpdfstring{get\_by\_str()}{get\_by\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcel_1_1reflection_1_1type}{cel\+::reflection\+::type}} $\ast$ cel\+::reflection\+::solver\+::get\+\_\+by\+\_\+str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets reflection type info by class name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structcel_1_1reflection_1_1type}{cel\+::reflection\+::type}}$\ast$ a pointer to the type info 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1reflection_1_1solver_aad2aa04f0b939ce5810cb1431092d3d9}\label{classcel_1_1reflection_1_1solver_aad2aa04f0b939ce5810cb1431092d3d9}} 
+\index{cel::reflection::solver@{cel::reflection::solver}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!cel::reflection::solver@{cel::reflection::solver}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+static \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} $\ast$ cel\+::reflection\+::solver\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{T $\ast$}]{ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the reflection type info from a pointer. 
+
+\begin{DoxyNote}{Note}
+The value pointed to by ptr must have reflection implemented
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & the pointer to get the type info from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structcel_1_1reflection_1_1type}{cel\+::reflection\+::type}}$\ast$ a pointer to the type info 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/cel/reflect/reflect.\+h\item 
+src/cel/reflect/reflect.\+cpp\end{DoxyCompactItemize}

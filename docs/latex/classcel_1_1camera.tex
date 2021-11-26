@@ -1,0 +1,216 @@
+\hypertarget{classcel_1_1camera}{}\doxysection{cel\+::camera Class Reference}
+\label{classcel_1_1camera}\index{cel::camera@{cel::camera}}
+
+
+{\ttfamily \#include $<$camera.\+h$>$}
+
+Inheritance diagram for cel\+::camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcel_1_1camera}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{classcel_1_1camera_a5256adb9d29f40a3c9747475ed4beebf}{get\+\_\+x}} ()
+\item 
+virtual double \mbox{\hyperlink{classcel_1_1camera_ae6312aa441d4eb34d7c33c091fc7ae38}{get\+\_\+y}} ()
+\item 
+virtual double \mbox{\hyperlink{classcel_1_1camera_ad206de901c7c13bcf560c8155556daed}{get\+\_\+z}} ()
+\item 
+virtual glm\+::vec3 \mbox{\hyperlink{classcel_1_1camera_a82eea34f3a871825fd9cae87f5cabc2e}{get\+\_\+forward}} ()
+\item 
+virtual glm\+::vec3 \mbox{\hyperlink{classcel_1_1camera_a6997a4fcb48239d25c7a68b2ed7db727}{get\+\_\+up}} ()
+\item 
+virtual glm\+::vec3 \mbox{\hyperlink{classcel_1_1camera_a3b40c9c9ecdb0f483455f78ca8074ff7}{get\+\_\+right}} ()
+\item 
+virtual void \mbox{\hyperlink{classcel_1_1camera_a74ebc4b699639f3c88f59258d8f00539}{set\+\_\+xyz}} (double x, double y, double z)
+\item 
+\mbox{\Hypertarget{classcel_1_1camera_a147d3427531d9087b8fc01b995ccaeb4}\label{classcel_1_1camera_a147d3427531d9087b8fc01b995ccaeb4}} 
+virtual void {\bfseries translate} (double x, double y, double z)
+\item 
+virtual void \mbox{\hyperlink{classcel_1_1camera_a0eec77dcc72939a0cf443006b657632d}{set\+\_\+xyz}} (glm\+::vec3 pos)
+\item 
+virtual void \mbox{\hyperlink{classcel_1_1camera_aac2368c68f22ce58d7d8bbb0f23ffd08}{translate}} (glm\+::vec3 pos)
+\item 
+virtual void \mbox{\hyperlink{classcel_1_1camera_a954eeac06748cd73e5cc0c1aede080ee}{set\+\_\+rot\+\_\+euler}} (double x, double y, double z)
+\item 
+virtual void \mbox{\hyperlink{classcel_1_1camera_a78ddfaf38aa2032ff72fb2a906a08f94}{shader\+\_\+setup}} (\mbox{\hyperlink{classcel_1_1render_1_1shader}{cel\+::render\+::shader}} $\ast$shader)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for a camera Has no functionality 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcel_1_1camera_a82eea34f3a871825fd9cae87f5cabc2e}\label{classcel_1_1camera_a82eea34f3a871825fd9cae87f5cabc2e}} 
+\index{cel::camera@{cel::camera}!get\_forward@{get\_forward}}
+\index{get\_forward@{get\_forward}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{get\_forward()}{get\_forward()}}
+{\footnotesize\ttfamily virtual glm\+::vec3 cel\+::camera\+::get\+\_\+forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Get the camera\textquotesingle{}s forward vector \begin{DoxyReturn}{Returns}
+the forward vector 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_a2a92d74baf8a976149a2eff871c42000}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_a3b40c9c9ecdb0f483455f78ca8074ff7}\label{classcel_1_1camera_a3b40c9c9ecdb0f483455f78ca8074ff7}} 
+\index{cel::camera@{cel::camera}!get\_right@{get\_right}}
+\index{get\_right@{get\_right}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{get\_right()}{get\_right()}}
+{\footnotesize\ttfamily virtual glm\+::vec3 cel\+::camera\+::get\+\_\+right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Get the camera\textquotesingle{}s right vector \begin{DoxyReturn}{Returns}
+the right vector 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_aa71c6c2b312acf62d54ba82fc0efd03e}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_a6997a4fcb48239d25c7a68b2ed7db727}\label{classcel_1_1camera_a6997a4fcb48239d25c7a68b2ed7db727}} 
+\index{cel::camera@{cel::camera}!get\_up@{get\_up}}
+\index{get\_up@{get\_up}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{get\_up()}{get\_up()}}
+{\footnotesize\ttfamily virtual glm\+::vec3 cel\+::camera\+::get\+\_\+up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Get the camera\textquotesingle{}s up vector \begin{DoxyReturn}{Returns}
+the up vector 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_af66546f72da275b72559bd7fa12b83f0}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_a5256adb9d29f40a3c9747475ed4beebf}\label{classcel_1_1camera_a5256adb9d29f40a3c9747475ed4beebf}} 
+\index{cel::camera@{cel::camera}!get\_x@{get\_x}}
+\index{get\_x@{get\_x}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{get\_x()}{get\_x()}}
+{\footnotesize\ttfamily virtual double cel\+::camera\+::get\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Gets the camera\textquotesingle{}s x position in worldspace \begin{DoxyReturn}{Returns}
+the y position of the camera 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_a3e7343423681ecba3840829360dc82ee}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_ae6312aa441d4eb34d7c33c091fc7ae38}\label{classcel_1_1camera_ae6312aa441d4eb34d7c33c091fc7ae38}} 
+\index{cel::camera@{cel::camera}!get\_y@{get\_y}}
+\index{get\_y@{get\_y}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{get\_y()}{get\_y()}}
+{\footnotesize\ttfamily virtual double cel\+::camera\+::get\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Gets the camera\textquotesingle{}s y position in worldspace \begin{DoxyReturn}{Returns}
+the y position of the camera 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_a43f3a2dd0b9593a2e8808d992df6e92a}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_ad206de901c7c13bcf560c8155556daed}\label{classcel_1_1camera_ad206de901c7c13bcf560c8155556daed}} 
+\index{cel::camera@{cel::camera}!get\_z@{get\_z}}
+\index{get\_z@{get\_z}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{get\_z()}{get\_z()}}
+{\footnotesize\ttfamily virtual double cel\+::camera\+::get\+\_\+z (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Gets the camera\textquotesingle{}s z position in worldspace \begin{DoxyReturn}{Returns}
+the y position of the camera 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_a4c504a98ae3e23e2bab3b259df0e2d86}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_a954eeac06748cd73e5cc0c1aede080ee}\label{classcel_1_1camera_a954eeac06748cd73e5cc0c1aede080ee}} 
+\index{cel::camera@{cel::camera}!set\_rot\_euler@{set\_rot\_euler}}
+\index{set\_rot\_euler@{set\_rot\_euler}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{set\_rot\_euler()}{set\_rot\_euler()}}
+{\footnotesize\ttfamily virtual void cel\+::camera\+::set\+\_\+rot\+\_\+euler (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Sets the euler rotation of the camera \begin{DoxyNote}{Note}
+all values are in radians
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the roll of the camera \\
+\hline
+{\em y} & the yaw of the camera \\
+\hline
+{\em z} & the pitch of the camera \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_afb5b734da5465d0c6041ceed2d8c2a56}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_a74ebc4b699639f3c88f59258d8f00539}\label{classcel_1_1camera_a74ebc4b699639f3c88f59258d8f00539}} 
+\index{cel::camera@{cel::camera}!set\_xyz@{set\_xyz}}
+\index{set\_xyz@{set\_xyz}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{set\_xyz()}{set\_xyz()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void cel\+::camera\+::set\+\_\+xyz (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Moves the camera relative to its position
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the distance to move along the x axis \\
+\hline
+{\em y} & the distance to move along the y axis \\
+\hline
+{\em z} & the distance to move along the z axis \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_aa9f316cacdc6ec905a41a487be40b18b}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_a0eec77dcc72939a0cf443006b657632d}\label{classcel_1_1camera_a0eec77dcc72939a0cf443006b657632d}} 
+\index{cel::camera@{cel::camera}!set\_xyz@{set\_xyz}}
+\index{set\_xyz@{set\_xyz}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{set\_xyz()}{set\_xyz()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void cel\+::camera\+::set\+\_\+xyz (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Sets the camera\textquotesingle{}s position
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & the position to move to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_a698cb39e573a3e20431f58b99cc15ba5}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_a78ddfaf38aa2032ff72fb2a906a08f94}\label{classcel_1_1camera_a78ddfaf38aa2032ff72fb2a906a08f94}} 
+\index{cel::camera@{cel::camera}!shader\_setup@{shader\_setup}}
+\index{shader\_setup@{shader\_setup}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{shader\_setup()}{shader\_setup()}}
+{\footnotesize\ttfamily virtual void cel\+::camera\+::shader\+\_\+setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcel_1_1render_1_1shader}{cel\+::render\+::shader}} $\ast$}]{shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_adc3a07c26d822413f46aaf4f18632870}{cel\+::camera3d}}.
+
+\mbox{\Hypertarget{classcel_1_1camera_aac2368c68f22ce58d7d8bbb0f23ffd08}\label{classcel_1_1camera_aac2368c68f22ce58d7d8bbb0f23ffd08}} 
+\index{cel::camera@{cel::camera}!translate@{translate}}
+\index{translate@{translate}!cel::camera@{cel::camera}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily virtual void cel\+::camera\+::translate (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Moves the camera relative to its position
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & the vector to move the camera by \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classcel_1_1camera3d_a5fce033ca9759850d394ef88ce8f7e2c}{cel\+::camera3d}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/cel/framework/camera.\+h\end{DoxyCompactItemize}

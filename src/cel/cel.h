@@ -34,7 +34,8 @@ public:
 };
 namespace cel {
     /**
-     * Used to communicate with the engine (e.g. getting the current camera)
+     * @brief Used to communicate with the engine
+     * 
      * @param sig The signal ID, valid IDs can be found in the cel.h header
      * @param ptr Additional data to send with the signal (e.g. for a camera request, this would be a cel::camera double pointer)
      **/

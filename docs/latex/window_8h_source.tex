@@ -1,0 +1,33 @@
+\hypertarget{window_8h_source}{}\doxysection{window.\+h}
+\label{window_8h_source}\index{src/cel/window.h@{src/cel/window.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}input/input.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }cel \{}
+\DoxyCodeLine{7     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1window}{window}} \{}
+\DoxyCodeLine{8     \textcolor{keyword}{private}:}
+\DoxyCodeLine{9         GLFWwindow* handle;}
+\DoxyCodeLine{10         \mbox{\hyperlink{classcel_1_1input__handler}{input\_handler}} handler;}
+\DoxyCodeLine{11         \textcolor{keyword}{static} \mbox{\hyperlink{classcel_1_1window}{window}}* main\_window;}
+\DoxyCodeLine{12     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \textcolor{keywordtype}{int} \mbox{\hyperlink{classcel_1_1window_ada31de1b2b8139acfed33f66140edf33}{get\_width}}();}
+\DoxyCodeLine{24         \textcolor{keywordtype}{int} \mbox{\hyperlink{classcel_1_1window_aaa857ccd82713014c0f625cac97d665f}{get\_height}}();}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1window_a265d5f20418676f06bab6b4b7bd1473b}{swap}}();}
+\DoxyCodeLine{37         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcel_1_1window_a917f5c3c0a26a19df33e7e534897332c}{is\_closed}}();}
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1window_a79c6045673b6a0a90cd61aa877988d21}{close}}();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{50         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1window_a23a3556ca45fe03f121f451e2b465089}{set\_title}}(\textcolor{keyword}{const} std::string\& title);}
+\DoxyCodeLine{56         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1window_a6a6d6fa6b592c7bb3ed6519f463e895b}{set\_cursor\_mode}}(cursor\_mode mode);}
+\DoxyCodeLine{62         \mbox{\hyperlink{classcel_1_1input__handler}{input\_handler}}* \mbox{\hyperlink{classcel_1_1window_acdf9678ade61742d76d0e5f5eb0ab5f8}{get\_input\_handler}}();}
+\DoxyCodeLine{67         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1window_a5e64d412a4fc54e515b6b79224122b40}{set\_main}}();}
+\DoxyCodeLine{73         \textcolor{keyword}{static} \mbox{\hyperlink{classcel_1_1window}{window}}* \mbox{\hyperlink{classcel_1_1window_aadfe132103d6cc2ce1718251d33ecff2}{main}}();}
+\DoxyCodeLine{79         \mbox{\hyperlink{classcel_1_1window_ada5531460423d241c64c1e829e028944}{window}}(GLFWwindow* handle);}
+\DoxyCodeLine{80     \};}
+\DoxyCodeLine{81 \}}
+
+\end{DoxyCode}

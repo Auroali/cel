@@ -15,7 +15,7 @@ namespace cel {
         std::vector<node<T>> nodes;
     public:
         /**
-         * Constructs the node with the value val
+         * @brief Constructs the node with the value val
          * 
          * @param val the value of the node
          */
@@ -24,7 +24,7 @@ namespace cel {
         }
 
         /**
-         * Pushes a new node to the back of the list
+         * @brief Pushes a new node to the back of the list
          * 
          * @param node the node to add
          * @return The node in the list
@@ -35,7 +35,7 @@ namespace cel {
         }
 
         /**
-         * Constructs then adds a node to the back of the list
+         * @brief Constructs then adds a node to the back of the list
          * 
          * @param __args the constructor parameters
          * @return The constructed node
@@ -47,7 +47,7 @@ namespace cel {
         }
 
         /**
-         * Gets the list of sub-nodes
+         * @brief Gets the list of sub-nodes
          * 
          * @return The list of nodes
          */
@@ -56,7 +56,7 @@ namespace cel {
         }
 
         /**
-         * Returns the node at the specified index
+         * @brief Returns the node at the specified index
          * 
          * @param index the index of the node
          * @return The node at index
@@ -134,7 +134,7 @@ namespace cel {
         }
         
         /**
-         * Prints the tree in a readable format
+         * @brief Prints the tree in a readable format
         */
         void print_tree() {
             for(node<T>& n : nodes) {
@@ -142,7 +142,7 @@ namespace cel {
             }
         }
         /**
-         * Gets all the top level nodes of the tree
+         * @brief Gets all the top level nodes of the tree
          * 
          * @return The top level unsorted list of nodes
          */
@@ -150,7 +150,7 @@ namespace cel {
             return nodes;
         }
         /**
-         * Returns the node at the specified index
+         * @brief Returns the node at the specified index
          * 
          * @param index the index of the node
          * @return The node at index
@@ -159,7 +159,7 @@ namespace cel {
             return nodes[index];
         }
         /**
-         * Adds a node to the tree
+         * @brief Adds a node to the tree
          * 
          * @param node the node to add
          * @return The node from the nodes vector
@@ -169,7 +169,7 @@ namespace cel {
             return *(nodes.end()-1);
         }
         /**
-         * Constructs a node then adds it to the tree
+         * @brief Constructs a node then adds it to the tree
          * 
          * @param __args constructor parameters
          * @return The node that was constructed

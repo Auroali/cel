@@ -6,7 +6,13 @@
 namespace cel::io {
     class file_reader {
     public:
-        static std::string read_file(const std::string& path) {
+        /**
+         * @brief Reads a file from disk into an std::string
+         * 
+         * @param path the file to read
+         * @return std::string the file's contents
+         */
+        static std::string read_file(const std::filesystem::path& path) {
             std::ifstream stream = std::ifstream(path);
 
             std::stringstream str_stream;

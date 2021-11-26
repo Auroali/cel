@@ -1,0 +1,23 @@
+\hypertarget{matrix__stack_8h_source}{}\doxysection{matrix\+\_\+stack.\+h}
+\label{matrix__stack_8h_source}\index{src/cel/render/matrix\_stack.h@{src/cel/render/matrix\_stack.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <glm/gtx/quaternion.hpp>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}shader.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }cel::render \{}
+\DoxyCodeLine{7     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1render_1_1matrix__stack}{matrix\_stack}} \{}
+\DoxyCodeLine{8         std::vector<glm::mat4> matrices;}
+\DoxyCodeLine{9     \textcolor{keyword}{public}:}
+\DoxyCodeLine{10         \textcolor{keywordtype}{void} pop();}
+\DoxyCodeLine{11         \textcolor{keywordtype}{void} push();}
+\DoxyCodeLine{12         \textcolor{keywordtype}{void} translate(glm::vec3 pos);}
+\DoxyCodeLine{13         \textcolor{keywordtype}{void} rotate(glm::quat rot);}
+\DoxyCodeLine{14         \textcolor{keywordtype}{void} scale(glm::vec3 scale);}
+\DoxyCodeLine{15         \textcolor{keywordtype}{void} apply(\mbox{\hyperlink{classcel_1_1render_1_1shader}{shader}}\& \mbox{\hyperlink{classcel_1_1render_1_1shader}{shader}});}
+\DoxyCodeLine{16     \};}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,169 @@
+\hypertarget{classcel_1_1window}{}\doxysection{cel\+::window Class Reference}
+\label{classcel_1_1window}\index{cel::window@{cel::window}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classcel_1_1window_ada31de1b2b8139acfed33f66140edf33}{get\+\_\+width}} ()
+\begin{DoxyCompactList}\small\item\em Get the width of the window. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classcel_1_1window_aaa857ccd82713014c0f625cac97d665f}{get\+\_\+height}} ()
+\begin{DoxyCompactList}\small\item\em Get the height of the window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcel_1_1window_a265d5f20418676f06bab6b4b7bd1473b}\label{classcel_1_1window_a265d5f20418676f06bab6b4b7bd1473b}} 
+void {\bfseries swap} ()
+\begin{DoxyCompactList}\small\item\em Swaps the window\textquotesingle{}s buffers. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcel_1_1window_a917f5c3c0a26a19df33e7e534897332c}{is\+\_\+closed}} ()
+\begin{DoxyCompactList}\small\item\em Checks whether or not the window is closed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1window_a79c6045673b6a0a90cd61aa877988d21}{close}} ()
+\begin{DoxyCompactList}\small\item\em Closes the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1window_a23a3556ca45fe03f121f451e2b465089}{set\+\_\+title}} (const std\+::string \&title)
+\begin{DoxyCompactList}\small\item\em Sets the window\textquotesingle{}s title. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1window_a6a6d6fa6b592c7bb3ed6519f463e895b}{set\+\_\+cursor\+\_\+mode}} (cursor\+\_\+mode mode)
+\begin{DoxyCompactList}\small\item\em Sets the window\textquotesingle{}s cursor mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcel_1_1input__handler}{input\+\_\+handler}} $\ast$ \mbox{\hyperlink{classcel_1_1window_acdf9678ade61742d76d0e5f5eb0ab5f8}{get\+\_\+input\+\_\+handler}} ()
+\begin{DoxyCompactList}\small\item\em Gets the window\textquotesingle{}s input handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcel_1_1window_a5e64d412a4fc54e515b6b79224122b40}\label{classcel_1_1window_a5e64d412a4fc54e515b6b79224122b40}} 
+void {\bfseries set\+\_\+main} ()
+\begin{DoxyCompactList}\small\item\em Sets this to the main window. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcel_1_1window_ada5531460423d241c64c1e829e028944}{window}} (GLFWwindow $\ast$handle)
+\begin{DoxyCompactList}\small\item\em Construct a new window object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcel_1_1window}{window}} $\ast$ \mbox{\hyperlink{classcel_1_1window_aadfe132103d6cc2ce1718251d33ecff2}{main}} ()
+\begin{DoxyCompactList}\small\item\em Gets the main window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcel_1_1window_ada5531460423d241c64c1e829e028944}\label{classcel_1_1window_ada5531460423d241c64c1e829e028944}} 
+\index{cel::window@{cel::window}!window@{window}}
+\index{window@{window}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{window()}{window()}}
+{\footnotesize\ttfamily cel\+::window\+::window (\begin{DoxyParamCaption}\item[{GLFWwindow $\ast$}]{handle }\end{DoxyParamCaption})}
+
+
+
+Construct a new window object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & the handle for the GLFW window \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcel_1_1window_a79c6045673b6a0a90cd61aa877988d21}\label{classcel_1_1window_a79c6045673b6a0a90cd61aa877988d21}} 
+\index{cel::window@{cel::window}!close@{close}}
+\index{close@{close}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void cel\+::window\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the window. 
+
+\begin{DoxyNote}{Note}
+If this is the main window, this will also exit the application 
+\end{DoxyNote}
+\mbox{\Hypertarget{classcel_1_1window_aaa857ccd82713014c0f625cac97d665f}\label{classcel_1_1window_aaa857ccd82713014c0f625cac97d665f}} 
+\index{cel::window@{cel::window}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{get\_height()}{get\_height()}}
+{\footnotesize\ttfamily int cel\+::window\+::get\+\_\+height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the height of the window. 
+
+\begin{DoxyReturn}{Returns}
+int the height of the window 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1window_acdf9678ade61742d76d0e5f5eb0ab5f8}\label{classcel_1_1window_acdf9678ade61742d76d0e5f5eb0ab5f8}} 
+\index{cel::window@{cel::window}!get\_input\_handler@{get\_input\_handler}}
+\index{get\_input\_handler@{get\_input\_handler}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{get\_input\_handler()}{get\_input\_handler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcel_1_1input__handler}{input\+\_\+handler}} $\ast$ cel\+::window\+::get\+\_\+input\+\_\+handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the window\textquotesingle{}s input handler. 
+
+\begin{DoxyReturn}{Returns}
+input\+\_\+handler$\ast$ a pointer to the window\textquotesingle{}s input handler 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1window_ada31de1b2b8139acfed33f66140edf33}\label{classcel_1_1window_ada31de1b2b8139acfed33f66140edf33}} 
+\index{cel::window@{cel::window}!get\_width@{get\_width}}
+\index{get\_width@{get\_width}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{get\_width()}{get\_width()}}
+{\footnotesize\ttfamily int cel\+::window\+::get\+\_\+width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the width of the window. 
+
+\begin{DoxyReturn}{Returns}
+int the width of the window 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1window_a917f5c3c0a26a19df33e7e534897332c}\label{classcel_1_1window_a917f5c3c0a26a19df33e7e534897332c}} 
+\index{cel::window@{cel::window}!is\_closed@{is\_closed}}
+\index{is\_closed@{is\_closed}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{is\_closed()}{is\_closed()}}
+{\footnotesize\ttfamily bool cel\+::window\+::is\+\_\+closed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks whether or not the window is closed. 
+
+\begin{DoxyReturn}{Returns}
+true if the window is closed 
+
+false if the window is still open 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1window_aadfe132103d6cc2ce1718251d33ecff2}\label{classcel_1_1window_aadfe132103d6cc2ce1718251d33ecff2}} 
+\index{cel::window@{cel::window}!main@{main}}
+\index{main@{main}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcel_1_1window}{window}} $\ast$ cel\+::window\+::main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the main window. 
+
+\begin{DoxyReturn}{Returns}
+window$\ast$ a pointer to the main window 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1window_a6a6d6fa6b592c7bb3ed6519f463e895b}\label{classcel_1_1window_a6a6d6fa6b592c7bb3ed6519f463e895b}} 
+\index{cel::window@{cel::window}!set\_cursor\_mode@{set\_cursor\_mode}}
+\index{set\_cursor\_mode@{set\_cursor\_mode}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{set\_cursor\_mode()}{set\_cursor\_mode()}}
+{\footnotesize\ttfamily void cel\+::window\+::set\+\_\+cursor\+\_\+mode (\begin{DoxyParamCaption}\item[{cursor\+\_\+mode}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the window\textquotesingle{}s cursor mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & the cursor mode to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1window_a23a3556ca45fe03f121f451e2b465089}\label{classcel_1_1window_a23a3556ca45fe03f121f451e2b465089}} 
+\index{cel::window@{cel::window}!set\_title@{set\_title}}
+\index{set\_title@{set\_title}!cel::window@{cel::window}}
+\doxysubsubsection{\texorpdfstring{set\_title()}{set\_title()}}
+{\footnotesize\ttfamily void cel\+::window\+::set\+\_\+title (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+Sets the window\textquotesingle{}s title. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & the title to set the window to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/cel/window.\+h\item 
+src/cel/window.\+cpp\end{DoxyCompactItemize}

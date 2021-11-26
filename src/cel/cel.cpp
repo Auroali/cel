@@ -80,6 +80,9 @@ int cel_app::on_execute() {
                 
         glfwPollEvents();
         accumulator += cel::time::deltaTime;
+        for(cel::project* p : projects) {
+            p->update();
+        }
         while (accumulator >= cel::time::fixedDeltaTime) {
             cel::window::main()->get_input_handler()->process_mouse();
 		    for(cel::project* p : projects) {
@@ -160,8 +163,10 @@ void cel_app::render() {
 }
 
 void cel_app::cleanup() {
-    for(cel::project* p : projects)
+    for(cel::project* p : projects) {
+        p->shutdown();
         delete p;
+    }
     glfwTerminate();
 }
 

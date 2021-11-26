@@ -1,0 +1,27 @@
+\hypertarget{renderer_8h_source}{}\doxysection{renderer.\+h}
+\label{renderer_8h_source}\index{src/cel/render/renderer.h@{src/cel/render/renderer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}shader.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}model.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}framebuffer.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}texture.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}cel/framework/scene.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }cel::render \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }project;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1render_1_1render__engine}{render\_engine}} \{}
+\DoxyCodeLine{13         \textcolor{keyword}{static} \textcolor{keywordtype}{void} render(\mbox{\hyperlink{classcel_1_1camera}{cel::camera}}* cam, std::vector<cel::project*> projects, std::weak\_ptr<cel::scene> \mbox{\hyperlink{classcel_1_1scene}{scene}});}
+\DoxyCodeLine{14         \textcolor{keyword}{static} \textcolor{keywordtype}{void} render\_scene(std::weak\_ptr<cel::scene> \mbox{\hyperlink{classcel_1_1scene}{scene}});}
+\DoxyCodeLine{15         \textcolor{keyword}{friend} \textcolor{keywordtype}{void} cel\_app::render();}
+\DoxyCodeLine{16     \textcolor{keyword}{public}:}
+\DoxyCodeLine{17         \textcolor{keyword}{static} \textcolor{keywordtype}{void} init();}
+\DoxyCodeLine{18         \textcolor{keyword}{static} \textcolor{keywordtype}{void} depth\_test(\textcolor{keywordtype}{bool} enable);}
+\DoxyCodeLine{19         \textcolor{keyword}{static} \textcolor{keywordtype}{void} stencil\_test(\textcolor{keywordtype}{bool} enable);}
+\DoxyCodeLine{20     \};}
+\DoxyCodeLine{21 \}}
+
+\end{DoxyCode}

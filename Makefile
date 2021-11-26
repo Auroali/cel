@@ -33,3 +33,6 @@ test_project: cel assets
 	$(info Building Test Project...)
 	mkdir -p build	
 	${CXX} ${CXXFLAGS} -lcel -o build/celtest ${CEL_TEST_SRC}
+
+docs:
+	doxygen docs.conf

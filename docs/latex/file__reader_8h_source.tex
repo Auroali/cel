@@ -1,0 +1,29 @@
+\hypertarget{file__reader_8h_source}{}\doxysection{file\+\_\+reader.\+h}
+\label{file__reader_8h_source}\index{src/cel/io/file\_reader.h@{src/cel/io/file\_reader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }cel::io \{}
+\DoxyCodeLine{7     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1io_1_1file__reader}{file\_reader}} \{}
+\DoxyCodeLine{8     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         \textcolor{keyword}{static} std::string \mbox{\hyperlink{classcel_1_1io_1_1file__reader_a7105ca3a910c5dd21b8a83e767a5feb2}{read\_file}}(\textcolor{keyword}{const} std::filesystem::path\& path) \{}
+\DoxyCodeLine{16             std::ifstream stream = std::ifstream(path);}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18             std::stringstream str\_stream;}
+\DoxyCodeLine{19             }
+\DoxyCodeLine{20             std::string line;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22             \textcolor{keywordflow}{while}(std::getline(stream, line)) \{}
+\DoxyCodeLine{23                 str\_stream << line << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{24             \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26             \textcolor{keywordflow}{return} str\_stream.str();}
+\DoxyCodeLine{27         \}}
+\DoxyCodeLine{28     \};}
+\DoxyCodeLine{29 \}}
+
+\end{DoxyCode}

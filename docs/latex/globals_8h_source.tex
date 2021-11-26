@@ -1,0 +1,23 @@
+\hypertarget{globals_8h_source}{}\doxysection{globals.\+h}
+\label{globals_8h_source}\index{src/cel/globals.h@{src/cel/globals.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}render/shader.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{namespace }cel::globals \{}
+\DoxyCodeLine{6     \textcolor{comment}{// Vectors}}
+\DoxyCodeLine{7     \textcolor{keyword}{const} glm::vec3 forward = glm::vec3(0,0,1);}
+\DoxyCodeLine{8     \textcolor{keyword}{const} glm::vec3 up = glm::vec3(0,1,0);}
+\DoxyCodeLine{9     \textcolor{keyword}{const} glm::vec3 right = glm::vec3(-\/1,0,0);}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{comment}{// Shaders}}
+\DoxyCodeLine{12     \textcolor{keyword}{extern} \mbox{\hyperlink{classcel_1_1render_1_1shader}{cel::render::shader}} main\_shader;}
+\DoxyCodeLine{13     \textcolor{keyword}{extern} \mbox{\hyperlink{classcel_1_1render_1_1shader}{cel::render::shader}} quad\_shader;}
+\DoxyCodeLine{14     \textcolor{keyword}{extern} \mbox{\hyperlink{classcel_1_1render_1_1shader}{cel::render::shader}} basic\_shader;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keyword}{extern} \textcolor{keywordtype}{void} init\_shaders();}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}

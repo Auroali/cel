@@ -1,0 +1,186 @@
+\hypertarget{classcel_1_1scene}{}\doxysection{cel\+::scene Class Reference}
+\label{classcel_1_1scene}\index{cel::scene@{cel::scene}}
+
+
+{\ttfamily \#include $<$scene.\+h$>$}
+
+Inheritance diagram for cel\+::scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcel_1_1scene}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcel_1_1scene_a0c7bd31aba3fbaf433d2998df8e8550d}{set\+\_\+active}} ()
+\item 
+void \mbox{\hyperlink{classcel_1_1scene_a7297482dd8540dadffa9aa34d661de82}{add\+\_\+object}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ \mbox{\hyperlink{classcel_1_1object}{object}})
+\begin{DoxyCompactList}\small\item\em Adds an object to the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1scene_a08da28d05ee531ab8722a4393b1d92e4}{try\+\_\+remove\+\_\+obj}} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ obj)
+\begin{DoxyCompactList}\small\item\em Tries to remove the specified object from the scene. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcel_1_1tree}{tree}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ $>$ \& \mbox{\hyperlink{classcel_1_1scene_a98a0f88edc4c865b3314baaaa4611192}{get\+\_\+obj\+\_\+tree}} ()
+\begin{DoxyCompactList}\small\item\em Get the object tree. \end{DoxyCompactList}\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ \mbox{\hyperlink{classcel_1_1scene_a87fe819acd83406fec961e779576c14e}{get\+\_\+object\+\_\+by\+\_\+name}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Get an object in the scene by name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcel_1_1node}{node}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ $>$ $\ast$ \mbox{\hyperlink{classcel_1_1scene_a977cb36fe1c3b394e44dcb837bb28e02}{get\+\_\+node\+\_\+by\+\_\+object}} (std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ obj)
+\begin{DoxyCompactList}\small\item\em Get the node from the object tree that contains obj. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1scene_af3662db7d69fcf8b3675dca4f21ab070}{write}} (const std\+::filesystem\+::path \&path)
+\begin{DoxyCompactList}\small\item\em Writes the scene to a file on disk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcel_1_1scene_a4aa04d7439b9d33be31971a8e969f030}\label{classcel_1_1scene_a4aa04d7439b9d33be31971a8e969f030}} 
+static void {\bfseries clear\+\_\+active} ()
+\begin{DoxyCompactList}\small\item\em Clears the active scene. \end{DoxyCompactList}\item 
+static std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ \mbox{\hyperlink{classcel_1_1scene_a97cad449fd55eca8670966f3c52b9bf3}{get\+\_\+active\+\_\+scene}} ()
+\begin{DoxyCompactList}\small\item\em Get the active scene object. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ \mbox{\hyperlink{classcel_1_1scene_a1a203e903bf2641b3258c004c1b6c00f}{read}} (const std\+::filesystem\+::path \&path)
+\begin{DoxyCompactList}\small\item\em Reads the scene from a file on disk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tree-\/based container for objects 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcel_1_1scene_a7297482dd8540dadffa9aa34d661de82}\label{classcel_1_1scene_a7297482dd8540dadffa9aa34d661de82}} 
+\index{cel::scene@{cel::scene}!add\_object@{add\_object}}
+\index{add\_object@{add\_object}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{add\_object()}{add\_object()}}
+{\footnotesize\ttfamily void cel\+::scene\+::add\+\_\+object (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$}]{object }\end{DoxyParamCaption})}
+
+
+
+Adds an object to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & the object to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1scene_a97cad449fd55eca8670966f3c52b9bf3}\label{classcel_1_1scene_a97cad449fd55eca8670966f3c52b9bf3}} 
+\index{cel::scene@{cel::scene}!get\_active\_scene@{get\_active\_scene}}
+\index{get\_active\_scene@{get\_active\_scene}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{get\_active\_scene()}{get\_active\_scene()}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ cel\+::scene\+::get\+\_\+active\+\_\+scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the active scene object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::weak\+\_\+ptr$<$scene$>$ a weak\+\_\+ptr to the scene object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1scene_a977cb36fe1c3b394e44dcb837bb28e02}\label{classcel_1_1scene_a977cb36fe1c3b394e44dcb837bb28e02}} 
+\index{cel::scene@{cel::scene}!get\_node\_by\_object@{get\_node\_by\_object}}
+\index{get\_node\_by\_object@{get\_node\_by\_object}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{get\_node\_by\_object()}{get\_node\_by\_object()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcel_1_1node}{node}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ $>$ $\ast$ cel\+::scene\+::get\+\_\+node\+\_\+by\+\_\+object (\begin{DoxyParamCaption}\item[{std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$}]{obj }\end{DoxyParamCaption})}
+
+
+
+Get the node from the object tree that contains obj. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & the object to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+node$<$std\+::shared\+\_\+ptr$<$object$>$$>$$\ast$ a pointer to the node that contains the object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1scene_a98a0f88edc4c865b3314baaaa4611192}\label{classcel_1_1scene_a98a0f88edc4c865b3314baaaa4611192}} 
+\index{cel::scene@{cel::scene}!get\_obj\_tree@{get\_obj\_tree}}
+\index{get\_obj\_tree@{get\_obj\_tree}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{get\_obj\_tree()}{get\_obj\_tree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcel_1_1tree}{tree}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ $>$ \& cel\+::scene\+::get\+\_\+obj\+\_\+tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the object tree. 
+
+\begin{DoxyReturn}{Returns}
+tree$<$std\+::shared\+\_\+ptr$<$object$>$$>$\& the tree containing all objects in the scene 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1scene_a87fe819acd83406fec961e779576c14e}\label{classcel_1_1scene_a87fe819acd83406fec961e779576c14e}} 
+\index{cel::scene@{cel::scene}!get\_object\_by\_name@{get\_object\_by\_name}}
+\index{get\_object\_by\_name@{get\_object\_by\_name}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{get\_object\_by\_name()}{get\_object\_by\_name()}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$ cel\+::scene\+::get\+\_\+object\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Get an object in the scene by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name of the object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::weak\+\_\+ptr$<$object$>$ a weak\+\_\+ptr to the object, if found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1scene_a1a203e903bf2641b3258c004c1b6c00f}\label{classcel_1_1scene_a1a203e903bf2641b3258c004c1b6c00f}} 
+\index{cel::scene@{cel::scene}!read@{read}}
+\index{read@{read}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ cel\+::scene\+::read (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Reads the scene from a file on disk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & the file to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$scene$>$ the scene created from the file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1scene_a0c7bd31aba3fbaf433d2998df8e8550d}\label{classcel_1_1scene_a0c7bd31aba3fbaf433d2998df8e8550d}} 
+\index{cel::scene@{cel::scene}!set\_active@{set\_active}}
+\index{set\_active@{set\_active}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{set\_active()}{set\_active()}}
+{\footnotesize\ttfamily void cel\+::scene\+::set\+\_\+active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets the active scene to this scene object \mbox{\Hypertarget{classcel_1_1scene_a08da28d05ee531ab8722a4393b1d92e4}\label{classcel_1_1scene_a08da28d05ee531ab8722a4393b1d92e4}} 
+\index{cel::scene@{cel::scene}!try\_remove\_obj@{try\_remove\_obj}}
+\index{try\_remove\_obj@{try\_remove\_obj}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{try\_remove\_obj()}{try\_remove\_obj()}}
+{\footnotesize\ttfamily void cel\+::scene\+::try\+\_\+remove\+\_\+obj (\begin{DoxyParamCaption}\item[{std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1object}{object}} $>$}]{obj }\end{DoxyParamCaption})}
+
+
+
+Tries to remove the specified object from the scene. 
+
+If the object doesn\textquotesingle{}t exist, this will do nothing
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & the object to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1scene_af3662db7d69fcf8b3675dca4f21ab070}\label{classcel_1_1scene_af3662db7d69fcf8b3675dca4f21ab070}} 
+\index{cel::scene@{cel::scene}!write@{write}}
+\index{write@{write}!cel::scene@{cel::scene}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void cel\+::scene\+::write (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Writes the scene to a file on disk. 
+
+The scene is stored in a binary file, consisting of a 22 byte header followed by the object tree.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & the output path of the file \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/cel/framework/scene.\+h\item 
+src/cel/framework/scene.\+cpp\end{DoxyCompactItemize}
