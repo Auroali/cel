@@ -34,10 +34,9 @@ public:
     unsigned int vao = 0;
     
     virtual bool init() override {
-        m = cel::io::import_obj_model("./assets/utah_teapot.obj");
         std::shared_ptr<cel::scene> s1 = std::make_shared<cel::scene>();
         std::shared_ptr<cel::object> obj = std::make_shared<cel::object>();
-        obj->add_component(std::make_shared<cel::model_component>(m));
+        obj->add_component(std::make_shared<cel::model_component>(cel::io::import_obj_model("./assets/utah_teapot.obj")));
         s1->add_object(obj);
         s1->set_active();
         float vertices[] = {

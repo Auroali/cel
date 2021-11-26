@@ -36,6 +36,13 @@ namespace cel {
          */
         glm::mat4 get_mat4();
 
+        /**
+         * @brief Sets the euler rotation of this transform object
+         * 
+         * @param x the x rotation in radians
+         * @param y the y rotation in radians
+         * @param z the z rotation in radians
+         */
         void set_rot_euler(float x, float y, float z);
 
         transform() : pos(0,0,0), rot(glm::vec3(0,0,0)), scale(1,1,1) {}

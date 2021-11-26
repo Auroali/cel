@@ -105,7 +105,7 @@ namespace cel {
             stream << uint8_t(1);
             stream << _node.get_nodes().size();
             for(node<std::shared_ptr<object>>& n : _node.get_nodes()) {
-                
+                // Recursively write this node and all subnodes to disk
                 write_nodes(stream, n, num_nodes);
             }
             stream << uint8_t(2);
