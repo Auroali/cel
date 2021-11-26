@@ -6,15 +6,14 @@
 #include <string>
 #include <vector>
 
-namespace cel
-{
-    
+namespace cel {
     class scene;
     class component;
 
     struct transform {
     private:
         transform* parent;
+        friend class object;
     public:
         glm::vec3 pos;
         glm::quat rot;
@@ -25,7 +24,7 @@ namespace cel
          * this transform object
          * 
          * @return a pointer to the parent,
-         * points to itself if parent is null
+         * points to itself if it has no parent
          */
         transform* get_parent();
         /**
@@ -47,11 +46,12 @@ namespace cel
         std::weak_ptr<scene> container;
         std::weak_ptr<object> parent;
         std::vector<std::shared_ptr<component>> components;
+        friend class scene;
     public:
         std::string name;
         transform trans;
 
-        object(std::weak_ptr<scene> container);
+        object();
 
         std::weak_ptr<object> get_parent();
         bool set_parent(std::weak_ptr<object> new_parent);

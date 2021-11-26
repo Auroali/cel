@@ -4,33 +4,87 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "cel/window.h"
-#include "cel/constants.h"
+#include "cel/globals.h"
 
 namespace cel {
+    /**
+     * Base class for a camera
+     * Has no functionality
+     */
     class camera {
     public:
+        /**
+         * Gets the camera's x position in worldspace
+         * @return the y position of the camera
+         */
         virtual double get_x() { return 0; }
+        /**
+         * Gets the camera's y position in worldspace
+         * @return the y position of the camera
+         */
         virtual double get_y() { return 0; }
+        /**
+         * Gets the camera's z position in worldspace
+         * @return the y position of the camera
+         */
         virtual double get_z() { return 0; }
 
-        virtual glm::vec3 get_forward() { return cel::constants::forward; }
-        virtual glm::vec3 get_up() { return cel::constants::up; }
-        virtual glm::vec3 get_right() { return cel::constants::right; }
-
+        /**
+         * Get the camera's forward vector
+         * @return the forward vector
+         */
+        virtual glm::vec3 get_forward() { return cel::globals::forward; }
+        /**
+         * Get the camera's up vector
+         * @return the up vector
+         */
+        virtual glm::vec3 get_up() { return cel::globals::up; }
+        /**
+         * Get the camera's right vector
+         * @return the right vector 
+         */
+        virtual glm::vec3 get_right() { return cel::globals::right; }
+        /**
+         * Moves the camera relative to its position
+         * 
+         * @param x the distance to move along the x axis
+         * @param y the distance to move along the y axis
+         * @param z the distance to move along the z axis
+         */
         virtual void set_xyz(double x, double y, double z) {}
         virtual void translate(double x, double y, double z) {}
+        /**
+         * Sets the camera's position
+         * 
+         * @param pos the position to move to
+         */
         virtual void set_xyz(glm::vec3 pos) {}
+        /**
+         * Moves the camera relative to its position
+         * 
+         * @param pos the vector to move the camera by
+         */
         virtual void translate(glm::vec3 pos) {}
+        /**
+         * Sets the euler rotation of the camera
+         * @note all values are in radians
+         * 
+         * @param x the roll of the camera
+         * @param y the yaw of the camera
+         * @param z the pitch of the camera
+         */
         virtual void set_rot_euler(double x, double y, double z) {}
-        virtual void render_start() {}
         virtual void shader_setup(cel::render::shader* shader) {}
     };
 
+    /**
+     * Camera for viewing 3D space
+     */
     class camera3d : public camera {
     private:
         double x,y,z;
         glm::mat4 proj_view_matrix;
-        glm::vec3 forward = cel::constants::forward,right = cel::constants::right;
+        glm::vec3 forward = cel::globals::forward,right = cel::globals::right;
     public:
         virtual double get_x() override { return x; }
         virtual double get_y() override { return y; }
@@ -66,20 +120,22 @@ namespace cel {
             return right;
         }
         virtual void set_rot_euler(double x, double y, double z) override {
-            forward = glm::quat(glm::vec3(x,y,z)) * cel::constants::forward;
-            right = glm::normalize(glm::cross(forward, cel::constants::up));
+            forward = glm::quat(glm::vec3(x,y,z)) * cel::globals::forward;
+            right = glm::normalize(glm::cross(forward, cel::globals::up));
         }
-        virtual void render_start() override {
+        /**
+         * Setup shader specific things, such as projection/view matrix
+         * @param shader pointer to the shader to use
+         */
+        virtual void shader_setup(cel::render::shader* shader) override {
             glm::vec3 pos = glm::vec3((float)x, (float)y, (float)z);
             glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)cel::window::main()->get_width() / (float)cel::window::main()->get_height(), 0.05f, 100.f);
             glm::mat4 view = glm::lookAt(
                 pos,
                 pos + forward, 
-                cel::constants::up
+                cel::globals::up
             );
             proj_view_matrix = proj * view;
-        }
-        virtual void shader_setup(cel::render::shader* shader) override {
             shader->set_mat4("projView", proj_view_matrix);
         }
     };

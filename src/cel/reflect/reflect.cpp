@@ -12,9 +12,9 @@ cel::reflection::type* cel::reflection::solver::get_by_str(const std::string& na
     }
     return nullptr;
 }
-cel::reflection::member* cel::reflection::type::get_member(const std::string& name) {
+std::optional<cel::reflection::member> cel::reflection::type::get_member(const std::string& name) {
     for(cel::reflection::member& member : members)
         if(member.name == name)
-            return &member;
-    return nullptr;
+            return member;
+    return {};
 }

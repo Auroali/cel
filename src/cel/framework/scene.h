@@ -4,23 +4,27 @@
 #include <memory>
 #include <filesystem>
 
+namespace cel {
+    class object;
 
-namespace cel 
-{
-class object;
+    class scene : public std::enable_shared_from_this<scene> {
+        tree<std::shared_ptr<object>> objs;
 
-class scene {
-    tree<std::shared_ptr<object>> objs;
-public:
-    void add_object(std::shared_ptr<object> object);
-    void try_remove_obj(std::weak_ptr<object> obj);
-    
-    tree<std::shared_ptr<object>>& get_obj_tree();
+        static std::shared_ptr<scene> active_scene;
+    public:
+        void set_active();
+        static void clear_active();
+        static std::weak_ptr<scene> get_active_scene();
 
-    std::weak_ptr<object> get_object_by_name(const std::string& name);
-    node<std::shared_ptr<object>>* get_node_by_object(std::weak_ptr<object> obj);
+        void add_object(std::shared_ptr<object> object);
+        void try_remove_obj(std::weak_ptr<object> obj);
+        
+        tree<std::shared_ptr<object>>& get_obj_tree();
 
-    void write(const std::filesystem::path& path);
-    static std::shared_ptr<scene> read(const std::filesystem::path& path);
-};
+        std::weak_ptr<object> get_object_by_name(const std::string& name);
+        node<std::shared_ptr<object>>* get_node_by_object(std::weak_ptr<object> obj);
+
+        void write(const std::filesystem::path& path);
+        static std::shared_ptr<scene> read(const std::filesystem::path& path);
+    };
 }

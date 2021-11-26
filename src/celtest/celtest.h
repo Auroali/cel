@@ -16,6 +16,8 @@
 #include <cel/reflect/reflect.h>
 #include <cel/framework/components/component.h>
 
+#include <cel/framework/components/model_component.h>
+
 #include <memory>
 cel::render::model m(0,0);
 
@@ -32,10 +34,12 @@ public:
     unsigned int vao = 0;
     
     virtual bool init() override {
-        
-        cel::io::obj_importer* imp = new cel::io::obj_importer();
-        m = imp->import_from_file("./assets/utah_teapot.obj");
-        delete imp;
+        m = cel::io::import_obj_model("./assets/utah_teapot.obj");
+        std::shared_ptr<cel::scene> s1 = std::make_shared<cel::scene>();
+        std::shared_ptr<cel::object> obj = std::make_shared<cel::object>();
+        obj->add_component(std::make_shared<cel::model_component>(m));
+        s1->add_object(obj);
+        s1->set_active();
         float vertices[] = {
             -1,-1,0,
             0,1,0,
@@ -78,12 +82,12 @@ public:
         cam->set_rot_euler(glm::radians(pitch),glm::radians(yaw),0);
     }
     virtual void render() override {
-        cel::constants::main_shader.set_mat4("model", glm::mat4(1.0));
-        m.render();
+        cel::globals::main_shader.set_mat4("model", glm::mat4(1.0));
+        //m.render();
         glm::mat4 model_ground = glm::mat4(1.0);
         model_ground = glm::translate(model_ground, glm::vec3(0,-5,-2));
         model_ground = glm::rotate(model_ground, glm::radians(90.0f), glm::vec3(1,0,0));
-        cel::constants::main_shader.set_mat4("model", model_ground);
+        cel::globals::main_shader.set_mat4("model", model_ground);
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glBindVertexArray(0);

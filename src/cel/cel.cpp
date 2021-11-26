@@ -12,16 +12,26 @@
 #include "cel/render/model.h"
 #include "cel/render/framebuffer.h"
 #include "cel/render/texture.h"
+#include "cel/render/renderer.h"
 
 cel_app* cel_app::inst;
 int exitCode;
 double cel::time::deltaTime = 1;
 double cel::time::fixedDeltaTime = 1.f/60.f;
-unsigned int quad;
-cel::render::framebuffer render_buffer;
 std::vector<cel::project_builder_base*>* cel::project::projects;
 
-cel::render::texture tex;
+/**
+ * Definitions for variables and functions in constants.h
+ */
+cel::render::shader cel::globals::main_shader;
+cel::render::shader cel::globals::quad_shader;
+cel::render::shader cel::globals::basic_shader;
+
+void cel::globals::init_shaders() {
+    main_shader = cel::render::shader("./assets/main.vs", "./assets/main.fs");
+    quad_shader = cel::render::shader("./assets/post.vs", "./assets/post.fs");
+    basic_shader = cel::render::shader("./assets/basic.vs", "./assets/basic.fs");
+}
 
 class exit_request : std::exception {};
 
@@ -132,85 +142,19 @@ bool cel_app::on_init() {
     glfwSetWindowTitle(handle, projects[0]->get_name().c_str());
     this->cam = std::make_shared<cel::camera3d>();
 
-    cel::constants::init_shaders();
-
+    cel::globals::init_shaders();
     
     win_main = cel::window(handle);
     win_main.set_main();
 
-    // Setup the render framebuffer
-    render_buffer = cel::render::framebuffer(win_main.get_width(), win_main.get_height());
-    tex = cel::render::texture::load("./assets/wall.jpg").value();
-
-	// Setup the post process quad
-    float vertices[] = {  
-        // positions   // texCoords
-        -1.0f,  1.0f,  0.0f, 1.0f,
-        -1.0f, -1.0f,  0.0f, 0.0f,
-        1.0f, -1.0f,  1.0f, 0.0f,
-
-        -1.0f,  1.0f,  0.0f, 1.0f,
-        1.0f, -1.0f,  1.0f, 0.0f,
-        1.0f,  1.0f,  1.0f, 1.0f
-    };	
-    unsigned int vao;
-    unsigned int vbo = 0;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (void*)0);
-    
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (void*)(2*sizeof(float)));
-
-    // Unbind vertex array
-    glBindVertexArray(0);
-    quad = vao;
+    cel::render::render_engine::init();
 
 	return true;
 }
 
 void cel_app::render() {
-    glViewport(0,0,cel::window::main()->get_width(),cel::window::main()->get_height());
-    if(render_buffer.get_texture().width() != cel::window::main()->get_width() || render_buffer.get_texture().height() != cel::window::main()->get_height()) {
-        std::cout << "Render Buffer size doesn't match screen size! Resizing... (Expected " << cel::window::main()->get_width() << ',' << cel::window::main()->get_height() << " but got " << render_buffer.tex.width() << ',' << render_buffer.tex.height() << ")" << std::endl;
-        render_buffer.free();
-        render_buffer = cel::render::framebuffer(cel::window::main()->get_width(),cel::window::main()->get_height());
-    }
-
-    render_buffer.bind();
-    glEnable(GL_DEPTH_TEST);
-    cel::constants::main_shader.use();
-    cam->render_start();
-    cam->shader_setup(&cel::constants::main_shader);
-    glClearColor(1.0f,0.f,0.f, 0.f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-    for(cel::project* p : projects) {
-        p->render();
-    }
-    render_buffer.unbind();
+    cel::render::render_engine::render(cam.get(), projects, cel::scene::get_active_scene());
     
-    // Render quad
-    cel::constants::quad_shader.use();
-    cel::constants::quad_shader.set_tex("sceneTex", 0);
-    glClearColor(0,0.0f,0,1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    glDisable(GL_DEPTH_TEST);
-    glDisable(GL_STENCIL_TEST);
-
-    //quad.render();
-    glBindVertexArray(quad);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, render_buffer.get_texture().handle());
-    glDrawArrays(GL_TRIANGLES, 0, 6);
-    glBindVertexArray(0);
-
     //Push buffer to screen
     cel::window::main()->swap();
 }
