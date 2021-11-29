@@ -87,7 +87,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5b6921177a49bb8f859f882ba952356e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the address of this member in memory.  <a href="structcel_1_1reflection_1_1member.html#a5b6921177a49bb8f859f882ba952356e">More...</a><br /></td></tr>
 <tr class="separator:a5b6921177a49bb8f859f882ba952356e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed8db68f9a0f24b841d3bbd9e438acf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcel_1_1reflection_1_1member.html#aed8db68f9a0f24b841d3bbd9e438acf7">has_attrib</a> (size_t attrib)</td></tr>
-<tr class="memdesc:aed8db68f9a0f24b841d3bbd9e438acf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether or not this member has the specified attribute.  <a href="structcel_1_1reflection_1_1member.html#aed8db68f9a0f24b841d3bbd9e438acf7">More...</a><br /></td></tr>
+<tr class="memdesc:aed8db68f9a0f24b841d3bbd9e438acf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether or not this member has the specified attribute(s)  <a href="structcel_1_1reflection_1_1member.html#aed8db68f9a0f24b841d3bbd9e438acf7">More...</a><br /></td></tr>
 <tr class="separator:aed8db68f9a0f24b841d3bbd9e438acf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -133,13 +133,19 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Returns the member as type &lt;T&gt; </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>the type of the member</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptr</td><td>the pointer of the object this is a member of </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the member as type &lt;T&gt; </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>T&amp; the member as type &lt;T&gt; </dd></dl>
 
 </div>
 </div>
@@ -167,8 +173,16 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Checks whether or not this member has the specified attribute. </p>
-<dl class="section return"><dt>Returns</dt><dd>whether or not it contains the attribute </dd></dl>
+<p>Checks whether or not this member has the specified attribute(s) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attrib</td><td>the attribute(s) to check</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the member has the attribute(s) </dd>
+<dd>
+false if the member does not have the attribute(s) </dd></dl>
 
 </div>
 </div>
@@ -203,7 +217,7 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a void* to the member in memory </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>void* a pointer to the member in memory </dd></dl>
 
 </div>
 </div>
@@ -244,6 +258,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Sets the member to the value 'val'. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>the type of the value </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptr</td><td>the pointer of the object this is a member of </td></tr>

@@ -10,7 +10,7 @@
 char $\ast$ \mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}} (void $\ast$obj)
 \begin{DoxyCompactList}\small\item\em Returns the address of this member in memory. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{structcel_1_1reflection_1_1member_aed8db68f9a0f24b841d3bbd9e438acf7}{has\+\_\+attrib}} (size\+\_\+t attrib)
-\begin{DoxyCompactList}\small\item\em Checks whether or not this member has the specified attribute. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checks whether or not this member has the specified attribute(s) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,12 +41,17 @@ T \& cel\+::reflection\+::member\+::as (\begin{DoxyParamCaption}\item[{void $\as
 Returns the member as type $<$\+T$>$ 
 
 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type of the member\\
+\hline
+\end{DoxyTemplParams}
+
 \begin{DoxyParams}{Parameters}
 {\em ptr} & the pointer of the object this is a member of \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-the member as type $<$\+T$>$ 
+T\& the member as type $<$\+T$>$ 
 \end{DoxyReturn}
 \mbox{\Hypertarget{structcel_1_1reflection_1_1member_aed8db68f9a0f24b841d3bbd9e438acf7}\label{structcel_1_1reflection_1_1member_aed8db68f9a0f24b841d3bbd9e438acf7}} 
 \index{cel::reflection::member@{cel::reflection::member}!has\_attrib@{has\_attrib}}
@@ -56,10 +61,17 @@ the member as type $<$\+T$>$
 
 
 
-Checks whether or not this member has the specified attribute. 
+Checks whether or not this member has the specified attribute(s) 
 
+
+\begin{DoxyParams}{Parameters}
+{\em attrib} & the attribute(s) to check\\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-whether or not it contains the attribute 
+true if the member has the attribute(s) 
+
+false if the member does not have the attribute(s) 
 \end{DoxyReturn}
 \mbox{\Hypertarget{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}\label{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}} 
 \index{cel::reflection::member@{cel::reflection::member}!ptr@{ptr}}
@@ -77,7 +89,7 @@ Returns the address of this member in memory.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-a void$\ast$ to the member in memory 
+void$\ast$ a pointer to the member in memory 
 \end{DoxyReturn}
 \mbox{\Hypertarget{structcel_1_1reflection_1_1member_a1df83aa292183cc1c99392231a995ff7}\label{structcel_1_1reflection_1_1member_a1df83aa292183cc1c99392231a995ff7}} 
 \index{cel::reflection::member@{cel::reflection::member}!set@{set}}
@@ -90,6 +102,11 @@ void cel\+::reflection\+::member\+::set (\begin{DoxyParamCaption}\item[{void $\a
 
 Sets the member to the value \textquotesingle{}val\textquotesingle{}. 
 
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type of the value \\
+\hline
+\end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
 {\em ptr} & the pointer of the object this is a member of \\

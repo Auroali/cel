@@ -90,34 +90,34 @@ $(function() {
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        glm::quat rot;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        glm::vec3 scale;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a>* <a class="code hl_function" href="structcel_1_1transform.html#af4489d2a3446fc28735c13a1b1df8fed">get_parent</a>();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        glm::mat4 <a class="code hl_function" href="structcel_1_1transform.html#a630401be3b3159fd016653ab7c18e5e3">get_mat4</a>();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structcel_1_1transform.html#a0e52be4ffbd2206f81a9b0045f4c230a">set_rot_euler</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a>() : pos(0,0,0), rot(glm::vec3(0,0,0)), scale(1,1,1) {}</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a>(glm::vec3 pos, glm::quat rot, glm::vec3 scale) : pos(pos), rot(rot), scale(scale) {}</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a>(glm::vec3 pos) : pos(pos), rot(glm::vec3(0,0,0)), scale(1,1,1) {}</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    };</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classcel_1_1object.html">   56</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classcel_1_1object.html">object</a> : <span class="keyword">public</span> std::enable_shared_from_this&lt;object&gt; {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        std::weak_ptr&lt;scene&gt; container;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        std::weak_ptr&lt;object&gt; parent;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        std::vector&lt;std::shared_ptr&lt;component&gt;&gt; components;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classcel_1_1scene.html">scene</a>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        std::string name;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a> trans;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_class" href="classcel_1_1object.html">object</a>();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        std::weak_ptr&lt;object&gt; <a class="code hl_function" href="classcel_1_1object.html#a85bae43a07dccb7f7fccd6e2faccbd82">get_parent</a>();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classcel_1_1object.html#a77408c2b94c6715601c2c6f09b545f6e">set_parent</a>(std::weak_ptr&lt;object&gt; new_parent);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classcel_1_1object.html#ac1cfe08933409860dd25f5c47d331c68">add_component</a>(std::shared_ptr&lt;component&gt; <a class="code hl_class" href="classcel_1_1component.html">component</a>);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        std::vector&lt;std::weak_ptr&lt;component&gt;&gt; <a class="code hl_function" href="classcel_1_1object.html#ae0c1cac2776840a8567ebe34995cdf0f">get_components</a>();</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    };</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a>* <a class="code hl_function" href="structcel_1_1transform.html#af4489d2a3446fc28735c13a1b1df8fed">get_parent</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        glm::mat4 <a class="code hl_function" href="structcel_1_1transform.html#a630401be3b3159fd016653ab7c18e5e3">get_mat4</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structcel_1_1transform.html#a0e52be4ffbd2206f81a9b0045f4c230a">set_rot_euler</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a>() : pos(0,0,0), rot(glm::vec3(0,0,0)), scale(1,1,1) {}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a>(glm::vec3 pos, glm::quat rot, glm::vec3 scale) : pos(pos), rot(rot), scale(scale) {}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a>(glm::vec3 pos) : pos(pos), rot(glm::vec3(0,0,0)), scale(1,1,1) {}</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    };</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classcel_1_1object.html">   55</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classcel_1_1object.html">object</a> : <span class="keyword">public</span> std::enable_shared_from_this&lt;object&gt; {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        std::weak_ptr&lt;scene&gt; container;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        std::weak_ptr&lt;object&gt; parent;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        std::vector&lt;std::shared_ptr&lt;component&gt;&gt; components;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classcel_1_1scene.html">scene</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        std::string name;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_struct" href="structcel_1_1transform.html">transform</a> trans;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <a class="code hl_class" href="classcel_1_1object.html">object</a>();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        std::weak_ptr&lt;object&gt; <a class="code hl_function" href="classcel_1_1object.html#a85bae43a07dccb7f7fccd6e2faccbd82">get_parent</a>();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classcel_1_1object.html#a77408c2b94c6715601c2c6f09b545f6e">set_parent</a>(std::weak_ptr&lt;object&gt; new_parent);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classcel_1_1object.html#ac1cfe08933409860dd25f5c47d331c68">add_component</a>(std::shared_ptr&lt;component&gt; <a class="code hl_class" href="classcel_1_1component.html">component</a>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        std::vector&lt;std::weak_ptr&lt;component&gt;&gt; <a class="code hl_function" href="classcel_1_1object.html#ae0c1cac2776840a8567ebe34995cdf0f">get_components</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    };</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
 <div class="ttc" id="aclasscel_1_1component_html"><div class="ttname"><a href="classcel_1_1component.html">cel::component</a></div><div class="ttdef"><b>Definition:</b> component.h:20</div></div>
-<div class="ttc" id="aclasscel_1_1object_html"><div class="ttname"><a href="classcel_1_1object.html">cel::object</a></div><div class="ttdef"><b>Definition:</b> object.h:56</div></div>
+<div class="ttc" id="aclasscel_1_1object_html"><div class="ttname"><a href="classcel_1_1object.html">cel::object</a></div><div class="ttdef"><b>Definition:</b> object.h:55</div></div>
 <div class="ttc" id="aclasscel_1_1object_html_a77408c2b94c6715601c2c6f09b545f6e"><div class="ttname"><a href="classcel_1_1object.html#a77408c2b94c6715601c2c6f09b545f6e">cel::object::set_parent</a></div><div class="ttdeci">bool set_parent(std::weak_ptr&lt; object &gt; new_parent)</div><div class="ttdoc">Sets the parent object.</div><div class="ttdef"><b>Definition:</b> object.cpp:29</div></div>
 <div class="ttc" id="aclasscel_1_1object_html_a85bae43a07dccb7f7fccd6e2faccbd82"><div class="ttname"><a href="classcel_1_1object.html#a85bae43a07dccb7f7fccd6e2faccbd82">cel::object::get_parent</a></div><div class="ttdeci">std::weak_ptr&lt; object &gt; get_parent()</div><div class="ttdoc">Gets the parent object.</div><div class="ttdef"><b>Definition:</b> object.cpp:25</div></div>
 <div class="ttc" id="aclasscel_1_1object_html_ac1cfe08933409860dd25f5c47d331c68"><div class="ttname"><a href="classcel_1_1object.html#ac1cfe08933409860dd25f5c47d331c68">cel::object::add_component</a></div><div class="ttdeci">void add_component(std::shared_ptr&lt; component &gt; component)</div><div class="ttdoc">Adds a component to the object.</div><div class="ttdef"><b>Definition:</b> object.cpp:55</div></div>
@@ -126,7 +126,7 @@ $(function() {
 <div class="ttc" id="astructcel_1_1transform_html"><div class="ttname"><a href="structcel_1_1transform.html">cel::transform</a></div><div class="ttdef"><b>Definition:</b> object.h:13</div></div>
 <div class="ttc" id="astructcel_1_1transform_html_a0e52be4ffbd2206f81a9b0045f4c230a"><div class="ttname"><a href="structcel_1_1transform.html#a0e52be4ffbd2206f81a9b0045f4c230a">cel::transform::set_rot_euler</a></div><div class="ttdeci">void set_rot_euler(float x, float y, float z)</div><div class="ttdoc">Sets the euler rotation of this transform object.</div><div class="ttdef"><b>Definition:</b> object.cpp:21</div></div>
 <div class="ttc" id="astructcel_1_1transform_html_a630401be3b3159fd016653ab7c18e5e3"><div class="ttname"><a href="structcel_1_1transform.html#a630401be3b3159fd016653ab7c18e5e3">cel::transform::get_mat4</a></div><div class="ttdeci">glm::mat4 get_mat4()</div><div class="ttdef"><b>Definition:</b> object.cpp:11</div></div>
-<div class="ttc" id="astructcel_1_1transform_html_af4489d2a3446fc28735c13a1b1df8fed"><div class="ttname"><a href="structcel_1_1transform.html#af4489d2a3446fc28735c13a1b1df8fed">cel::transform::get_parent</a></div><div class="ttdeci">transform * get_parent()</div><div class="ttdef"><b>Definition:</b> object.cpp:7</div></div>
+<div class="ttc" id="astructcel_1_1transform_html_af4489d2a3446fc28735c13a1b1df8fed"><div class="ttname"><a href="structcel_1_1transform.html#af4489d2a3446fc28735c13a1b1df8fed">cel::transform::get_parent</a></div><div class="ttdeci">transform * get_parent()</div><div class="ttdoc">Returns the parent transform of this transform object.</div><div class="ttdef"><b>Definition:</b> object.cpp:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

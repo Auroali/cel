@@ -16,6 +16,8 @@ src/cel/render/render.cpp
 
 CEL_TEST_SRC=src/celtest/celtest.cpp
 
+.PHONY: docs
+
 all: test_project
 
 cel:
@@ -35,4 +37,5 @@ test_project: cel assets
 	${CXX} ${CXXFLAGS} -lcel -o build/celtest ${CEL_TEST_SRC}
 
 docs:
+	rm -r docs
 	doxygen docs.conf

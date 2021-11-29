@@ -79,7 +79,7 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>type</b> (std::string tname, std::function&lt; void(<a class="el" href="structcel_1_1reflection_1_1type.html">type</a> *)&gt; func)</td></tr>
 <tr class="separator:a147df5b63d3566c51ae4379d87bb02ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae29c9e7b19c60c0585e73b04fd41f08"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structcel_1_1reflection_1_1member.html">member</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcel_1_1reflection_1_1type.html#aae29c9e7b19c60c0585e73b04fd41f08">get_member</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:aae29c9e7b19c60c0585e73b04fd41f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the member entry specified by 'name'.  <a href="structcel_1_1reflection_1_1type.html#aae29c9e7b19c60c0585e73b04fd41f08">More...</a><br /></td></tr>
+<tr class="memdesc:aae29c9e7b19c60c0585e73b04fd41f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an optional holding the member entry specified by 'name'.  <a href="structcel_1_1reflection_1_1type.html#aae29c9e7b19c60c0585e73b04fd41f08">More...</a><br /></td></tr>
 <tr class="separator:aae29c9e7b19c60c0585e73b04fd41f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -114,14 +114,14 @@ std::vector&lt; <a class="el" href="structcel_1_1reflection_1_1member.html">memb
       </table>
 </div><div class="memdoc">
 
-<p>Returns a pointer to the member entry specified by 'name'. </p>
+<p>Returns an optional holding the member entry specified by 'name'. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>the name of the member </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an optional holding the member, if it exists </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>std::optional&lt;member&gt; an optional holding the member, if it exists </dd></dl>
 
 </div>
 </div>

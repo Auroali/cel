@@ -23,31 +23,31 @@
 \DoxyCodeLine{19         glm::quat rot;}
 \DoxyCodeLine{20         glm::vec3 scale;}
 \DoxyCodeLine{21 }
-\DoxyCodeLine{29         \mbox{\hyperlink{structcel_1_1transform}{transform}}* \mbox{\hyperlink{structcel_1_1transform_af4489d2a3446fc28735c13a1b1df8fed}{get\_parent}}();}
-\DoxyCodeLine{37         glm::mat4 \mbox{\hyperlink{structcel_1_1transform_a630401be3b3159fd016653ab7c18e5e3}{get\_mat4}}();}
-\DoxyCodeLine{38 }
-\DoxyCodeLine{46         \textcolor{keywordtype}{void} \mbox{\hyperlink{structcel_1_1transform_a0e52be4ffbd2206f81a9b0045f4c230a}{set\_rot\_euler}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} z);}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{48         \mbox{\hyperlink{structcel_1_1transform}{transform}}() : pos(0,0,0), rot(glm::vec3(0,0,0)), scale(1,1,1) \{\}}
-\DoxyCodeLine{49         \mbox{\hyperlink{structcel_1_1transform}{transform}}(glm::vec3 pos, glm::quat rot, glm::vec3 scale) : pos(pos), rot(rot), scale(scale) \{\}}
-\DoxyCodeLine{50         \mbox{\hyperlink{structcel_1_1transform}{transform}}(glm::vec3 pos) : pos(pos), rot(glm::vec3(0,0,0)), scale(1,1,1) \{\}}
-\DoxyCodeLine{51     \};}
-\DoxyCodeLine{56     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1object}{object}} : \textcolor{keyword}{public} std::enable\_shared\_from\_this<object> \{}
-\DoxyCodeLine{57         std::weak\_ptr<scene> container;}
-\DoxyCodeLine{58         std::weak\_ptr<object> parent;}
-\DoxyCodeLine{59         std::vector<std::shared\_ptr<component>> components;}
-\DoxyCodeLine{60         \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1scene}{scene}};}
-\DoxyCodeLine{61     \textcolor{keyword}{public}:}
-\DoxyCodeLine{62         std::string name;}
-\DoxyCodeLine{63         \mbox{\hyperlink{structcel_1_1transform}{transform}} trans;}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65         \mbox{\hyperlink{classcel_1_1object}{object}}();}
-\DoxyCodeLine{66 }
-\DoxyCodeLine{72         std::weak\_ptr<object> \mbox{\hyperlink{classcel_1_1object_a85bae43a07dccb7f7fccd6e2faccbd82}{get\_parent}}();}
-\DoxyCodeLine{80         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcel_1_1object_a77408c2b94c6715601c2c6f09b545f6e}{set\_parent}}(std::weak\_ptr<object> new\_parent);}
-\DoxyCodeLine{89         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1object_ac1cfe08933409860dd25f5c47d331c68}{add\_component}}(std::shared\_ptr<component> \mbox{\hyperlink{classcel_1_1component}{component}});}
-\DoxyCodeLine{94         std::vector<std::weak\_ptr<component>> \mbox{\hyperlink{classcel_1_1object_ae0c1cac2776840a8567ebe34995cdf0f}{get\_components}}();}
-\DoxyCodeLine{95     \};}
-\DoxyCodeLine{96 \}}
+\DoxyCodeLine{28         \mbox{\hyperlink{structcel_1_1transform}{transform}}* \mbox{\hyperlink{structcel_1_1transform_af4489d2a3446fc28735c13a1b1df8fed}{get\_parent}}();}
+\DoxyCodeLine{36         glm::mat4 \mbox{\hyperlink{structcel_1_1transform_a630401be3b3159fd016653ab7c18e5e3}{get\_mat4}}();}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{45         \textcolor{keywordtype}{void} \mbox{\hyperlink{structcel_1_1transform_a0e52be4ffbd2206f81a9b0045f4c230a}{set\_rot\_euler}}(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} z);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         \mbox{\hyperlink{structcel_1_1transform}{transform}}() : pos(0,0,0), rot(glm::vec3(0,0,0)), scale(1,1,1) \{\}}
+\DoxyCodeLine{48         \mbox{\hyperlink{structcel_1_1transform}{transform}}(glm::vec3 pos, glm::quat rot, glm::vec3 scale) : pos(pos), rot(rot), scale(scale) \{\}}
+\DoxyCodeLine{49         \mbox{\hyperlink{structcel_1_1transform}{transform}}(glm::vec3 pos) : pos(pos), rot(glm::vec3(0,0,0)), scale(1,1,1) \{\}}
+\DoxyCodeLine{50     \};}
+\DoxyCodeLine{55     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1object}{object}} : \textcolor{keyword}{public} std::enable\_shared\_from\_this<object> \{}
+\DoxyCodeLine{56         std::weak\_ptr<scene> container;}
+\DoxyCodeLine{57         std::weak\_ptr<object> parent;}
+\DoxyCodeLine{58         std::vector<std::shared\_ptr<component>> components;}
+\DoxyCodeLine{59         \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1scene}{scene}};}
+\DoxyCodeLine{60     \textcolor{keyword}{public}:}
+\DoxyCodeLine{61         std::string name;}
+\DoxyCodeLine{62         \mbox{\hyperlink{structcel_1_1transform}{transform}} trans;}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \mbox{\hyperlink{classcel_1_1object}{object}}();}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{71         std::weak\_ptr<object> \mbox{\hyperlink{classcel_1_1object_a85bae43a07dccb7f7fccd6e2faccbd82}{get\_parent}}();}
+\DoxyCodeLine{79         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcel_1_1object_a77408c2b94c6715601c2c6f09b545f6e}{set\_parent}}(std::weak\_ptr<object> new\_parent);}
+\DoxyCodeLine{88         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1object_ac1cfe08933409860dd25f5c47d331c68}{add\_component}}(std::shared\_ptr<component> \mbox{\hyperlink{classcel_1_1component}{component}});}
+\DoxyCodeLine{93         std::vector<std::weak\_ptr<component>> \mbox{\hyperlink{classcel_1_1object_ae0c1cac2776840a8567ebe34995cdf0f}{get\_components}}();}
+\DoxyCodeLine{94     \};}
+\DoxyCodeLine{95 \}}
 
 \end{DoxyCode}

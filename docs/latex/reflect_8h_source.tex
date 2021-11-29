@@ -62,50 +62,51 @@
 \DoxyCodeLine{64         \textcolor{keywordtype}{size\_t} attribs;}
 \DoxyCodeLine{65         }
 \DoxyCodeLine{66         \mbox{\hyperlink{structcel_1_1reflection_1_1member}{\string~member}}() \{\}}
-\DoxyCodeLine{73         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{74         T\& \mbox{\hyperlink{structcel_1_1reflection_1_1member_acbd30af5696c5033f66c9345585de003}{as}}(\textcolor{keywordtype}{void}* \mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}) \{}
-\DoxyCodeLine{75             \textcolor{keywordflow}{return} *((T*)\mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}+offset); }
-\DoxyCodeLine{76         \}}
-\DoxyCodeLine{83         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{84         \textcolor{keywordtype}{void} \mbox{\hyperlink{structcel_1_1reflection_1_1member_a1df83aa292183cc1c99392231a995ff7}{set}}(\textcolor{keywordtype}{void}* \mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}, T\&\& val) \{}
-\DoxyCodeLine{85             *((T*)\mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}+offset) = val;}
-\DoxyCodeLine{86         \}}
-\DoxyCodeLine{93         \textcolor{keywordtype}{char}* \mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}(\textcolor{keywordtype}{void}* obj) \{}
-\DoxyCodeLine{94             \textcolor{keywordflow}{return} (\textcolor{keywordtype}{char}*)obj+offset;}
-\DoxyCodeLine{95         \}}
-\DoxyCodeLine{101         \textcolor{keywordtype}{bool} \mbox{\hyperlink{structcel_1_1reflection_1_1member_aed8db68f9a0f24b841d3bbd9e438acf7}{has\_attrib}}(\textcolor{keywordtype}{size\_t} attrib) \{}
-\DoxyCodeLine{102             \textcolor{keywordflow}{return} attribs \& attrib;}
-\DoxyCodeLine{103         \}}
-\DoxyCodeLine{104     \};}
-\DoxyCodeLine{105     \textcolor{keyword}{struct }\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} \{}
-\DoxyCodeLine{106         \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}(std::string tname, std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}*)> func) \{}
-\DoxyCodeLine{107             this-\/>name = tname;}
-\DoxyCodeLine{108             func(\textcolor{keyword}{this});}
-\DoxyCodeLine{109         \}}
-\DoxyCodeLine{116         std::optional<member> \mbox{\hyperlink{structcel_1_1reflection_1_1type_aae29c9e7b19c60c0585e73b04fd41f08}{get\_member}}(\textcolor{keyword}{const} std::string\& name);}
-\DoxyCodeLine{117         std::string name;}
-\DoxyCodeLine{118         \textcolor{keywordtype}{size\_t} size;}
-\DoxyCodeLine{119         std::vector<member> members;}
-\DoxyCodeLine{120         \mbox{\hyperlink{classcel_1_1reflection_1_1factory}{factory}}* fact;}
-\DoxyCodeLine{121         \mbox{\hyperlink{structcel_1_1reflection_1_1type}{\string~type}}() \{}
-\DoxyCodeLine{122             \textcolor{keyword}{delete} fact;}
-\DoxyCodeLine{123         \}}
-\DoxyCodeLine{124     \};}
-\DoxyCodeLine{129     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1reflection_1_1solver}{solver}} \{}
-\DoxyCodeLine{130     \textcolor{keyword}{private}:}
-\DoxyCodeLine{131         \textcolor{keyword}{static} std::vector<type*> ref\_types;}
-\DoxyCodeLine{132     \textcolor{keyword}{public}:}
-\DoxyCodeLine{140         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1reflection_1_1solver_a8a5db7e625d5feb2315182d69e5613ee}{\_register}}(\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}* \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}});}
-\DoxyCodeLine{147         \textcolor{keyword}{static} \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}* \mbox{\hyperlink{classcel_1_1reflection_1_1solver_a266a354cf0c21c8ed5be11a4edff06cd}{get\_by\_str}}(\textcolor{keyword}{const} std::string\& name);}
-\DoxyCodeLine{148         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{149         \textcolor{keyword}{static} \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}* get\_from() \{}
-\DoxyCodeLine{150             \textcolor{keywordflow}{return} \&T::reflect\_type\_intern;}
-\DoxyCodeLine{151         \}}
-\DoxyCodeLine{160         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{161         \textcolor{keyword}{static} \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}* \mbox{\hyperlink{classcel_1_1reflection_1_1solver_aad2aa04f0b939ce5810cb1431092d3d9}{get\_from}}(T* ptr) \{}
-\DoxyCodeLine{162             \textcolor{keywordflow}{return} ptr-\/>get\_type();}
-\DoxyCodeLine{163         \}}
-\DoxyCodeLine{164     \};}
-\DoxyCodeLine{165 \}}
+\DoxyCodeLine{75         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{76         T\& \mbox{\hyperlink{structcel_1_1reflection_1_1member_acbd30af5696c5033f66c9345585de003}{as}}(\textcolor{keywordtype}{void}* \mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}) \{}
+\DoxyCodeLine{77             \textcolor{keywordflow}{return} *((T*)\mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}+offset); }
+\DoxyCodeLine{78         \}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{87         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{88         \textcolor{keywordtype}{void} \mbox{\hyperlink{structcel_1_1reflection_1_1member_a1df83aa292183cc1c99392231a995ff7}{set}}(\textcolor{keywordtype}{void}* \mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}, T\&\& val) \{}
+\DoxyCodeLine{89             *((T*)\mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}+offset) = val;}
+\DoxyCodeLine{90         \}}
+\DoxyCodeLine{97         \textcolor{keywordtype}{char}* \mbox{\hyperlink{structcel_1_1reflection_1_1member_a5b6921177a49bb8f859f882ba952356e}{ptr}}(\textcolor{keywordtype}{void}* obj) \{}
+\DoxyCodeLine{98             \textcolor{keywordflow}{return} (\textcolor{keywordtype}{char}*)obj+offset;}
+\DoxyCodeLine{99         \}}
+\DoxyCodeLine{108         \textcolor{keywordtype}{bool} \mbox{\hyperlink{structcel_1_1reflection_1_1member_aed8db68f9a0f24b841d3bbd9e438acf7}{has\_attrib}}(\textcolor{keywordtype}{size\_t} attrib) \{}
+\DoxyCodeLine{109             \textcolor{keywordflow}{return} attribs \& attrib;}
+\DoxyCodeLine{110         \}}
+\DoxyCodeLine{111     \};}
+\DoxyCodeLine{112     \textcolor{keyword}{struct }\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} \{}
+\DoxyCodeLine{113         \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}(std::string tname, std::function<\textcolor{keywordtype}{void}(\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}*)> func) \{}
+\DoxyCodeLine{114             this-\/>name = tname;}
+\DoxyCodeLine{115             func(\textcolor{keyword}{this});}
+\DoxyCodeLine{116         \}}
+\DoxyCodeLine{123         std::optional<member> \mbox{\hyperlink{structcel_1_1reflection_1_1type_aae29c9e7b19c60c0585e73b04fd41f08}{get\_member}}(\textcolor{keyword}{const} std::string\& name);}
+\DoxyCodeLine{124         std::string name;}
+\DoxyCodeLine{125         \textcolor{keywordtype}{size\_t} size;}
+\DoxyCodeLine{126         std::vector<member> members;}
+\DoxyCodeLine{127         \mbox{\hyperlink{classcel_1_1reflection_1_1factory}{factory}}* fact;}
+\DoxyCodeLine{128         \mbox{\hyperlink{structcel_1_1reflection_1_1type}{\string~type}}() \{}
+\DoxyCodeLine{129             \textcolor{keyword}{delete} fact;}
+\DoxyCodeLine{130         \}}
+\DoxyCodeLine{131     \};}
+\DoxyCodeLine{136     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1reflection_1_1solver}{solver}} \{}
+\DoxyCodeLine{137     \textcolor{keyword}{private}:}
+\DoxyCodeLine{138         \textcolor{keyword}{static} std::vector<type*> ref\_types;}
+\DoxyCodeLine{139     \textcolor{keyword}{public}:}
+\DoxyCodeLine{147         \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1reflection_1_1solver_a8a5db7e625d5feb2315182d69e5613ee}{\_register}}(\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}* \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}});}
+\DoxyCodeLine{154         \textcolor{keyword}{static} \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}* \mbox{\hyperlink{classcel_1_1reflection_1_1solver_a266a354cf0c21c8ed5be11a4edff06cd}{get\_by\_str}}(\textcolor{keyword}{const} std::string\& name);}
+\DoxyCodeLine{155         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{156         \textcolor{keyword}{static} \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}* get\_from() \{}
+\DoxyCodeLine{157             \textcolor{keywordflow}{return} \&T::reflect\_type\_intern;}
+\DoxyCodeLine{158         \}}
+\DoxyCodeLine{167         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{168         \textcolor{keyword}{static} \mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}}* \mbox{\hyperlink{classcel_1_1reflection_1_1solver_aad2aa04f0b939ce5810cb1431092d3d9}{get\_from}}(T* ptr) \{}
+\DoxyCodeLine{169             \textcolor{keywordflow}{return} ptr-\/>get\_type();}
+\DoxyCodeLine{170         \}}
+\DoxyCodeLine{171     \};}
+\DoxyCodeLine{172 \}}
 
 \end{DoxyCode}

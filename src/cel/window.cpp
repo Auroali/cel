@@ -27,8 +27,8 @@ namespace cel {
     window::window(GLFWwindow* handle) : handler(handle) {
         this->handle = handle;
     }
-    input_handler* window::get_input_handler() {
-        return &handler;
+    input_handler& window::get_input_handler() {
+        return handler;
     }
     void window::close() {
         glfwSetWindowShouldClose(handle, GLFW_TRUE);

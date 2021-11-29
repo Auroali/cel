@@ -23,20 +23,28 @@ std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $>$ \& \mbox
 {\bfseries operator T} () const
 \item 
 std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $>$\+::iterator \mbox{\hyperlink{classcel_1_1node_a8c782f5d0d50f0db3967d385173d15f8}{begin}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns an iterator the beginning of the list of nodes. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $>$\+::iterator \mbox{\hyperlink{classcel_1_1node_a725bbf4aa49fea31f523e5a2adf75454}{end}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns an iterator the end of the list of nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-T \mbox{\hyperlink{classcel_1_1node_a4432485f11b417c026e7af35877ef816}{val}}
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classcel_1_1node_a4432485f11b417c026e7af35877ef816}\label{classcel_1_1node_a4432485f11b417c026e7af35877ef816}} 
+T {\bfseries val}
+\begin{DoxyCompactList}\small\item\em The value the node contains. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename T$>$\newline
 class cel\+::node$<$ T $>$}
-Wrapper class for a value of type T that can contain sub-\/nodes 
+Wrapper class for a value of type T that can contain sub-\/nodes
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type the node contains \\
+\hline
+\end{DoxyTemplParams}
+
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classcel_1_1node_a378170727d8cb2d7080fd5056132aa3c}\label{classcel_1_1node_a378170727d8cb2d7080fd5056132aa3c}} 
@@ -84,7 +92,9 @@ The node at index
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $>$\+::iterator \mbox{\hyperlink{classcel_1_1node}{cel\+::node}}$<$ T $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Returns the beginning of the list of nodes
+
+
+Returns an iterator the beginning of the list of nodes. 
 
 \begin{DoxySeeAlso}{See also}
 get\+\_\+sorted() 
@@ -92,7 +102,7 @@ get\+\_\+sorted()
 std\+::vector\+::begin() 
 \end{DoxySeeAlso}
 \begin{DoxyReturn}{Returns}
-An iterator at the start of the list 
+std\+::vector$<$node$<$\+T$>$$>$\+::iterator an iterator at the start of the list 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classcel_1_1node_af64948b2d5590ac701af30e26bda3d43}\label{classcel_1_1node_af64948b2d5590ac701af30e26bda3d43}} 
 \index{cel::node$<$ T $>$@{cel::node$<$ T $>$}!emplace\_back@{emplace\_back}}
@@ -121,7 +131,9 @@ The constructed node
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $>$\+::iterator \mbox{\hyperlink{classcel_1_1node}{cel\+::node}}$<$ T $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Returns the end of the list of nodes
+
+
+Returns an iterator the end of the list of nodes. 
 
 \begin{DoxySeeAlso}{See also}
 get\+\_\+sorted() 
@@ -129,7 +141,7 @@ get\+\_\+sorted()
 std\+::vector\+::end() 
 \end{DoxySeeAlso}
 \begin{DoxyReturn}{Returns}
-An iterator 1 element past the end of the list 
+std\+::vector$<$node$<$\+T$>$$>$\+::iterator an iterator 1 element past the end of the list 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classcel_1_1node_a054bebcdc4be29ff8631fdb47eb4c192}\label{classcel_1_1node_a054bebcdc4be29ff8631fdb47eb4c192}} 
 \index{cel::node$<$ T $>$@{cel::node$<$ T $>$}!get\_nodes@{get\_nodes}}
@@ -175,16 +187,6 @@ Pushes a new node to the back of the list.
 The node in the list 
 \end{DoxyReturn}
 
-
-\doxysubsection{Field Documentation}
-\mbox{\Hypertarget{classcel_1_1node_a4432485f11b417c026e7af35877ef816}\label{classcel_1_1node_a4432485f11b417c026e7af35877ef816}} 
-\index{cel::node$<$ T $>$@{cel::node$<$ T $>$}!val@{val}}
-\index{val@{val}!cel::node$<$ T $>$@{cel::node$<$ T $>$}}
-\doxysubsubsection{\texorpdfstring{val}{val}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-T \mbox{\hyperlink{classcel_1_1node}{cel\+::node}}$<$ T $>$\+::val}
-
-The value the node contains 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -57,11 +57,11 @@ namespace cel {
         /**
          * @brief Gets the window's input handler
          * 
-         * @return input_handler* a pointer to the window's input handler
+         * @return input_handler& a pointer to the window's input handler
          */
-        input_handler* get_input_handler();
+        input_handler& get_input_handler();
         /**
-         * @brief Sets this to the main window
+         * @brief Sets this as the main window
          * 
          */
         void set_main();

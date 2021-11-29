@@ -67,16 +67,20 @@ namespace cel::reflection {
         /**
          * @brief Returns the member as type <T>
          * 
+         * @tparam T the type of the member
+         * 
          * @param ptr the pointer of the object this is a member of
-         * @return the member as type <T> 
+         * @return T& the member as type <T> 
          */
         template<typename T>
         T& as(void* ptr) {
             return *((T*)ptr+offset); 
         }
+
         /**
          * @brief Sets the member to the value 'val'
          * 
+         * @tparam T the type of the value
          * @param ptr the pointer of the object this is a member of
          * @param val the value to set this member to
          */
@@ -88,15 +92,18 @@ namespace cel::reflection {
         * @brief Returns the address of this member in memory
         * 
         * @param obj the pointer to the object this is a member of
-        * @return a void* to the member in memory 
+        * @return void* a pointer to the member in memory 
         */
         char* ptr(void* obj) {
             return (char*)obj+offset;
         }
         /**
-         * @brief Checks whether or not this member has the specified attribute
+         * @brief Checks whether or not this member has the specified attribute(s)
          * 
-         * @return whether or not it contains the attribute
+         * @param attrib the attribute(s) to check
+         * 
+         * @return true if the member has the attribute(s)
+         * @return false if the member does not have the attribute(s)
          */
         bool has_attrib(size_t attrib) {
             return attribs & attrib;
@@ -108,10 +115,10 @@ namespace cel::reflection {
             func(this);
         }
         /**
-        * @brief Returns a pointer to the member entry specified by 'name'
+        * @brief Returns an optional holding the member entry specified by 'name'
         * 
         * @param name the name of the member
-        * @return an optional holding the member, if it exists
+        * @return std::optional<member> an optional holding the member, if it exists
         */
         std::optional<member> get_member(const std::string& name);
         std::string name;

@@ -7,13 +7,11 @@ std\+::string \mbox{\hyperlink{classcel_1_1project_ad153083d91cbc70c36feefd568fd
 \begin{DoxyCompactList}\small\item\em Gets the project\textquotesingle{}s name. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcel_1_1project_aef71fa1c4989cf11f067867f30d9e75f}{set\+\_\+name}} (const std\+::string \&name)
 \begin{DoxyCompactList}\small\item\em Sets the project\textquotesingle{}s name. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classcel_1_1project_a40129d5b8b89a60fb2b6969774a766ab}\label{classcel_1_1project_a40129d5b8b89a60fb2b6969774a766ab}} 
-virtual void {\bfseries update} ()
+virtual void \mbox{\hyperlink{classcel_1_1project_a40129d5b8b89a60fb2b6969774a766ab}{update}} ()
 \begin{DoxyCompactList}\small\item\em Called once per frame, before fixed\+\_\+update. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classcel_1_1project_a27cfeeee4361f3074d519f834ec2626b}{fixed\+\_\+update}} ()
 \begin{DoxyCompactList}\small\item\em Called 1/fixed\+Delta\+Time per second. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classcel_1_1project_adf343680055fa336321747a5592b41e0}\label{classcel_1_1project_adf343680055fa336321747a5592b41e0}} 
-virtual void {\bfseries render} ()
+virtual void \mbox{\hyperlink{classcel_1_1project_adf343680055fa336321747a5592b41e0}{render}} ()
 \begin{DoxyCompactList}\small\item\em Called when rendering, before rendering the scene. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classcel_1_1project_a1baec3b51d33ac8c0cc9fcd87d1706b7}\label{classcel_1_1project_a1baec3b51d33ac8c0cc9fcd87d1706b7}} 
 virtual bool {\bfseries init} ()
@@ -62,6 +60,19 @@ Gets the project\textquotesingle{}s name.
 \begin{DoxyReturn}{Returns}
 std\+::string the name of the project 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1project_adf343680055fa336321747a5592b41e0}\label{classcel_1_1project_adf343680055fa336321747a5592b41e0}} 
+\index{cel::project@{cel::project}!render@{render}}
+\index{render@{render}!cel::project@{cel::project}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily virtual void cel\+::project\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Called when rendering, before rendering the scene. 
+
+\begin{DoxyNote}{Note}
+Same as \mbox{\hyperlink{classcel_1_1project_a40129d5b8b89a60fb2b6969774a766ab}{update()}}, except it\textquotesingle{}s called at the end of the frame 
+\end{DoxyNote}
 \mbox{\Hypertarget{classcel_1_1project_aef71fa1c4989cf11f067867f30d9e75f}\label{classcel_1_1project_aef71fa1c4989cf11f067867f30d9e75f}} 
 \index{cel::project@{cel::project}!set\_name@{set\_name}}
 \index{set\_name@{set\_name}!cel::project@{cel::project}}
@@ -77,6 +88,19 @@ Sets the project\textquotesingle{}s name.
 {\em name} & the new project name \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1project_a40129d5b8b89a60fb2b6969774a766ab}\label{classcel_1_1project_a40129d5b8b89a60fb2b6969774a766ab}} 
+\index{cel::project@{cel::project}!update@{update}}
+\index{update@{update}!cel::project@{cel::project}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void cel\+::project\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Called once per frame, before fixed\+\_\+update. 
+
+\begin{DoxyNote}{Note}
+Unlike fixed\+\_\+update, this is only called once per frame at the start 
+\end{DoxyNote}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

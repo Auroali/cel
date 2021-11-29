@@ -36,7 +36,7 @@ public:
     virtual bool init() override {
         std::shared_ptr<cel::scene> s1 = std::make_shared<cel::scene>();
         std::shared_ptr<cel::object> obj = std::make_shared<cel::object>();
-        obj->add_component(std::make_shared<cel::model_component>(cel::io::import_obj_model("./assets/utah_teapot.obj")));
+        obj->add_component(std::make_shared<cel::model_component>(cel::io::import_obj_model("./assets/utah_teapot.obj").value_or(cel::render::model())));
         s1->add_object(obj);
         s1->set_active();
         float vertices[] = {
@@ -64,19 +64,18 @@ public:
     float pitch = 0;
     virtual void fixed_update() override {
         cel::window::main()->set_cursor_mode(cel::cursor_mode::LOCKED);
-        cel::input_handler* handler = cel::window::main()->get_input_handler();
         cel::camera* cam;
         cel::send_signal(CEL_CAM_REQ, &cam);
-        if(handler->key_down(cel::keyboard::S))
+        if(cel::window::main()->get_input_handler().key_down(cel::keyboard::S))
             cam->translate(-cam->get_forward() * (float)cel::time::fixedDeltaTime);
-        if(handler->key_down(cel::keyboard::W))
+        if(cel::window::main()->get_input_handler().key_down(cel::keyboard::W))
             cam->translate(cam->get_forward() * (float)cel::time::fixedDeltaTime);
-        if(handler->key_down(cel::keyboard::A))
+        if(cel::window::main()->get_input_handler().key_down(cel::keyboard::A))
             cam->translate(-cam->get_right() * (float) cel::time::fixedDeltaTime);
-        if(handler->key_down(cel::keyboard::D))
+        if(cel::window::main()->get_input_handler().key_down(cel::keyboard::D))
             cam->translate(cam->get_right() * (float) cel::time::fixedDeltaTime);
-        yaw -= handler->get_mouse_delta_x() * 10 * cel::time::fixedDeltaTime;
-        pitch += handler->get_mouse_delta_y() * 10 * cel::time::fixedDeltaTime;
+        yaw -= cel::window::main()->get_input_handler().get_mouse_delta_x() * 10 * cel::time::fixedDeltaTime;
+        pitch += cel::window::main()->get_input_handler().get_mouse_delta_y() * 10 * cel::time::fixedDeltaTime;
         pitch = std::clamp(pitch, -89.f, 89.f);
         cam->set_rot_euler(glm::radians(pitch),glm::radians(yaw),0);
     }

@@ -27,7 +27,7 @@ std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $>$ \& \mbox
 {\footnotesize template$<$typename... \+\_\+\+Args$>$ }\\\mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ \& \mbox{\hyperlink{classcel_1_1tree_a82a41db071f19eeb19b0296b536bacc1}{emplace\+\_\+back}} (\+\_\+\+Args \&\&... \+\_\+\+\_\+args)
 \begin{DoxyCompactList}\small\item\em Constructs a node then adds it to the tree. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $\ast$ $>$ \mbox{\hyperlink{classcel_1_1tree_a4cca47ac284f47649c1be1f35efb9c97}{get\+\_\+sorted}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Generates a sorted list of nodes. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $\ast$ $>$ \mbox{\hyperlink{classcel_1_1tree_a41743f928dc0b1283e6f2011234f36d0}{get\+\_\+sorted}} (std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $>$ \&nodes)
 \end{DoxyCompactItemize}
 
@@ -35,7 +35,14 @@ std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $\ast$ $>$ \
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename T$>$\newline
 class cel\+::tree$<$ T $>$}
-Class that uses nodes to represent a tree structure 
+Class that uses nodes to represent a tree structure
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type the tree contains \\
+\hline
+\end{DoxyTemplParams}
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classcel_1_1tree_a2509ce528c943daf88d464146159bd3e}\label{classcel_1_1tree_a2509ce528c943daf88d464146159bd3e}} 
@@ -98,7 +105,9 @@ The top level unsorted list of nodes
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 std\+::vector$<$ \mbox{\hyperlink{classcel_1_1node}{node}}$<$ T $>$ $\ast$ $>$ \mbox{\hyperlink{classcel_1_1tree}{cel\+::tree}}$<$ T $>$\+::get\+\_\+sorted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Recursively searches through nodes, then returns a sorted list of pointers to said nodes
+
+
+Generates a sorted list of nodes. 
 
 \begin{DoxyReturn}{Returns}
 The sorted list of node pointers 

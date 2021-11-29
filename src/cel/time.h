@@ -4,6 +4,7 @@ namespace cel {
         /**
          * @brief The current deltaTime
          * 
+         * @warning Modifying this may cause unintended behaviour
          */
         static double deltaTime;
         /**

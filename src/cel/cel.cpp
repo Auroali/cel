@@ -84,7 +84,7 @@ int cel_app::on_execute() {
             p->update();
         }
         while (accumulator >= cel::time::fixedDeltaTime) {
-            cel::window::main()->get_input_handler()->process_mouse();
+            cel::window::main()->get_input_handler().process_mouse();
 		    for(cel::project* p : projects) {
 		        p->fixed_update();
 		    }

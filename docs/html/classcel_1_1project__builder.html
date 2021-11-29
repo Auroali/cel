@@ -72,22 +72,22 @@ $(function() {
   <div class="headertitle"><div class="title">cel::project_builder&lt; T &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="project_8h_source.html">project.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for cel::project_builder&lt; T &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classcel_1_1project__builder.png" usemap="#cel::project_5Fbuilder_3C_20T_20_3E_map" alt=""/>
-  <map id="cel::project_5Fbuilder_3C_20T_20_3E_map" name="cel::project_5Fbuilder_3C_20T_20_3E_map">
-<area href="classcel_1_1project__builder__base.html" alt="cel::project_builder_base" shape="rect" coords="0,0,154,24"/>
-  </map>
-</div></div>
+  <img src="classcel_1_1project__builder.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a69c2ccac1438c26e1742e49cb26ce062"><td class="memItemLeft" align="right" valign="top"><a id="a69c2ccac1438c26e1742e49cb26ce062" name="a69c2ccac1438c26e1742e49cb26ce062"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>project_builder</b> (const std::string &amp;name)</td></tr>
 <tr class="separator:a69c2ccac1438c26e1742e49cb26ce062"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab94a9a26a5f4d33aafea90880b27952d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classcel_1_1project.html">project</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1project__builder.html#ab94a9a26a5f4d33aafea90880b27952d">build</a> ()</td></tr>
+<tr class="memitem:ab94a9a26a5f4d33aafea90880b27952d"><td class="memItemLeft" align="right" valign="top"><a id="ab94a9a26a5f4d33aafea90880b27952d" name="ab94a9a26a5f4d33aafea90880b27952d"></a>
+virtual <a class="el" href="classcel_1_1project.html">project</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>build</b> ()</td></tr>
 <tr class="separator:ab94a9a26a5f4d33aafea90880b27952d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -96,37 +96,22 @@ Data Fields</h2></td></tr>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>project_name</b></td></tr>
 <tr class="separator:a71fd99884cc395b24b44bdebcbad49f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab94a9a26a5f4d33aafea90880b27952d" name="ab94a9a26a5f4d33aafea90880b27952d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab94a9a26a5f4d33aafea90880b27952d">&#9670;&nbsp;</a></span>build()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual <a class="el" href="classcel_1_1project.html">project</a> * <a class="el" href="classcel_1_1project__builder.html">cel::project_builder</a>&lt; T &gt;::build </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="classcel_1_1project__builder__base.html">cel::project_builder_base</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class cel::project_builder&lt; T &gt;</div><p >Automatically constructs and registers project instances <br  />
+ To use, initialize in a static variable <br  />
+ Ex: <br  />
+ Project.h <br  />
+ class Project : public <a class="el" href="classcel_1_1project.html">cel::project</a> { <br  />
+ static cel::project_builder&lt;Project&gt; builder; <br  />
+ ... <br  />
+ }; <br  />
+ <br  />
+ Project.cpp <br  />
+ cel::project_builder&lt;Projecy&gt; Project::builder = cel::project_builder&lt;Project&gt;("Project Name"); <br  />
+ ... <br  />
+ </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/cel/<a class="el" href="project_8h_source.html">project.h</a></li>
 </ul>
 </div><!-- contents -->

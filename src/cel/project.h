@@ -37,6 +37,7 @@ namespace cel {
         /**
          * @brief Called once per frame, before fixed_update
          * 
+         * @note Unlike fixed_update, this is only called once per frame at the start
          */
         virtual void update() {}
         /**
@@ -48,6 +49,7 @@ namespace cel {
         /**
          * @brief Called when rendering, before rendering the scene
          * 
+         * @note Same as update(), except it's called at the end of the frame
          */
         virtual void render() {}
         /**
@@ -61,7 +63,20 @@ namespace cel {
          */
         virtual void shutdown() {}
     };
-    //Automatically instantiates and registers project instances
+    /**
+     * Automatically constructs and registers project instances                                         <br>
+     * To use, initialize in a static variable                                                          <br>
+     * Ex:                                                                                              <br>
+     * Project.h                                                                                        <br>
+     *  class Project : public cel::project {                                                           <br>
+     *      static cel::project_builder<Project> builder;                                               <br>
+     *      ...                                                                                         <br>
+     *  };                                                                                              <br>
+     *                                                                                                  <br>
+     * Project.cpp                                                                                      <br>
+     *  cel::project_builder<Projecy> Project::builder = cel::project_builder<Project>("Project Name"); <br>
+     *  ...                                                                                             <br>
+     */
     template<typename T> 
     class project_builder : public project_builder_base {
     public:

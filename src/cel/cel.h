@@ -44,3 +44,17 @@ namespace cel {
     }
     void request_exit(int code);
 }
+
+/** @mainpage Cel
+ *  @section info Info
+ *  Cel is an open source game engine, developed primarily for linux.
+ *  @section setup Setup
+ *  Linux:                                                                                                                  <br>
+ *      Clone the repository with `git clone https://github.com/Jacgar8/cel.git`                                            <br>
+ *      `cd` into the directory and run `make` to build cel                                                                 <br>
+ *      All output files can be found in the `build` directory.
+ *  @section use Using Cel
+ *  To use cel, create a class derived from `cel::project` and set up `cel::project_builder`                            <br>
+ *  The project is now ready. To compile it, you must link with libcel.so (Linux), which can be found in the `build` directory. <br>
+ *  An example project is included with cel, in `src/celtest`
+ */

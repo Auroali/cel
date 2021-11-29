@@ -7,7 +7,7 @@
 {\bfseries type} (std\+::string tname, std\+::function$<$ void(\mbox{\hyperlink{structcel_1_1reflection_1_1type}{type}} $\ast$)$>$ func)
 \item 
 std\+::optional$<$ \mbox{\hyperlink{structcel_1_1reflection_1_1member}{member}} $>$ \mbox{\hyperlink{structcel_1_1reflection_1_1type_aae29c9e7b19c60c0585e73b04fd41f08}{get\+\_\+member}} (const std\+::string \&name)
-\begin{DoxyCompactList}\small\item\em Returns a pointer to the member entry specified by \textquotesingle{}name\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns an optional holding the member entry specified by \textquotesingle{}name\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
@@ -34,7 +34,7 @@ std\+::vector$<$ \mbox{\hyperlink{structcel_1_1reflection_1_1member}{member}} $>
 
 
 
-Returns a pointer to the member entry specified by \textquotesingle{}name\textquotesingle{}. 
+Returns an optional holding the member entry specified by \textquotesingle{}name\textquotesingle{}. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -42,7 +42,7 @@ Returns a pointer to the member entry specified by \textquotesingle{}name\textqu
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-an optional holding the member, if it exists 
+std\+::optional$<$member$>$ an optional holding the member, if it exists 
 \end{DoxyReturn}
 
 

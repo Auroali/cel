@@ -8,6 +8,8 @@ namespace cel {
     /**
      * Wrapper class for a value of type T
      * that can contain sub-nodes
+     * 
+     * @tparam T the type the node contains
      */
     template<typename T>
     class node {
@@ -77,38 +79,38 @@ namespace cel {
         }
         
         /**
-         * Returns the beginning of
-         * the list of nodes
+         * @brief Returns an iterator the beginning of the list of nodes
          * 
          * @see get_sorted()
          * @see std::vector::begin()
-         * @return An iterator at the start of the list
+         * @return std::vector<node<T>>::iterator an iterator at the start of the list
          */
         typename std::vector<node<T>>::iterator begin() {
             return nodes.begin();
         }
 
         /**
-         * Returns the end of
-         * the list of nodes
+         * @brief Returns an iterator the end of the list of nodes
          * 
          * @see get_sorted()
          * @see std::vector::end()
-         * @return An iterator 1 element past the end of the list
+         * @return std::vector<node<T>>::iterator an iterator 1 element past the end of the list
          */
         typename std::vector<node<T>>::iterator end() {
             return nodes.end();
         }
 
         /**
-         * The value the node contains
+         * @brief The value the node contains
          */
         T val;
     };
 
     /**
-     * Class that uses nodes to represent
-     * a tree structure
+     * Class that uses nodes to 
+     * represent a tree structure
+     * 
+     * @tparam T the type the tree contains
      */
     template<typename T>
     class tree {
@@ -180,8 +182,7 @@ namespace cel {
             return *(nodes.end()-1);
         }
         /**
-         * Recursively searches through nodes,
-         * then returns a sorted list of pointers to said nodes
+         * @brief Generates a sorted list of nodes
          * 
          * @return The sorted list of node pointers
          */
