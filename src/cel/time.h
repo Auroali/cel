@@ -2,18 +2,18 @@
 namespace cel {
     struct time {
         /**
-         * @brief The current deltaTime
+         * @brief The current delta time
          * 
          * @warning Modifying this may cause unintended behaviour
          */
-        static double deltaTime;
+        static double delta_time;
         /**
-         * @brief The current fixedDeltaTime
+         * @brief The current fixed delta time
          * 
          * @note Changing this will change the amount of fixed updates per second
          * 
          */
-        static double fixedDeltaTime;
+        static double fixed_delta_time;
         /**
          * @brief Gets the current running time
          * 

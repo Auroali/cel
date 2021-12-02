@@ -5,23 +5,29 @@
 \DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
 \DoxyCodeLine{2 \textcolor{preprocessor}{\#include <glad/glad.h>}}
 \DoxyCodeLine{3 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
-\DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{keyword}{namespace }cel::render \{}
-\DoxyCodeLine{6     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1render_1_1model}{model}} \{}
-\DoxyCodeLine{7         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vao;}
-\DoxyCodeLine{8         \textcolor{keywordtype}{size\_t} size;}
-\DoxyCodeLine{9     \textcolor{keyword}{public}:}
-\DoxyCodeLine{10         \mbox{\hyperlink{classcel_1_1render_1_1model}{model}}() \{\}}
-\DoxyCodeLine{11         \mbox{\hyperlink{classcel_1_1render_1_1model}{model}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vao, \textcolor{keywordtype}{size\_t} len) \{}
-\DoxyCodeLine{12             this-\/>vao = vao;}
-\DoxyCodeLine{13             this-\/>size = len;}
-\DoxyCodeLine{14         \}}
-\DoxyCodeLine{15         \textcolor{keywordtype}{void} render() \{}
-\DoxyCodeLine{16             glBindVertexArray(vao);}
-\DoxyCodeLine{17             glDrawArrays(GL\_TRIANGLES, 0, size);}
-\DoxyCodeLine{18             glBindVertexArray(0);}
-\DoxyCodeLine{19         \}}
-\DoxyCodeLine{20     \};}
-\DoxyCodeLine{21 \}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecel_1_1render}{cel::render}} \{}
+\DoxyCodeLine{10     \textcolor{keyword}{struct }\mbox{\hyperlink{structcel_1_1render_1_1vertex}{vertex}} \{}
+\DoxyCodeLine{14         glm::vec3 \mbox{\hyperlink{structcel_1_1render_1_1vertex_aefcf2f5d99333522b332ae23441e8759}{pos}};}
+\DoxyCodeLine{18         glm::vec2 \mbox{\hyperlink{structcel_1_1render_1_1vertex_a64d5bccb22c820a3c264780194048cd7}{uv}};}
+\DoxyCodeLine{22         glm::vec3 \mbox{\hyperlink{structcel_1_1render_1_1vertex_a586177aa7452160cff5cde19a6b6d1f8}{normals}};}
+\DoxyCodeLine{23     \};}
+\DoxyCodeLine{24     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1render_1_1model}{model}} \{}
+\DoxyCodeLine{25         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vao;}
+\DoxyCodeLine{26         \textcolor{keywordtype}{size\_t} size;}
+\DoxyCodeLine{27     \textcolor{keyword}{public}:}
+\DoxyCodeLine{31         \mbox{\hyperlink{classcel_1_1render_1_1model_ab6b07a9594f851cedcada06001fa5d48}{model}}() \{\}}
+\DoxyCodeLine{38         \mbox{\hyperlink{classcel_1_1render_1_1model_a8fa05b693840325650abe68b2e7a4e68}{model}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vao, \textcolor{keywordtype}{size\_t} len) \{}
+\DoxyCodeLine{39             this-\/>vao = vao;}
+\DoxyCodeLine{40             this-\/>size = len;}
+\DoxyCodeLine{41         \}}
+\DoxyCodeLine{45         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1render_1_1model_ad4ac956db4147fce117e7c4d51a3d990}{render}}() \{}
+\DoxyCodeLine{46             glBindVertexArray(vao);}
+\DoxyCodeLine{47             glDrawArrays(GL\_TRIANGLES, 0, size);}
+\DoxyCodeLine{48             glBindVertexArray(0);}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50     \};}
+\DoxyCodeLine{51 \}}
 
 \end{DoxyCode}

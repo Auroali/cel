@@ -2,9 +2,14 @@
 #include <vector>
 #include "project_builder.h"
 #include <string>
+#include "cel/render/matrix_stack.h"
 
 namespace cel {
-    
+    /**
+     * Base class for all projects <br>
+     * Will be initialized during cel_app::on_init
+     * @see cel::project_builder
+     */
     class project {
     private:
         template<typename T> friend class project_builder;
@@ -41,17 +46,19 @@ namespace cel {
          */
         virtual void update() {}
         /**
-         * @brief Called 1/fixedDeltaTime per second
+         * @brief Called 1/fixed_delta_time per second
          * 
-         * @note The frequency this function is called can be changed with fixedDeltaTime
+         * @note The frequency this function is called can be changed with fixed_delta_time
          */
         virtual void fixed_update() {}
         /**
          * @brief Called when rendering, before rendering the scene
          * 
+         * @param stack the matrix stack
+         * 
          * @note Same as update(), except it's called at the end of the frame
          */
-        virtual void render() {}
+        virtual void render(cel::render::matrix_stack& stack) {}
         /**
          * @brief Called after constructing the project
          * 
@@ -88,9 +95,9 @@ namespace cel {
             project::projects->push_back(this);
         }
         virtual project* build() {
-            project* projPtr = new T();
-            projPtr->set_name(project_name);
-            return projPtr;
+            project* proj_ptr = new T();
+            proj_ptr->set_name(project_name);
+            return proj_ptr;
         }
     };
 

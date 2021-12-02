@@ -2,7 +2,7 @@
 #include <sstream>
 
 namespace cel::io {
-	binary_ifstream::binary_ifstream(std::string path) {
+	binary_ifstream::binary_ifstream(const std::filesystem::path& path) {
 		stream.open(path);
 	}
 	binary_ifstream::~binary_ifstream() {
@@ -12,7 +12,7 @@ namespace cel::io {
 		return stream.eof();
 	}
 
-	binary_ofstream::binary_ofstream(std::string path) {
+	binary_ofstream::binary_ofstream(const std::filesystem::path& path) {
 		stream.open(path);
 	}
 	binary_ofstream::~binary_ofstream() {

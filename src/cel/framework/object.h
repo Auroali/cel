@@ -20,7 +20,7 @@ namespace cel {
         glm::vec3 scale;
 
         /**
-         * @brief Returns the parent transform of this transform object
+         * @brief Returns the parent transform of this object
          * 
          * @return a pointer to the parent,
          * points to itself if it has no parent

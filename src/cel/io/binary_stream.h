@@ -4,6 +4,11 @@
 #include <unordered_map>
 #include <cstddef>
 #include <memory>
+#include <filesystem>
+
+/**
+ * @namespace cel::io IO related code, such as binary file readers/writers and model importers
+ */
 namespace cel::io {
 	/**
 	* Wrapper for std::ifstream
@@ -13,12 +18,11 @@ namespace cel::io {
 	private:
 		std::ifstream stream;
 	public:
-		binary_ifstream(std::string path);
+		binary_ifstream(const std::filesystem::path& path);
 		~binary_ifstream();
 		template<typename T>
 		T read() {
-			char* bytes = new char[sizeof(T)];
-			stream.read(bytes, sizeof(T));
+			char* bytes = read(sizeof(T));
 			T val = *(T*)bytes;
 			delete[] bytes;
 			return val;
@@ -40,14 +44,14 @@ namespace cel::io {
 		std::ofstream stream;
 	public:
 		void write_str(const std::string& str);
-		binary_ofstream(std::string path);
+		binary_ofstream(const std::filesystem::path& path);
 		~binary_ofstream();
 		template<typename T>
 		void write(T& data) {
 			char* bytes = reinterpret_cast<char*>(&data);
 			stream.write(bytes, sizeof(data));
 		}
-		void write(char* data, size_t size) {
+		void write(const char* data, size_t size) {
 			stream.write(data, size);
 		}
 		bool eof();

@@ -35,7 +35,7 @@ virtual glm\+::vec3 \mbox{\hyperlink{classcel_1_1camera3d_aa71c6c2b312acf62d54ba
 \item 
 virtual void \mbox{\hyperlink{classcel_1_1camera3d_afb5b734da5465d0c6041ceed2d8c2a56}{set\+\_\+rot\+\_\+euler}} (double x, double y, double z) override
 \item 
-virtual void \mbox{\hyperlink{classcel_1_1camera3d_adc3a07c26d822413f46aaf4f18632870}{shader\+\_\+setup}} (\mbox{\hyperlink{classcel_1_1render_1_1shader}{cel\+::render\+::shader}} $\ast$shader) override
+virtual void \mbox{\hyperlink{classcel_1_1camera3d_aa33cf2e7cabca8b2cb8fed18be8b768f}{shader\+\_\+setup}} (\mbox{\hyperlink{classcel_1_1render_1_1matrix__stack}{cel\+::render\+::matrix\+\_\+stack}} \&stack) override
 \end{DoxyCompactItemize}
 
 
@@ -89,7 +89,7 @@ Reimplemented from \mbox{\hyperlink{classcel_1_1camera_a6997a4fcb48239d25c7a68b2
 {\footnotesize\ttfamily virtual double cel\+::camera3d\+::get\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 Gets the camera\textquotesingle{}s x position in worldspace \begin{DoxyReturn}{Returns}
-the y position of the camera 
+the x position of the camera 
 \end{DoxyReturn}
 
 
@@ -115,7 +115,7 @@ Reimplemented from \mbox{\hyperlink{classcel_1_1camera_ae6312aa441d4eb34d7c33c09
 {\footnotesize\ttfamily virtual double cel\+::camera3d\+::get\+\_\+z (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 Gets the camera\textquotesingle{}s z position in worldspace \begin{DoxyReturn}{Returns}
-the y position of the camera 
+the z position of the camera 
 \end{DoxyReturn}
 
 
@@ -181,11 +181,11 @@ Sets the camera\textquotesingle{}s position
 
 Reimplemented from \mbox{\hyperlink{classcel_1_1camera_a0eec77dcc72939a0cf443006b657632d}{cel\+::camera}}.
 
-\mbox{\Hypertarget{classcel_1_1camera3d_adc3a07c26d822413f46aaf4f18632870}\label{classcel_1_1camera3d_adc3a07c26d822413f46aaf4f18632870}} 
+\mbox{\Hypertarget{classcel_1_1camera3d_aa33cf2e7cabca8b2cb8fed18be8b768f}\label{classcel_1_1camera3d_aa33cf2e7cabca8b2cb8fed18be8b768f}} 
 \index{cel::camera3d@{cel::camera3d}!shader\_setup@{shader\_setup}}
 \index{shader\_setup@{shader\_setup}!cel::camera3d@{cel::camera3d}}
 \doxysubsubsection{\texorpdfstring{shader\_setup()}{shader\_setup()}}
-{\footnotesize\ttfamily virtual void cel\+::camera3d\+::shader\+\_\+setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcel_1_1render_1_1shader}{cel\+::render\+::shader}} $\ast$}]{shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily virtual void cel\+::camera3d\+::shader\+\_\+setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcel_1_1render_1_1matrix__stack}{cel\+::render\+::matrix\+\_\+stack}} \&}]{stack }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
 
 Setup shader specific things, such as projection/view matrix 
 \begin{DoxyParams}{Parameters}

@@ -13,12 +13,14 @@
 #include "cel/render/framebuffer.h"
 #include "cel/render/texture.h"
 #include "cel/render/renderer.h"
+#include "cel/render/matrix_stack.h"
 
 cel_app* cel_app::inst;
 int exitCode;
-double cel::time::deltaTime = 1;
-double cel::time::fixedDeltaTime = 1.f/60.f;
+double cel::time::delta_time = 1;
+double cel::time::fixed_delta_time = 1.f/60.f;
 std::vector<cel::project_builder_base*>* cel::project::projects;
+uint64_t render_engine_flags = 0;
 
 /**
  * Definitions for variables and functions in constants.h
@@ -47,8 +49,11 @@ void cel::request_exit(int code) {
 void cel_app::receive_signal(uint64_t sig, void* ptr) {
     switch (sig)
     {
-    case CEL_CAM_REQ:
+    case CEL_SIG_CAM_REQ:
         *(cel::camera**)ptr = inst->cam.get();
+        break;
+    case CEL_SIG_RENDER_PARAMS:
+        render_engine_flags = *reinterpret_cast<uint64_t*>(ptr);
         break;
     default:
         break;
@@ -69,26 +74,26 @@ int cel_app::on_execute() {
         cleanup();
         return CEL_ERROR_INIT;
     }
-    cel::time::deltaTime = 0.01;
+    cel::time::delta_time = 0.01;
 	double current = glfwGetTime();
 	double accumulator = 0.0;
     while(!cel::window::main()->is_closed()) {
         
         double new_time = glfwGetTime();
-        cel::time::deltaTime = new_time - current;
+        cel::time::delta_time = new_time - current;
         current = new_time;
                 
         glfwPollEvents();
-        accumulator += cel::time::deltaTime;
+        accumulator += cel::time::delta_time;
         for(cel::project* p : projects) {
             p->update();
         }
-        while (accumulator >= cel::time::fixedDeltaTime) {
+        while (accumulator >= cel::time::fixed_delta_time) {
             cel::window::main()->get_input_handler().process_mouse();
 		    for(cel::project* p : projects) {
 		        p->fixed_update();
 		    }
-            accumulator -= cel::time::fixedDeltaTime;
+            accumulator -= cel::time::fixed_delta_time;
         }
         render();
     }
@@ -143,20 +148,22 @@ bool cel_app::on_init() {
     }
     std::cout << "Initialized " << projects.size() << " projects!" << std::endl;
     glfwSetWindowTitle(handle, projects[0]->get_name().c_str());
-    this->cam = std::make_shared<cel::camera3d>();
+    //this->cam = std::make_shared<cel::camera3d>();
 
     cel::globals::init_shaders();
     
     win_main = cel::window(handle);
     win_main.set_main();
 
-    cel::render::render_engine::init();
+    cel::render::render_engine::init(render_engine_flags, cam);
 
 	return true;
 }
 
 void cel_app::render() {
-    cel::render::render_engine::render(cam.get(), projects, cel::scene::get_active_scene());
+    cel::render::matrix_stack stack;
+    cam->shader_setup(stack);
+    cel::render::render_engine::render(stack, projects, cel::scene::get_active_scene());
     
     //Push buffer to screen
     cel::window::main()->swap();

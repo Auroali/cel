@@ -3,23 +3,23 @@
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static double \mbox{\hyperlink{structcel_1_1time_a51bfff372bd3ec57fe7b06b6c02af711}{get\+\_\+current}} ()
+static double \mbox{\hyperlink{structcel_1_1time_af41cbe605a0ac15c73e73bf036ad58a7}{get\+\_\+current}} ()
 \begin{DoxyCompactList}\small\item\em Gets the current running time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static double \mbox{\hyperlink{structcel_1_1time_a4815cd90e48d47b3fd93af67dcda58fc}{delta\+Time}} = 1
-\begin{DoxyCompactList}\small\item\em The current delta\+Time. \end{DoxyCompactList}\item 
-static double \mbox{\hyperlink{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}{fixed\+Delta\+Time}} = 1.f/60.f
-\begin{DoxyCompactList}\small\item\em The current fixed\+Delta\+Time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static double \mbox{\hyperlink{structcel_1_1time_a2694d6c35dc859af7c2437a5640b7152}{delta\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em The current delta time. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{structcel_1_1time_a9782f8fb0441470443390c4bf047d83a}{fixed\+\_\+delta\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em The current fixed delta time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{structcel_1_1time_a51bfff372bd3ec57fe7b06b6c02af711}\label{structcel_1_1time_a51bfff372bd3ec57fe7b06b6c02af711}} 
+\mbox{\Hypertarget{structcel_1_1time_af41cbe605a0ac15c73e73bf036ad58a7}\label{structcel_1_1time_af41cbe605a0ac15c73e73bf036ad58a7}} 
 \index{cel::time@{cel::time}!get\_current@{get\_current}}
 \index{get\_current@{get\_current}!cel::time@{cel::time}}
 \doxysubsubsection{\texorpdfstring{get\_current()}{get\_current()}}
-{\footnotesize\ttfamily double cel\+::time\+::get\+\_\+current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static double cel\+::time\+::get\+\_\+current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -31,35 +31,34 @@ double the current time
 
 
 \doxysubsection{Field Documentation}
-\mbox{\Hypertarget{structcel_1_1time_a4815cd90e48d47b3fd93af67dcda58fc}\label{structcel_1_1time_a4815cd90e48d47b3fd93af67dcda58fc}} 
-\index{cel::time@{cel::time}!deltaTime@{deltaTime}}
-\index{deltaTime@{deltaTime}!cel::time@{cel::time}}
-\doxysubsubsection{\texorpdfstring{deltaTime}{deltaTime}}
-{\footnotesize\ttfamily double cel\+::time\+::delta\+Time = 1\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{structcel_1_1time_a2694d6c35dc859af7c2437a5640b7152}\label{structcel_1_1time_a2694d6c35dc859af7c2437a5640b7152}} 
+\index{cel::time@{cel::time}!delta\_time@{delta\_time}}
+\index{delta\_time@{delta\_time}!cel::time@{cel::time}}
+\doxysubsubsection{\texorpdfstring{delta\_time}{delta\_time}}
+{\footnotesize\ttfamily double cel\+::time\+::delta\+\_\+time\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-The current delta\+Time. 
+The current delta time. 
 
 \begin{DoxyWarning}{Warning}
 Modifying this may cause unintended behaviour 
 \end{DoxyWarning}
-\mbox{\Hypertarget{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}\label{structcel_1_1time_adbd330dc93b2f327822a4e949ada30c4}} 
-\index{cel::time@{cel::time}!fixedDeltaTime@{fixedDeltaTime}}
-\index{fixedDeltaTime@{fixedDeltaTime}!cel::time@{cel::time}}
-\doxysubsubsection{\texorpdfstring{fixedDeltaTime}{fixedDeltaTime}}
-{\footnotesize\ttfamily double cel\+::time\+::fixed\+Delta\+Time = 1.f/60.f\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{structcel_1_1time_a9782f8fb0441470443390c4bf047d83a}\label{structcel_1_1time_a9782f8fb0441470443390c4bf047d83a}} 
+\index{cel::time@{cel::time}!fixed\_delta\_time@{fixed\_delta\_time}}
+\index{fixed\_delta\_time@{fixed\_delta\_time}!cel::time@{cel::time}}
+\doxysubsubsection{\texorpdfstring{fixed\_delta\_time}{fixed\_delta\_time}}
+{\footnotesize\ttfamily double cel\+::time\+::fixed\+\_\+delta\+\_\+time\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-The current fixed\+Delta\+Time. 
+The current fixed delta time. 
 
 \begin{DoxyNote}{Note}
 Changing this will change the amount of fixed updates per second 
 \end{DoxyNote}
 
 
-The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/cel/time.\+h\item 
-src/cel/cel.\+cpp\end{DoxyCompactItemize}
+src/cel/time.\+h\end{DoxyCompactItemize}

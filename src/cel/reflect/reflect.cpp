@@ -2,7 +2,7 @@
 
 std::vector<cel::reflection::type*> cel::reflection::solver::ref_types;
 
-void cel::reflection::solver::_register(cel::reflection::type* type) {
+void cel::reflection::solver::__register(cel::reflection::type* type) {
     ref_types.push_back(type);
 }
 cel::reflection::type* cel::reflection::solver::get_by_str(const std::string& name) {

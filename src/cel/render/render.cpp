@@ -121,10 +121,13 @@ namespace cel::render {
     }
     void matrix_stack::apply(shader& shader) {
         glm::mat4 full = glm::mat4(1.0);
-        for(glm::mat4 m : matrices) {
-            full *= m;
+        for(auto it = matrices.begin(); it != matrices.end(); ++it) {
+            full *= *it;
         }
-        shader.set_mat4("model", full);
+        shader.set_mat4("mstack", full);
+    }
+    glm::mat4& matrix_stack::get() {
+        return *(matrices.end() - 1);
     }
     framebuffer::framebuffer(int width, int height) {
         glGenFramebuffers(1, &buf);
@@ -167,7 +170,7 @@ namespace cel::render {
             glDeleteFramebuffers(1, &buf);
         }
     }
-    void render_engine::init() {
+    void render_engine::init(uint64_t flags, std::shared_ptr<cel::camera>& camera) {
         cel::window* window = cel::window::main();
         // Setup the render framebuffer
         render_buffer = cel::render::framebuffer(window->get_width(), window->get_height());
@@ -201,26 +204,47 @@ namespace cel::render {
         // Unbind vertex array
         glBindVertexArray(0);
         post_quad = model(vao, 6);
+
+        if(flags & CEL_RENDERFLAG_2D)
+            camera = std::make_shared<camera2d>();
+        else
+            camera = std::make_shared<camera3d>();
     }
     
-    void render_engine::render_scene(std::weak_ptr<cel::scene> scene) {
+    void walk_scene_tree(cel::node<std::shared_ptr<cel::object>>& n, matrix_stack& stack) {
+        stack.push();
+        stack.translate(n.val->trans.pos);
+        stack.rotate(n.val->trans.rot);
+        stack.scale(n.val->trans.scale);
+        auto comps = n.val->get_components();
+        std::for_each(comps.begin(), comps.end(), [&](std::weak_ptr<cel::component> c){
+            if(auto lc = c.lock()) {
+                if(auto model_c = dynamic_cast<cel::model_component*>(lc.get())) {
+                    stack.push();
+                    stack.translate(model_c->trans.pos);
+                    stack.rotate(model_c->trans.rot);
+                    stack.scale(model_c->trans.scale);
+                    stack.apply(cel::globals::main_shader);
+                    model_c->get_model().render();
+                    stack.pop();
+                }
+            }
+        });
+        for(auto& n_ : n) {
+            walk_scene_tree(n_, stack);
+        }
+        stack.pop();
+    }
+    void render_engine::render_scene(std::weak_ptr<cel::scene> scene, matrix_stack& stack) {
         if(auto lock = scene.lock()) {
-            auto objs = lock->get_obj_tree().get_sorted();
+            auto objs = lock->get_obj_tree().get_nodes();
             for(auto obj : objs) {
-                auto comps = obj->val->get_components();
-                std::for_each(comps.begin(), comps.end(), [&](std::weak_ptr<cel::component> c){
-                    if(auto lc = c.lock()) {
-                        if(auto model_c = dynamic_cast<cel::model_component*>(lc.get())) {
-                            cel::globals::main_shader.set_mat4("model", lc->trans.get_mat4());
-                            model_c->get_model().render();
-                        }
-                    }
-                });
+                walk_scene_tree(obj, stack);
             }
         }
     }
 
-    void render_engine::render(cel::camera* cam, std::vector<cel::project*> projects, std::weak_ptr<cel::scene> scene) {
+    void render_engine::render(matrix_stack& stack, std::vector<cel::project*> projects, std::weak_ptr<cel::scene> scene) {
         glViewport(0,0,cel::window::main()->get_width(),cel::window::main()->get_height());
         if(render_buffer.get_texture().width() != cel::window::main()->get_width() || render_buffer.get_texture().height() != cel::window::main()->get_height()) {
             std::cout << "Render Buffer size doesn't match screen size! Resizing... (Expected " << cel::window::main()->get_width() << ',' << cel::window::main()->get_height() << " but got " << render_buffer.get_texture().width() << ',' << render_buffer.get_texture().height() << ")" << std::endl;
@@ -231,27 +255,29 @@ namespace cel::render {
         render_buffer.bind();
         glEnable(GL_DEPTH_TEST);
         cel::globals::main_shader.use();
-        cam->shader_setup(&cel::globals::main_shader);
-        glClearColor(1.0f,0.f,0.f, 0.f);
+        glClearColor(0.0f,0.f,0.f,1.f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
         for(cel::project* p : projects) {
-            p->render();
+            p->render(stack);
         }
-        render_scene(scene);
+        render_scene(scene, stack);
         render_buffer.unbind();
         
         // Render quad
         cel::globals::quad_shader.use();
         cel::globals::quad_shader.set_int("sceneTex", 0);
-        glClearColor(0,0.0f,0,1.0f);
+        glClearColor(0.f,0.f,0.f,1.f);
         glClear(GL_COLOR_BUFFER_BIT);
         
         glDisable(GL_DEPTH_TEST);
         glDisable(GL_STENCIL_TEST);
 
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, render_buffer.get_texture().handle());
+        set_texture(GL_TEXTURE0, render_buffer.get_texture());
         post_quad.render();
 
+    }
+    void render_engine::set_texture(GLenum texture_id, texture tex) {
+        glActiveTexture(texture_id);
+        glBindTexture(GL_TEXTURE_2D, tex.handle());
     }
 }

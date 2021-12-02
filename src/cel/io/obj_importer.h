@@ -10,6 +10,6 @@ namespace cel::io {
      * @param file the file to import
      * @return std::optional<cel::render::model> an optional containing the model, if loaded successfully
      */
-    extern std::optional<cel::render::model> import_obj_model(std::filesystem::path file);
+    extern std::optional<cel::render::model> import_obj_model(const std::filesystem::path& file);
     
 }

@@ -19,7 +19,7 @@ cel::reflection::type Typename::reflect_type_intern(#Typename, Typename::init_re
 void Typename::init_reflect(cel::reflection::type* r_type) { \
     using T = Typename; \
     r_type->size = sizeof(T); \
-    r_type->fact = new cel::reflection::__factory<T>(); \
+    r_type->fact = new cel::reflection::type_factory<T>(); \
     r_type->members = {
 
 #define REFLECT_MEMBER(member) \
@@ -30,7 +30,7 @@ void Typename::init_reflect(cel::reflection::type* r_type) { \
         
 #define REFLECT_END() \
     }; \
-    cel::reflection::solver::_register(r_type); \
+    cel::reflection::solver::__register(r_type); \
 }
 
 /**
@@ -39,20 +39,41 @@ void Typename::init_reflect(cel::reflection::type* r_type) { \
 #define SERIALIZE 0x01UL
 
 /**
- * Namespace containing structures used for reflection
+ * @namespace cel::reflection Data structures used for reflection
  */
 namespace cel::reflection {
-    class factory {
+    /**
+     * Base class for factories
+     */
+    class factory_base {
     public:
         virtual void* make() { return nullptr; }
         virtual std::shared_ptr<void> make_shared() { return std::shared_ptr<void>(); }
-        virtual ~factory() {}
+        virtual ~factory_base() {}
     };
+    /**
+     * Class derived from cel::reflection::factory_base
+     * for instantiating objects of type T
+     * 
+     * @note The type of T must have a parameterless constructor
+     * 
+     * @tparam T the type to create via make() or make_shared()
+     */
     template<typename T>
-    class __factory : public factory {
+    class type_factory : public factory_base {
     public:
-        // It's assumed you will know a base type to cast this to
+        /**
+         * @brief Constructs an object of type T on the heap
+         * 
+         * @return void* a void pointer to the object, you will need to cast this to the right type
+         */
         virtual void* make() override { return new T; }
+        /**
+         * @brief Constructs an object of type T on the heap
+         * 
+         * @see std::static_pointer_cast
+         * @return std::shared_ptr<void> a shared void pointer to the object, you will need to cast this to the right type
+         */
         virtual std::shared_ptr<void> make_shared() override {
             return std::static_pointer_cast<void>(std::make_shared<T>());
         }
@@ -110,7 +131,7 @@ namespace cel::reflection {
         }
     };
     struct type {
-        type(std::string tname, std::function<void(type*)> func) {
+        type(const std::string& tname, std::function<void(type*)> func) {
             this->name = tname;
             func(this);
         }
@@ -124,7 +145,7 @@ namespace cel::reflection {
         std::string name;
         size_t size;
         std::vector<member> members;
-        factory* fact;
+        factory_base* fact;
         ~type() {
             delete fact;
         }
@@ -140,11 +161,12 @@ namespace cel::reflection {
         /**
          * @brief Registers reflection type info
          * 
-         * @note This is only intented to be used in the REFLECT_END macro
+         * @note Intended for internal use only
          * 
          * @param type pointer to the type info to register
          */
-        static void _register(type* type);
+        static void __register(type* type);
+
         /**
          * @brief Gets reflection type info by class name
          * 

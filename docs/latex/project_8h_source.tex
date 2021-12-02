@@ -6,51 +6,51 @@
 \DoxyCodeLine{2 \textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}project\_builder.h"{}}}
 \DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{5 }
-\DoxyCodeLine{6 \textcolor{keyword}{namespace }cel \{}
-\DoxyCodeLine{7     }
-\DoxyCodeLine{8     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1project}{project}} \{}
-\DoxyCodeLine{9     \textcolor{keyword}{private}:}
-\DoxyCodeLine{10         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1project__builder}{project\_builder}};}
-\DoxyCodeLine{11         \textcolor{keyword}{static} std::vector<project\_builder\_base*>* projects;}
-\DoxyCodeLine{12         std::string name;}
-\DoxyCodeLine{13     \textcolor{keyword}{public}:}
-\DoxyCodeLine{14         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcel_1_1project}{\string~project}}() \{}
-\DoxyCodeLine{15             }
-\DoxyCodeLine{16         \}}
-\DoxyCodeLine{17         \textcolor{keyword}{static} std::vector<project*> build\_projects() \{}
-\DoxyCodeLine{18             std::vector<project*> projects\_built;}
-\DoxyCodeLine{19             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0; i < projects-\/>size(); ++i) \{}
-\DoxyCodeLine{20                 projects\_built.push\_back((*projects)[i]-\/>build());}
-\DoxyCodeLine{21             \}}
-\DoxyCodeLine{22             \textcolor{keyword}{delete} projects;}
-\DoxyCodeLine{23             \textcolor{keywordflow}{return} projects\_built;}
-\DoxyCodeLine{24         \}}
-\DoxyCodeLine{30         std::string \mbox{\hyperlink{classcel_1_1project_ad153083d91cbc70c36feefd568fdc7a4}{get\_name}}() \{ \textcolor{keywordflow}{return} name; \}}
-\DoxyCodeLine{36         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_aef71fa1c4989cf11f067867f30d9e75f}{set\_name}}(\textcolor{keyword}{const} std::string\& name) \{ this-\/>name = name; \}}
-\DoxyCodeLine{42         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_a40129d5b8b89a60fb2b6969774a766ab}{update}}() \{\}}
-\DoxyCodeLine{48         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_a27cfeeee4361f3074d519f834ec2626b}{fixed\_update}}() \{\}}
-\DoxyCodeLine{54         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_adf343680055fa336321747a5592b41e0}{render}}() \{\}}
-\DoxyCodeLine{59         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcel_1_1project_a1baec3b51d33ac8c0cc9fcd87d1706b7}{init}}() \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}}
-\DoxyCodeLine{64         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_ae1406c0f1a896c544bcca5b3592e4d82}{shutdown}}() \{\}}
-\DoxyCodeLine{65     \};}
-\DoxyCodeLine{80     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> }
-\DoxyCodeLine{81     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1project__builder}{project\_builder}} : \textcolor{keyword}{public} project\_builder\_base \{}
-\DoxyCodeLine{82     \textcolor{keyword}{public}:}
-\DoxyCodeLine{83         std::string project\_name;}
-\DoxyCodeLine{84         \mbox{\hyperlink{classcel_1_1project__builder}{project\_builder}}(\textcolor{keyword}{const} std::string\& name) \{}
-\DoxyCodeLine{85             \textcolor{keywordflow}{if}(!project::projects)}
-\DoxyCodeLine{86                 project::projects = \textcolor{keyword}{new} std::vector<project\_builder\_base*>();}
-\DoxyCodeLine{87             project\_name = name;}
-\DoxyCodeLine{88             project::projects-\/>push\_back(\textcolor{keyword}{this});}
-\DoxyCodeLine{89         \}}
-\DoxyCodeLine{90         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcel_1_1project}{project}}* build() \{}
-\DoxyCodeLine{91             \mbox{\hyperlink{classcel_1_1project}{project}}* projPtr = \textcolor{keyword}{new} T();}
-\DoxyCodeLine{92             projPtr-\/>\mbox{\hyperlink{classcel_1_1project_aef71fa1c4989cf11f067867f30d9e75f}{set\_name}}(project\_name);}
-\DoxyCodeLine{93             \textcolor{keywordflow}{return} projPtr;}
-\DoxyCodeLine{94         \}}
-\DoxyCodeLine{95     \};}
-\DoxyCodeLine{96 }
-\DoxyCodeLine{97 \}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}cel/render/matrix\_stack.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecel}{cel}} \{}
+\DoxyCodeLine{13     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1project}{project}} \{}
+\DoxyCodeLine{14     \textcolor{keyword}{private}:}
+\DoxyCodeLine{15         \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{friend} \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1project__builder}{project\_builder}};}
+\DoxyCodeLine{16         \textcolor{keyword}{static} std::vector<project\_builder\_base*>* projects;}
+\DoxyCodeLine{17         std::string name;}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcel_1_1project}{\string~project}}() \{}
+\DoxyCodeLine{20             }
+\DoxyCodeLine{21         \}}
+\DoxyCodeLine{22         \textcolor{keyword}{static} std::vector<project*> build\_projects() \{}
+\DoxyCodeLine{23             std::vector<project*> projects\_built;}
+\DoxyCodeLine{24             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0; i < projects-\/>size(); ++i) \{}
+\DoxyCodeLine{25                 projects\_built.push\_back((*projects)[i]-\/>build());}
+\DoxyCodeLine{26             \}}
+\DoxyCodeLine{27             \textcolor{keyword}{delete} projects;}
+\DoxyCodeLine{28             \textcolor{keywordflow}{return} projects\_built;}
+\DoxyCodeLine{29         \}}
+\DoxyCodeLine{35         std::string \mbox{\hyperlink{classcel_1_1project_ad153083d91cbc70c36feefd568fdc7a4}{get\_name}}() \{ \textcolor{keywordflow}{return} name; \}}
+\DoxyCodeLine{41         \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_aef71fa1c4989cf11f067867f30d9e75f}{set\_name}}(\textcolor{keyword}{const} std::string\& name) \{ this-\/>name = name; \}}
+\DoxyCodeLine{47         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_a40129d5b8b89a60fb2b6969774a766ab}{update}}() \{\}}
+\DoxyCodeLine{53         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_a27cfeeee4361f3074d519f834ec2626b}{fixed\_update}}() \{\}}
+\DoxyCodeLine{61         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_a3402c813fdb8659e16c193a535b05848}{render}}(\mbox{\hyperlink{classcel_1_1render_1_1matrix__stack}{cel::render::matrix\_stack}}\& stack) \{\}}
+\DoxyCodeLine{66         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classcel_1_1project_a1baec3b51d33ac8c0cc9fcd87d1706b7}{init}}() \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{71         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classcel_1_1project_ae1406c0f1a896c544bcca5b3592e4d82}{shutdown}}() \{\}}
+\DoxyCodeLine{72     \};}
+\DoxyCodeLine{87     \textcolor{keyword}{template}<\textcolor{keyword}{typename} T> }
+\DoxyCodeLine{88     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1project__builder}{project\_builder}} : \textcolor{keyword}{public} project\_builder\_base \{}
+\DoxyCodeLine{89     \textcolor{keyword}{public}:}
+\DoxyCodeLine{90         std::string project\_name;}
+\DoxyCodeLine{91         \mbox{\hyperlink{classcel_1_1project__builder}{project\_builder}}(\textcolor{keyword}{const} std::string\& name) \{}
+\DoxyCodeLine{92             \textcolor{keywordflow}{if}(!project::projects)}
+\DoxyCodeLine{93                 project::projects = \textcolor{keyword}{new} std::vector<project\_builder\_base*>();}
+\DoxyCodeLine{94             project\_name = name;}
+\DoxyCodeLine{95             project::projects-\/>push\_back(\textcolor{keyword}{this});}
+\DoxyCodeLine{96         \}}
+\DoxyCodeLine{97         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcel_1_1project}{project}}* build() \{}
+\DoxyCodeLine{98             \mbox{\hyperlink{classcel_1_1project}{project}}* proj\_ptr = \textcolor{keyword}{new} T();}
+\DoxyCodeLine{99             proj\_ptr-\/>\mbox{\hyperlink{classcel_1_1project_aef71fa1c4989cf11f067867f30d9e75f}{set\_name}}(project\_name);}
+\DoxyCodeLine{100             \textcolor{keywordflow}{return} proj\_ptr;}
+\DoxyCodeLine{101         \}}
+\DoxyCodeLine{102     \};}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \}}
 
 \end{DoxyCode}

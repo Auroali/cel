@@ -65,30 +65,29 @@ public:
     virtual void fixed_update() override {
         cel::window::main()->set_cursor_mode(cel::cursor_mode::LOCKED);
         cel::camera* cam;
-        cel::send_signal(CEL_CAM_REQ, &cam);
+        cel::send_signal(CEL_SIG_CAM_REQ, &cam);
         if(cel::window::main()->get_input_handler().key_down(cel::keyboard::S))
-            cam->translate(-cam->get_forward() * (float)cel::time::fixedDeltaTime);
+            cam->translate(-cam->get_forward() * (float)cel::time::fixed_delta_time);
         if(cel::window::main()->get_input_handler().key_down(cel::keyboard::W))
-            cam->translate(cam->get_forward() * (float)cel::time::fixedDeltaTime);
+            cam->translate(cam->get_forward() * (float)cel::time::fixed_delta_time);
         if(cel::window::main()->get_input_handler().key_down(cel::keyboard::A))
-            cam->translate(-cam->get_right() * (float) cel::time::fixedDeltaTime);
+            cam->translate(-cam->get_right() * (float) cel::time::fixed_delta_time);
         if(cel::window::main()->get_input_handler().key_down(cel::keyboard::D))
-            cam->translate(cam->get_right() * (float) cel::time::fixedDeltaTime);
-        yaw -= cel::window::main()->get_input_handler().get_mouse_delta_x() * 10 * cel::time::fixedDeltaTime;
-        pitch += cel::window::main()->get_input_handler().get_mouse_delta_y() * 10 * cel::time::fixedDeltaTime;
+            cam->translate(cam->get_right() * (float) cel::time::fixed_delta_time);
+        yaw -= cel::window::main()->get_input_handler().get_mouse_delta_x() * 10 * cel::time::fixed_delta_time;
+        pitch += cel::window::main()->get_input_handler().get_mouse_delta_y() * 10 * cel::time::fixed_delta_time;
         pitch = std::clamp(pitch, -89.f, 89.f);
         cam->set_rot_euler(glm::radians(pitch),glm::radians(yaw),0);
     }
-    virtual void render() override {
-        cel::globals::main_shader.set_mat4("model", glm::mat4(1.0));
-        //m.render();
-        glm::mat4 model_ground = glm::mat4(1.0);
-        model_ground = glm::translate(model_ground, glm::vec3(0,-5,-2));
-        model_ground = glm::rotate(model_ground, glm::radians(90.0f), glm::vec3(1,0,0));
-        cel::globals::main_shader.set_mat4("model", model_ground);
+    virtual void render(cel::render::matrix_stack& stack) override {
+        stack.push();
+        stack.translate(glm::vec3(0,-5,-2));
+        stack.rotate(glm::quat(glm::vec3(0,glm::radians(90.f), 0)));
+        stack.apply(cel::globals::main_shader);
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glBindVertexArray(0);
+        stack.pop();
         
     }
 };

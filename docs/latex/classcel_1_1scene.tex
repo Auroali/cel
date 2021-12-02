@@ -30,12 +30,12 @@ void \mbox{\hyperlink{classcel_1_1scene_af3662db7d69fcf8b3675dca4f21ab070}{write
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classcel_1_1scene_a4aa04d7439b9d33be31971a8e969f030}\label{classcel_1_1scene_a4aa04d7439b9d33be31971a8e969f030}} 
+\mbox{\Hypertarget{classcel_1_1scene_ab49790d75810b03b7d8e42de48b85283}\label{classcel_1_1scene_ab49790d75810b03b7d8e42de48b85283}} 
 static void {\bfseries clear\+\_\+active} ()
 \begin{DoxyCompactList}\small\item\em Clears the active scene. \end{DoxyCompactList}\item 
-static std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ \mbox{\hyperlink{classcel_1_1scene_a97cad449fd55eca8670966f3c52b9bf3}{get\+\_\+active\+\_\+scene}} ()
+static std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ \mbox{\hyperlink{classcel_1_1scene_a8b59ba81a2a0494addbaf98344434e99}{get\+\_\+active\+\_\+scene}} ()
 \begin{DoxyCompactList}\small\item\em Get the active scene object. \end{DoxyCompactList}\item 
-static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ \mbox{\hyperlink{classcel_1_1scene_a1a203e903bf2641b3258c004c1b6c00f}{read}} (const std\+::filesystem\+::path \&path)
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ \mbox{\hyperlink{classcel_1_1scene_a2bf472811c46c5b13b0bda8ee9ec306f}{read}} (const std\+::filesystem\+::path \&path)
 \begin{DoxyCompactList}\small\item\em Reads the scene from a file on disk. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -58,11 +58,11 @@ Adds an object to the scene.
 {\em object} & the object to add \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classcel_1_1scene_a97cad449fd55eca8670966f3c52b9bf3}\label{classcel_1_1scene_a97cad449fd55eca8670966f3c52b9bf3}} 
+\mbox{\Hypertarget{classcel_1_1scene_a8b59ba81a2a0494addbaf98344434e99}\label{classcel_1_1scene_a8b59ba81a2a0494addbaf98344434e99}} 
 \index{cel::scene@{cel::scene}!get\_active\_scene@{get\_active\_scene}}
 \index{get\_active\_scene@{get\_active\_scene}!cel::scene@{cel::scene}}
 \doxysubsubsection{\texorpdfstring{get\_active\_scene()}{get\_active\_scene()}}
-{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ cel\+::scene\+::get\+\_\+active\+\_\+scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ cel\+::scene\+::get\+\_\+active\+\_\+scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -120,11 +120,11 @@ Get an object in the scene by name.
 \begin{DoxyReturn}{Returns}
 std\+::weak\+\_\+ptr$<$object$>$ a weak\+\_\+ptr to the object, if found 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classcel_1_1scene_a1a203e903bf2641b3258c004c1b6c00f}\label{classcel_1_1scene_a1a203e903bf2641b3258c004c1b6c00f}} 
+\mbox{\Hypertarget{classcel_1_1scene_a2bf472811c46c5b13b0bda8ee9ec306f}\label{classcel_1_1scene_a2bf472811c46c5b13b0bda8ee9ec306f}} 
 \index{cel::scene@{cel::scene}!read@{read}}
 \index{read@{read}!cel::scene@{cel::scene}}
 \doxysubsubsection{\texorpdfstring{read()}{read()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ cel\+::scene\+::read (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcel_1_1scene}{scene}} $>$ cel\+::scene\+::read (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -180,7 +180,6 @@ The scene is stored in a binary file, consisting of a 22 byte header followed by
 \end{DoxyParams}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/cel/framework/scene.\+h\item 
-src/cel/framework/scene.\+cpp\end{DoxyCompactItemize}
+src/cel/framework/scene.\+h\end{DoxyCompactItemize}

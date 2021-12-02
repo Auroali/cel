@@ -17,31 +17,32 @@
 \DoxyCodeLine{13 \textcolor{preprocessor}{\#define CEL\_ERROR\_SHADERS       0x02}}
 \DoxyCodeLine{14 \textcolor{preprocessor}{\#define CEL\_ERROR\_FRAMEBUFFER   0x03}}
 \DoxyCodeLine{15 \textcolor{comment}{//Sets ptr to the main camera}}
-\DoxyCodeLine{16 \textcolor{preprocessor}{\#define CEL\_CAM\_REQ 0x00}}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classcel__app}{cel\_app}} \{}
-\DoxyCodeLine{19 \textcolor{keyword}{private}:}
-\DoxyCodeLine{20     \textcolor{keywordtype}{bool} running;}
-\DoxyCodeLine{21     \textcolor{keywordtype}{bool} initializedProjects;}
-\DoxyCodeLine{22     std::vector<cel::project*> projects;}
-\DoxyCodeLine{23     \textcolor{comment}{//GLFWwindow* display;}}
-\DoxyCodeLine{24     std::shared\_ptr<cel::camera> cam;}
-\DoxyCodeLine{25     \mbox{\hyperlink{classcel_1_1window}{cel::window}} win\_main;}
-\DoxyCodeLine{26     \textcolor{keyword}{static} \mbox{\hyperlink{classcel__app}{cel\_app}}* inst;}
-\DoxyCodeLine{27 \textcolor{keyword}{public}:}
-\DoxyCodeLine{28     \textcolor{keyword}{static} \textcolor{keywordtype}{void} receive\_signal(uint64\_t sig, \textcolor{keywordtype}{void}* ptr);}
-\DoxyCodeLine{29     \textcolor{keywordtype}{bool} on\_init();}
-\DoxyCodeLine{30     \textcolor{keywordtype}{void} render();}
-\DoxyCodeLine{31     \textcolor{keywordtype}{void} cleanup();}
-\DoxyCodeLine{32     \mbox{\hyperlink{classcel__app}{cel\_app}}();}
-\DoxyCodeLine{33     \textcolor{keywordtype}{int} on\_execute();}
-\DoxyCodeLine{34 \};}
-\DoxyCodeLine{35 \textcolor{keyword}{namespace }cel \{}
-\DoxyCodeLine{42     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} send\_signal(uint64\_t sig, \textcolor{keywordtype}{void}* ptr) \{}
-\DoxyCodeLine{43         cel\_app::receive\_signal(sig, ptr);}
-\DoxyCodeLine{44     \}}
-\DoxyCodeLine{45     \textcolor{keywordtype}{void} request\_exit(\textcolor{keywordtype}{int} code);}
-\DoxyCodeLine{46 \}}
-\DoxyCodeLine{47 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define CEL\_SIG\_CAM\_REQ        0x00}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define CEL\_SIG\_RENDER\_PARAMS  0x01}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classcel__app}{cel\_app}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{private}:}
+\DoxyCodeLine{21     \textcolor{keywordtype}{bool} running;}
+\DoxyCodeLine{22     \textcolor{keywordtype}{bool} initializedProjects;}
+\DoxyCodeLine{23     std::vector<cel::project*> projects;}
+\DoxyCodeLine{24     \textcolor{comment}{//GLFWwindow* display;}}
+\DoxyCodeLine{25     std::shared\_ptr<cel::camera> cam;}
+\DoxyCodeLine{26     \mbox{\hyperlink{classcel_1_1window}{cel::window}} win\_main;}
+\DoxyCodeLine{27     \textcolor{keyword}{static} \mbox{\hyperlink{classcel__app}{cel\_app}}* inst;}
+\DoxyCodeLine{28 \textcolor{keyword}{public}:}
+\DoxyCodeLine{29     \textcolor{keyword}{static} \textcolor{keywordtype}{void} receive\_signal(uint64\_t sig, \textcolor{keywordtype}{void}* ptr);}
+\DoxyCodeLine{30     \textcolor{keywordtype}{bool} on\_init();}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} render();}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} cleanup();}
+\DoxyCodeLine{33     \mbox{\hyperlink{classcel__app}{cel\_app}}();}
+\DoxyCodeLine{34     \textcolor{keywordtype}{int} on\_execute();}
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{39 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecel}{cel}} \{}
+\DoxyCodeLine{49     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacecel_a37e7763eaec64ea0e724efd0f1ab83c9}{send\_signal}}(uint64\_t sig, \textcolor{keywordtype}{void}* ptr) \{}
+\DoxyCodeLine{50         cel\_app::receive\_signal(sig, ptr);}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacecel_a1e28100a4ba8fe9e9dcca0835c18fa3b}{request\_exit}}(\textcolor{keywordtype}{int} code);}
+\DoxyCodeLine{58 \}}
+\DoxyCodeLine{59 }
 
 \end{DoxyCode}

@@ -3,27 +3,110 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_ad6e7d234142a51d5de7fefe4ab3aee22}\label{classcel_1_1render_1_1matrix__stack_ad6e7d234142a51d5de7fefe4ab3aee22}} 
-void {\bfseries pop} ()
+void \mbox{\hyperlink{classcel_1_1render_1_1matrix__stack_ad6e7d234142a51d5de7fefe4ab3aee22}{pop}} ()
 \item 
-\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_a83fb0784d10ffe74c2ec36ceebe99f01}\label{classcel_1_1render_1_1matrix__stack_a83fb0784d10ffe74c2ec36ceebe99f01}} 
-void {\bfseries push} ()
+void \mbox{\hyperlink{classcel_1_1render_1_1matrix__stack_a83fb0784d10ffe74c2ec36ceebe99f01}{push}} ()
 \item 
-\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_aa1e4bc546645e058ac5c75cb18c76e0e}\label{classcel_1_1render_1_1matrix__stack_aa1e4bc546645e058ac5c75cb18c76e0e}} 
-void {\bfseries translate} (glm\+::vec3 pos)
-\item 
-\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_a3ac5c7515cffeb7f9ddfc9364c91fd11}\label{classcel_1_1render_1_1matrix__stack_a3ac5c7515cffeb7f9ddfc9364c91fd11}} 
-void {\bfseries rotate} (glm\+::quat rot)
-\item 
-\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_af157209391a230f91102f69b1451be95}\label{classcel_1_1render_1_1matrix__stack_af157209391a230f91102f69b1451be95}} 
-void {\bfseries scale} (glm\+::vec3 scale)
-\item 
+void \mbox{\hyperlink{classcel_1_1render_1_1matrix__stack_aa1e4bc546645e058ac5c75cb18c76e0e}{translate}} (glm\+::vec3 pos)
+\begin{DoxyCompactList}\small\item\em Translates the current matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1render_1_1matrix__stack_a3ac5c7515cffeb7f9ddfc9364c91fd11}{rotate}} (glm\+::quat rot)
+\begin{DoxyCompactList}\small\item\em Rotates the current matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1render_1_1matrix__stack_af157209391a230f91102f69b1451be95}{scale}} (glm\+::vec3 scale)
+\begin{DoxyCompactList}\small\item\em Scales the current matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcel_1_1render_1_1matrix__stack_a20ab81d92a4142bf9f7ba818384c5dfb}{apply}} (\mbox{\hyperlink{classcel_1_1render_1_1shader}{shader}} \&\mbox{\hyperlink{classcel_1_1render_1_1shader}{shader}})
+\begin{DoxyCompactList}\small\item\em Applies the matrix stack to a shader. \end{DoxyCompactList}\item 
+glm\+::mat4 \& \mbox{\hyperlink{classcel_1_1render_1_1matrix__stack_a458ccd2cdc2c746212ab49733c0773e1}{get}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current matrix in the stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_a20ab81d92a4142bf9f7ba818384c5dfb}\label{classcel_1_1render_1_1matrix__stack_a20ab81d92a4142bf9f7ba818384c5dfb}} 
-void {\bfseries apply} (\mbox{\hyperlink{classcel_1_1render_1_1shader}{shader}} \&\mbox{\hyperlink{classcel_1_1render_1_1shader}{shader}})
-\end{DoxyCompactItemize}
+\index{cel::render::matrix\_stack@{cel::render::matrix\_stack}!apply@{apply}}
+\index{apply@{apply}!cel::render::matrix\_stack@{cel::render::matrix\_stack}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily void cel\+::render\+::matrix\+\_\+stack\+::apply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcel_1_1render_1_1shader}{shader}} \&}]{shader }\end{DoxyParamCaption})}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+
+Applies the matrix stack to a shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & the shader to use \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_a458ccd2cdc2c746212ab49733c0773e1}\label{classcel_1_1render_1_1matrix__stack_a458ccd2cdc2c746212ab49733c0773e1}} 
+\index{cel::render::matrix\_stack@{cel::render::matrix\_stack}!get@{get}}
+\index{get@{get}!cel::render::matrix\_stack@{cel::render::matrix\_stack}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily glm\+::mat4 \& cel\+::render\+::matrix\+\_\+stack\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current matrix in the stack. 
+
+\begin{DoxyReturn}{Returns}
+glm\+::mat4\& the current matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_ad6e7d234142a51d5de7fefe4ab3aee22}\label{classcel_1_1render_1_1matrix__stack_ad6e7d234142a51d5de7fefe4ab3aee22}} 
+\index{cel::render::matrix\_stack@{cel::render::matrix\_stack}!pop@{pop}}
+\index{pop@{pop}!cel::render::matrix\_stack@{cel::render::matrix\_stack}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily void cel\+::render\+::matrix\+\_\+stack\+::pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Removes the last item from the stack \mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_a83fb0784d10ffe74c2ec36ceebe99f01}\label{classcel_1_1render_1_1matrix__stack_a83fb0784d10ffe74c2ec36ceebe99f01}} 
+\index{cel::render::matrix\_stack@{cel::render::matrix\_stack}!push@{push}}
+\index{push@{push}!cel::render::matrix\_stack@{cel::render::matrix\_stack}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily void cel\+::render\+::matrix\+\_\+stack\+::push (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Pushes a new glm\+::mat4 to the stack \mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_a3ac5c7515cffeb7f9ddfc9364c91fd11}\label{classcel_1_1render_1_1matrix__stack_a3ac5c7515cffeb7f9ddfc9364c91fd11}} 
+\index{cel::render::matrix\_stack@{cel::render::matrix\_stack}!rotate@{rotate}}
+\index{rotate@{rotate}!cel::render::matrix\_stack@{cel::render::matrix\_stack}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void cel\+::render\+::matrix\+\_\+stack\+::rotate (\begin{DoxyParamCaption}\item[{glm\+::quat}]{rot }\end{DoxyParamCaption})}
+
+
+
+Rotates the current matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rot} & the quaternion to rotate the matrix by \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_af157209391a230f91102f69b1451be95}\label{classcel_1_1render_1_1matrix__stack_af157209391a230f91102f69b1451be95}} 
+\index{cel::render::matrix\_stack@{cel::render::matrix\_stack}!scale@{scale}}
+\index{scale@{scale}!cel::render::matrix\_stack@{cel::render::matrix\_stack}}
+\doxysubsubsection{\texorpdfstring{scale()}{scale()}}
+{\footnotesize\ttfamily void cel\+::render\+::matrix\+\_\+stack\+::scale (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{scale }\end{DoxyParamCaption})}
+
+
+
+Scales the current matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale} & the vec3 to scale the matrix by \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcel_1_1render_1_1matrix__stack_aa1e4bc546645e058ac5c75cb18c76e0e}\label{classcel_1_1render_1_1matrix__stack_aa1e4bc546645e058ac5c75cb18c76e0e}} 
+\index{cel::render::matrix\_stack@{cel::render::matrix\_stack}!translate@{translate}}
+\index{translate@{translate}!cel::render::matrix\_stack@{cel::render::matrix\_stack}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily void cel\+::render\+::matrix\+\_\+stack\+::translate (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{pos }\end{DoxyParamCaption})}
+
+
+
+Translates the current matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & the vec3 to move the matrix by \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/cel/render/matrix\+\_\+stack.\+h\item 
-src/cel/render/render.\+cpp\end{DoxyCompactItemize}
+src/cel/render/matrix\+\_\+stack.\+h\end{DoxyCompactItemize}

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['init_0',['init',['../classcel_1_1project.html#a1baec3b51d33ac8c0cc9fcd87d1706b7',1,'cel::project']]],
-  ['is_5fclosed_1',['is_closed',['../classcel_1_1window.html#a917f5c3c0a26a19df33e7e534897332c',1,'cel::window']]]
+  ['has_5fattrib_0',['has_attrib',['../structcel_1_1reflection_1_1member.html#aed8db68f9a0f24b841d3bbd9e438acf7',1,'cel::reflection::member']]]
 ];

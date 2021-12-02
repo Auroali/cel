@@ -28,12 +28,7 @@ std::vector<std::string> split(std::string str, char delimeter=' '){
 }
 
 namespace cel::io {
-    struct vertex {
-        glm::vec3 pos;
-        glm::vec2 uv;
-        glm::vec3 normals;
-    };
-    std::optional<cel::render::model> import_obj_model(std::filesystem::path file) {
+    std::optional<cel::render::model> import_obj_model(const std::filesystem::path& file) {
         if(std::filesystem::exists(file) && std::filesystem::is_regular_file(file)) {
             std::ifstream stream(file);
             std::string line;
@@ -58,7 +53,7 @@ namespace cel::io {
             }
             stream.clear();
             stream.seekg(0, std::ios::beg);
-            std::vector<vertex> model_data;
+            std::vector<render::vertex> model_data;
             while(std::getline(stream, line)) {
                 std::stringstream ss(line);
                 std::istream_iterator<std::string> begin(ss);
@@ -68,9 +63,9 @@ namespace cel::io {
                 if(vstrings.size() <= 0)
                     continue;
                 if(vstrings[0] == "f") {
-                    vertex v1;
-                    vertex v2;
-                    vertex v3;
+                    render::vertex v1;
+                    render::vertex v2;
+                    render::vertex v3;
                     // Vertex 1
                     std::vector<std::string> face = split(vstrings[1], '/');
                     if(!face[0].empty())
@@ -112,16 +107,16 @@ namespace cel::io {
             glGenBuffers(1, &vbo);
             glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-            glBufferData(GL_ARRAY_BUFFER, model_data.size() * sizeof(vertex), model_data.data(), GL_STATIC_DRAW);
+            glBufferData(GL_ARRAY_BUFFER, model_data.size() * sizeof(render::vertex), model_data.data(), GL_STATIC_DRAW);
 
             // Pos
-            glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)0);
+            glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(render::vertex), (void*)0);
             glEnableVertexAttribArray(0);
             // UVs
-            glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, uv));
+            glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(render::vertex), (void*)offsetof(render::vertex, uv));
             glEnableVertexAttribArray(1);
             // Normals
-            glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(vertex), (void*)offsetof(vertex, normals));
+            glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(render::vertex), (void*)offsetof(render::vertex, normals));
             glEnableVertexAttribArray(3);
             
 

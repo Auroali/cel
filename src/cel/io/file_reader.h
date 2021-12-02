@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <filesystem>
 
 namespace cel::io {
     class file_reader {

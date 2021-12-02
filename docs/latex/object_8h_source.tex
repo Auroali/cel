@@ -10,7 +10,7 @@
 \DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{7 \textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{8 }
-\DoxyCodeLine{9 \textcolor{keyword}{namespace }cel \{}
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecel}{cel}} \{}
 \DoxyCodeLine{10     \textcolor{keyword}{class }scene;}
 \DoxyCodeLine{11     \textcolor{keyword}{class }component;}
 \DoxyCodeLine{12 }
@@ -30,7 +30,7 @@
 \DoxyCodeLine{46 }
 \DoxyCodeLine{47         \mbox{\hyperlink{structcel_1_1transform}{transform}}() : pos(0,0,0), rot(glm::vec3(0,0,0)), scale(1,1,1) \{\}}
 \DoxyCodeLine{48         \mbox{\hyperlink{structcel_1_1transform}{transform}}(glm::vec3 pos, glm::quat rot, glm::vec3 scale) : pos(pos), rot(rot), scale(scale) \{\}}
-\DoxyCodeLine{49         \mbox{\hyperlink{structcel_1_1transform}{transform}}(glm::vec3 pos) : pos(pos), rot(glm::vec3(0,0,0)), scale(1,1,1) \{\}}
+\DoxyCodeLine{49         transform(glm::vec3 pos) : pos(pos), rot(glm::vec3(0,0,0)), scale(1,1,1) \{\}}
 \DoxyCodeLine{50     \};}
 \DoxyCodeLine{55     \textcolor{keyword}{class }\mbox{\hyperlink{classcel_1_1object}{object}} : \textcolor{keyword}{public} std::enable\_shared\_from\_this<object> \{}
 \DoxyCodeLine{56         std::weak\_ptr<scene> container;}

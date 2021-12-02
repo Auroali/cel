@@ -2,6 +2,9 @@
 #include <glm/glm.hpp>
 #include "render/shader.h"
 
+/**
+ * @namespace cel::globals Global variables such as constants and shaders
+ */
 namespace cel::globals {
     // Vectors
     const glm::vec3 forward = glm::vec3(0,0,1);
