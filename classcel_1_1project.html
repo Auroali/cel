@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>cel</b></li><li class="navelem"><a class="el" href="classcel_1_1project.html">project</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacecel.html">cel</a></li><li class="navelem"><a class="el" href="classcel_1_1project.html">project</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -88,11 +88,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a40129d5b8b89a60fb2b6969774a766ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called once per frame, before fixed_update.  <a href="classcel_1_1project.html#a40129d5b8b89a60fb2b6969774a766ab">More...</a><br /></td></tr>
 <tr class="separator:a40129d5b8b89a60fb2b6969774a766ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27cfeeee4361f3074d519f834ec2626b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1project.html#a27cfeeee4361f3074d519f834ec2626b">fixed_update</a> ()</td></tr>
-<tr class="memdesc:a27cfeeee4361f3074d519f834ec2626b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called 1/fixedDeltaTime per second.  <a href="classcel_1_1project.html#a27cfeeee4361f3074d519f834ec2626b">More...</a><br /></td></tr>
+<tr class="memdesc:a27cfeeee4361f3074d519f834ec2626b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called 1/fixed_delta_time per second.  <a href="classcel_1_1project.html#a27cfeeee4361f3074d519f834ec2626b">More...</a><br /></td></tr>
 <tr class="separator:a27cfeeee4361f3074d519f834ec2626b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf343680055fa336321747a5592b41e0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1project.html#adf343680055fa336321747a5592b41e0">render</a> ()</td></tr>
-<tr class="memdesc:adf343680055fa336321747a5592b41e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when rendering, before rendering the scene.  <a href="classcel_1_1project.html#adf343680055fa336321747a5592b41e0">More...</a><br /></td></tr>
-<tr class="separator:adf343680055fa336321747a5592b41e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3402c813fdb8659e16c193a535b05848"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1project.html#a3402c813fdb8659e16c193a535b05848">render</a> (<a class="el" href="classcel_1_1render_1_1matrix__stack.html">cel::render::matrix_stack</a> &amp;stack)</td></tr>
+<tr class="memdesc:a3402c813fdb8659e16c193a535b05848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when rendering, before rendering the scene.  <a href="classcel_1_1project.html#a3402c813fdb8659e16c193a535b05848">More...</a><br /></td></tr>
+<tr class="separator:a3402c813fdb8659e16c193a535b05848"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1baec3b51d33ac8c0cc9fcd87d1706b7"><td class="memItemLeft" align="right" valign="top"><a id="a1baec3b51d33ac8c0cc9fcd87d1706b7" name="a1baec3b51d33ac8c0cc9fcd87d1706b7"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
 <tr class="memdesc:a1baec3b51d33ac8c0cc9fcd87d1706b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after constructing the project. <br /></td></tr>
@@ -117,7 +117,7 @@ template&lt;typename T &gt; </td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Base class for all projects <br  />
- Will be initialized during cel_app::init </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classcel_1_1project__builder.html">cel::project_builder</a> </dd></dl>
+ Will be initialized during cel_app::on_init </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classcel_1_1project__builder.html">cel::project_builder</a> </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a27cfeeee4361f3074d519f834ec2626b" name="a27cfeeee4361f3074d519f834ec2626b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27cfeeee4361f3074d519f834ec2626b">&#9670;&nbsp;</a></span>fixed_update()</h2>
@@ -142,8 +142,8 @@ template&lt;typename T &gt; </td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Called 1/fixedDeltaTime per second. </p>
-<dl class="section note"><dt>Note</dt><dd>The frequency this function is called can be changed with fixedDeltaTime </dd></dl>
+<p>Called 1/fixed_delta_time per second. </p>
+<dl class="section note"><dt>Note</dt><dd>The frequency this function is called can be changed with fixed_delta_time </dd></dl>
 
 </div>
 </div>
@@ -175,8 +175,8 @@ template&lt;typename T &gt; </td></tr>
 
 </div>
 </div>
-<a id="adf343680055fa336321747a5592b41e0" name="adf343680055fa336321747a5592b41e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf343680055fa336321747a5592b41e0">&#9670;&nbsp;</a></span>render()</h2>
+<a id="a3402c813fdb8659e16c193a535b05848" name="a3402c813fdb8659e16c193a535b05848"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3402c813fdb8659e16c193a535b05848">&#9670;&nbsp;</a></span>render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +187,8 @@ template&lt;typename T &gt; </td></tr>
         <tr>
           <td class="memname">virtual void cel::project::render </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classcel_1_1render_1_1matrix__stack.html">cel::render::matrix_stack</a> &amp;&#160;</td>
+          <td class="paramname"><em>stack</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -199,6 +200,12 @@ template&lt;typename T &gt; </td></tr>
 </div><div class="memdoc">
 
 <p>Called when rendering, before rendering the scene. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stack</td><td>the matrix stack</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section note"><dt>Note</dt><dd>Same as <a class="el" href="classcel_1_1project.html#a40129d5b8b89a60fb2b6969774a766ab" title="Called once per frame, before fixed_update.">update()</a>, except it's called at the end of the frame </dd></dl>
 
 </div>
@@ -265,9 +272,8 @@ template&lt;typename T &gt; </td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/cel/<a class="el" href="project_8h_source.html">project.h</a></li>
-<li>src/cel/cel.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

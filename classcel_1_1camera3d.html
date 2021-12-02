@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>cel</b></li><li class="navelem"><a class="el" href="classcel_1_1camera3d.html">camera3d</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacecel.html">cel</a></li><li class="navelem"><a class="el" href="classcel_1_1camera3d.html">camera3d</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -107,8 +107,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa71c6c2b312acf62d54ba82fc0efd03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb5b734da5465d0c6041ceed2d8c2a56"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1camera3d.html#afb5b734da5465d0c6041ceed2d8c2a56">set_rot_euler</a> (double x, double y, double z) override</td></tr>
 <tr class="separator:afb5b734da5465d0c6041ceed2d8c2a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc3a07c26d822413f46aaf4f18632870"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1camera3d.html#adc3a07c26d822413f46aaf4f18632870">shader_setup</a> (<a class="el" href="classcel_1_1render_1_1shader.html">cel::render::shader</a> *shader) override</td></tr>
-<tr class="separator:adc3a07c26d822413f46aaf4f18632870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa33cf2e7cabca8b2cb8fed18be8b768f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1camera3d.html#aa33cf2e7cabca8b2cb8fed18be8b768f">shader_setup</a> (<a class="el" href="classcel_1_1render_1_1matrix__stack.html">cel::render::matrix_stack</a> &amp;stack) override</td></tr>
+<tr class="separator:aa33cf2e7cabca8b2cb8fed18be8b768f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Camera for viewing 3D space </p>
@@ -219,7 +219,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Gets the camera's x position in worldspace </p><dl class="section return"><dt>Returns</dt><dd>the y position of the camera </dd></dl>
+<p >Gets the camera's x position in worldspace </p><dl class="section return"><dt>Returns</dt><dd>the x position of the camera </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classcel_1_1camera.html#a5256adb9d29f40a3c9747475ed4beebf">cel::camera</a>.</p>
 
@@ -275,7 +275,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Gets the camera's z position in worldspace </p><dl class="section return"><dt>Returns</dt><dd>the y position of the camera </dd></dl>
+<p >Gets the camera's z position in worldspace </p><dl class="section return"><dt>Returns</dt><dd>the z position of the camera </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classcel_1_1camera.html#ad206de901c7c13bcf560c8155556daed">cel::camera</a>.</p>
 
@@ -422,8 +422,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adc3a07c26d822413f46aaf4f18632870" name="adc3a07c26d822413f46aaf4f18632870"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc3a07c26d822413f46aaf4f18632870">&#9670;&nbsp;</a></span>shader_setup()</h2>
+<a id="aa33cf2e7cabca8b2cb8fed18be8b768f" name="aa33cf2e7cabca8b2cb8fed18be8b768f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa33cf2e7cabca8b2cb8fed18be8b768f">&#9670;&nbsp;</a></span>shader_setup()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,8 +434,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void cel::camera3d::shader_setup </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classcel_1_1render_1_1shader.html">cel::render::shader</a> *&#160;</td>
-          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classcel_1_1render_1_1matrix__stack.html">cel::render::matrix_stack</a> &amp;&#160;</td>
+          <td class="paramname"><em>stack</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

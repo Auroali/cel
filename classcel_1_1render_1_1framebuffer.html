@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>cel</b></li><li class="navelem"><b>render</b></li><li class="navelem"><a class="el" href="classcel_1_1render_1_1framebuffer.html">framebuffer</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacecel.html">cel</a></li><li class="navelem"><a class="el" href="namespacecel_1_1render.html">render</a></li><li class="navelem"><a class="el" href="classcel_1_1render_1_1framebuffer.html">framebuffer</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,23 +72,33 @@ $(function() {
   <div class="headertitle"><div class="title">cel::render::framebuffer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="framebuffer_8h_source.html">framebuffer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acd16b7cddb04ed4bcdee2da64d90caa7"><td class="memItemLeft" align="right" valign="top"><a id="acd16b7cddb04ed4bcdee2da64d90caa7" name="acd16b7cddb04ed4bcdee2da64d90caa7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>framebuffer</b> (int width, int height)</td></tr>
+<tr class="memitem:af04b737abc07ab9c8d267b1b69470cd9"><td class="memItemLeft" align="right" valign="top"><a id="af04b737abc07ab9c8d267b1b69470cd9" name="af04b737abc07ab9c8d267b1b69470cd9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>framebuffer</b> ()</td></tr>
+<tr class="memdesc:af04b737abc07ab9c8d267b1b69470cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an empty framebuffer. <br /></td></tr>
+<tr class="separator:af04b737abc07ab9c8d267b1b69470cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd16b7cddb04ed4bcdee2da64d90caa7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1render_1_1framebuffer.html#acd16b7cddb04ed4bcdee2da64d90caa7">framebuffer</a> (int width, int height)</td></tr>
+<tr class="memdesc:acd16b7cddb04ed4bcdee2da64d90caa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a framebuffer for drawing with the dimensions of <code>width</code> by <code>height</code>  <a href="classcel_1_1render_1_1framebuffer.html#acd16b7cddb04ed4bcdee2da64d90caa7">More...</a><br /></td></tr>
 <tr class="separator:acd16b7cddb04ed4bcdee2da64d90caa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c44abb25e97ff0db966660184ece2bb"><td class="memItemLeft" align="right" valign="top"><a id="a3c44abb25e97ff0db966660184ece2bb" name="a3c44abb25e97ff0db966660184ece2bb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> ()</td></tr>
+<tr class="memdesc:a3c44abb25e97ff0db966660184ece2bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds this framebuffer as the active framebuffer. <br /></td></tr>
 <tr class="separator:a3c44abb25e97ff0db966660184ece2bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0ffa4e6b3b41693d124cccbf3d2d90a"><td class="memItemLeft" align="right" valign="top"><a id="ac0ffa4e6b3b41693d124cccbf3d2d90a" name="ac0ffa4e6b3b41693d124cccbf3d2d90a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>unbind</b> ()</td></tr>
+<tr class="memdesc:ac0ffa4e6b3b41693d124cccbf3d2d90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unbinds the currently active framebuffer. <br /></td></tr>
 <tr class="separator:ac0ffa4e6b3b41693d124cccbf3d2d90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d2f82a86c37aca01874c0c87fed951c"><td class="memItemLeft" align="right" valign="top"><a id="a9d2f82a86c37aca01874c0c87fed951c" name="a9d2f82a86c37aca01874c0c87fed951c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>free</b> ()</td></tr>
+<tr class="memdesc:a9d2f82a86c37aca01874c0c87fed951c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the framebuffer. <br /></td></tr>
 <tr class="separator:a9d2f82a86c37aca01874c0c87fed951c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea74507a76341cc6201512f4368204e3"><td class="memItemLeft" align="right" valign="top"><a id="aea74507a76341cc6201512f4368204e3" name="aea74507a76341cc6201512f4368204e3"></a>
 <a class="el" href="classcel_1_1render_1_1texture.html">texture</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_texture</b> ()</td></tr>
+<tr class="memdesc:aea74507a76341cc6201512f4368204e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the framebuffer's draw texture. <br /></td></tr>
 <tr class="separator:aea74507a76341cc6201512f4368204e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -97,9 +107,48 @@ Friends</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>cel_app::render</b> ()</td></tr>
 <tr class="separator:adf890148a79193b272fbbc69ac1f9c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Interface for an OpenGL framebuffer </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="acd16b7cddb04ed4bcdee2da64d90caa7" name="acd16b7cddb04ed4bcdee2da64d90caa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd16b7cddb04ed4bcdee2da64d90caa7">&#9670;&nbsp;</a></span>framebuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cel::render::framebuffer::framebuffer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a framebuffer for drawing with the dimensions of <code>width</code> by <code>height</code> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>the width of the framebuffer </td></tr>
+    <tr><td class="paramname">height</td><td>the height of the framebuffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/cel/render/<a class="el" href="framebuffer_8h_source.html">framebuffer.h</a></li>
-<li>src/cel/render/render.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

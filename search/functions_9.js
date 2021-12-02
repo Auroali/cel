@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../classcel_1_1window.html#aadfe132103d6cc2ce1718251d33ecff2',1,'cel::window']]],
-  ['model_5fcomponent_1',['model_component',['../classcel_1_1model__component.html#aec56bb9975f03ee72e01fedf7afa441c',1,'cel::model_component']]]
+  ['import_5fobj_5fmodel_0',['import_obj_model',['../namespacecel_1_1io.html#a0e31b91521f6ac4c83f4f61cc4501024',1,'cel::io']]],
+  ['init_1',['init',['../classcel_1_1project.html#a1baec3b51d33ac8c0cc9fcd87d1706b7',1,'cel::project::init()'],['../classcel_1_1render_1_1render__engine.html#afd858cf232201b278f1fa5e057c100c6',1,'cel::render::render_engine::init()']]],
+  ['is_5fclosed_2',['is_closed',['../classcel_1_1window.html#a917f5c3c0a26a19df33e7e534897332c',1,'cel::window']]]
 ];
