@@ -2,7 +2,7 @@
 *.d
 
 # Documentation directory
-./docs
+docs/
 
 # Compiled Object files
 *.slo

@@ -37,5 +37,5 @@ test_project: cel assets
 	${CXX} ${CXXFLAGS} -lcel -o build/celtest ${CEL_TEST_SRC}
 
 docs:
-	rm -r docs
+	rm -rf docs
 	doxygen docs.conf
