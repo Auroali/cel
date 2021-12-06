@@ -34,6 +34,8 @@ cel::render::framebuffer render_buffer;
 cel::render::model post_quad;     
 
 namespace cel::render {
+    std::shared_ptr<cel::camera> camera;
+
     shader::shader() {
 
     }
@@ -170,7 +172,7 @@ namespace cel::render {
             glDeleteFramebuffers(1, &buf);
         }
     }
-    void render_engine::init(uint64_t flags, std::shared_ptr<cel::camera>& camera) {
+    void render_engine::init(uint64_t flags) {
         cel::window* window = cel::window::main();
         // Setup the render framebuffer
         render_buffer = cel::render::framebuffer(window->get_width(), window->get_height());
@@ -251,10 +253,11 @@ namespace cel::render {
             render_buffer.free();
             render_buffer = cel::render::framebuffer(cel::window::main()->get_width(),cel::window::main()->get_height());
         }
-
+        
         render_buffer.bind();
         glEnable(GL_DEPTH_TEST);
         cel::globals::main_shader.use();
+        camera->shader_setup(cel::globals::main_shader);
         glClearColor(0.0f,0.f,0.f,1.f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
         for(cel::project* p : projects) {
@@ -279,5 +282,8 @@ namespace cel::render {
     void render_engine::set_texture(GLenum texture_id, texture tex) {
         glActiveTexture(texture_id);
         glBindTexture(GL_TEXTURE_2D, tex.handle());
+    }
+    std::weak_ptr<cel::camera> render_engine::get_camera() {
+        return camera;
     }
 }

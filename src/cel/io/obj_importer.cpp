@@ -117,7 +117,7 @@ namespace cel::io {
             glEnableVertexAttribArray(1);
             // Normals
             glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(render::vertex), (void*)offsetof(render::vertex, normals));
-            glEnableVertexAttribArray(3);
+            glEnableVertexAttribArray(2);
             
 
             glBindVertexArray(0);

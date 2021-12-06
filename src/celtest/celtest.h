@@ -36,7 +36,7 @@ public:
     virtual bool init() override {
         std::shared_ptr<cel::scene> s1 = std::make_shared<cel::scene>();
         std::shared_ptr<cel::object> obj = std::make_shared<cel::object>();
-        obj->add_component(std::make_shared<cel::model_component>(cel::io::import_obj_model("./assets/utah_teapot.obj").value_or(cel::render::model())));
+        obj->add_component(std::make_shared<cel::model_component>(cel::io::import_obj_model("./assets/newell_teaset/teapot.obj").value_or(cel::render::model())));
         s1->add_object(obj);
         s1->set_active();
         float vertices[] = {

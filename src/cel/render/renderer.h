@@ -28,24 +28,41 @@ namespace cel::render {
          * <br>
          * <br> Behaviour can be modified by sending a CEL_SIG_RENDER_PARAMS signal
          * 
-         * @see cel::send_signal
+         * @see cel::render::render_engine::set_flags()
          * 
          * @param flags the flags to use for initialization
          * @param camera a reference to a camera pointer, will be set depending on the 2D flag
          */
-        static void init(uint64_t flags, std::shared_ptr<cel::camera>& camera);
+        static void init(uint64_t flags);
+
+        /**
+         * @brief Sets the flags used for init()
+         * 
+         * @param flags the flags to use
+         */
+        static void set_flags(uint64_t flags);
+
+        /**
+         * @brief Gets the current camera
+         * 
+         * @return std::weak_ptr<cel::camera> the current camera
+         */
+        static std::weak_ptr<cel::camera> get_camera();
+
         /**
          * @brief Controls whether or not depth testing is enabled
          * 
          * @param enable whether or not depth testing should be enabled
          */
         static void depth_test(bool enable);
+
         /**
          * @brief Controls whether or not stencil testing is enabled
          * 
          * @param enable whether or not stencil testing should be enabled
          */
         static void stencil_test(bool enable);
+        
         /**
          * @brief Sets the active texture and binds tex to it
          * 

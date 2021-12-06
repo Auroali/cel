@@ -74,7 +74,7 @@ namespace cel {
          * @param z the pitch of the camera
          */
         virtual void set_rot_euler(double x, double y, double z) {}
-        virtual void shader_setup(cel::render::matrix_stack& stack) {}
+        virtual void shader_setup(cel::render::shader& stack) {}
     };
     /**
      * Camera for view 2D space
@@ -146,7 +146,7 @@ namespace cel {
          * @note This isn't implemented for the 2D camera, as it cannot rotate
          */
         virtual void set_rot_euler(double x, double y, double z) {}
-        virtual void shader_setup(cel::render::matrix_stack& stack) {}
+        virtual void shader_setup(cel::render::shader& stack) {}
     };
     /**
      * Camera for viewing 3D space
@@ -198,7 +198,7 @@ namespace cel {
          * Setup shader specific things, such as projection/view matrix
          * @param shader pointer to the shader to use
          */
-        virtual void shader_setup(cel::render::matrix_stack& stack) override {
+        virtual void shader_setup(cel::render::shader& stack) override {
             glm::vec3 pos = glm::vec3((float)x, (float)y, (float)z);
             glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)cel::window::main()->get_width() / (float)cel::window::main()->get_height(), 0.05f, 100.f);
             glm::mat4 view = glm::lookAt(
@@ -206,10 +206,8 @@ namespace cel {
                 pos + forward, 
                 cel::globals::up
             );
-            stack.push();
-            stack.get() = proj;
-            stack.push();
-            stack.get() = view;
+            // Done using shader instead of matrix_stack so that we can still get the worldpos of whatever is being rendered in the shader
+            stack.set_mat4("projection_view", proj * view);
         }
     };
 }

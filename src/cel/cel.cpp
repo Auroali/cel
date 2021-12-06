@@ -50,7 +50,7 @@ void cel_app::receive_signal(uint64_t sig, void* ptr) {
     switch (sig)
     {
     case CEL_SIG_CAM_REQ:
-        *(cel::camera**)ptr = inst->cam.get();
+        *(cel::camera**)ptr = cel::render::render_engine::get_camera().lock().get();
         break;
     case CEL_SIG_RENDER_PARAMS:
         render_engine_flags = *reinterpret_cast<uint64_t*>(ptr);
@@ -155,14 +155,13 @@ bool cel_app::on_init() {
     win_main = cel::window(handle);
     win_main.set_main();
 
-    cel::render::render_engine::init(render_engine_flags, cam);
+    cel::render::render_engine::init(render_engine_flags);
 
 	return true;
 }
 
 void cel_app::render() {
     cel::render::matrix_stack stack;
-    cam->shader_setup(stack);
     cel::render::render_engine::render(stack, projects, cel::scene::get_active_scene());
     
     //Push buffer to screen
@@ -185,4 +184,8 @@ int main() {
     catch (exit_request const&) {
         return exitCode;
     }
+}
+
+void cel::render::render_engine::set_flags(uint64_t flags) {
+    render_engine_flags = flags;
 }

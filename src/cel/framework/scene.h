@@ -67,22 +67,5 @@ namespace cel {
          * @return node<std::shared_ptr<object>>* a pointer to the node that contains the object 
          */
         node<std::shared_ptr<object>>* get_node_by_object(std::weak_ptr<object> obj);
-
-        /**
-         * @brief Writes the scene to a file on disk
-         * 
-         * The scene is stored in a binary file, consisting
-         * of a 22 byte header followed by the object tree.
-         * 
-         * @param path the output path of the file
-         */
-        void write(const std::filesystem::path& path);
-        /**
-         * @brief Reads the scene from a file on disk
-         * 
-         * @param path the file to read from
-         * @return std::shared_ptr<scene> the scene created from the file
-         */
-        static std::shared_ptr<scene> read(const std::filesystem::path& path);
     };
 }
