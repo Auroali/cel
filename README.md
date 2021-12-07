@@ -5,7 +5,7 @@ Cel is an open source game engine, developed primarily for linux.
 
 # Setup
 
-## Linux:                                                 
+## Linux                                           
 
 #### Dependencies
 cel requires a couple of libraries, namely GLFW, glm and bullet. These can be installed via a package manager.
