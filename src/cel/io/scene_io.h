@@ -4,7 +4,7 @@
 #include <memory>
 
 #define SCENE_FORMAT_VER_MAJOR 1
-#define SCENE_FORMAT_VER_MINOR 1
+#define SCENE_FORMAT_VER_MINOR 0
 #define SCENE_FORMAT_VER_PATCH 0
 
 namespace cel::io {
@@ -12,9 +12,6 @@ namespace cel::io {
     public:
         /**
          * @brief Writes the scene to a file on disk
-         * 
-         * The scene is stored in a binary file, consisting
-         * of a 22 byte header followed by the object tree.
          * 
          * @param path the output path of the file
          */
