@@ -68,24 +68,24 @@ $(function() {
 <div class="textblock"><p ><a class="anchor" id="md_README"></a>Cel is an open source game engine, developed primarily for linux.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Setup</h1>
-<p >Linux: <br  />
-</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
-Dependencies</h2>
+Linux</h2>
+<h4><a class="anchor" id="autotoc_md3"></a>
+Dependencies</h4>
 <p >cel requires a couple of libraries, namely GLFW, glm and bullet. These can be installed via a package manager.</p>
-<p >Ubuntu: ``` sudo apt-get install libglfw3 libglm-dev libbullet-dev ```</p>
-<p >Arch: ``` sudo pacman -S glm glfw-x11 bullet ```</p>
+<p >Ubuntu: <code>sudo apt-get install libglfw3 libglm-dev libbullet-dev</code></p>
+<p >Arch: <code>sudo pacman -S glm glfw-x11 bullet</code> </p>
+<h4><a class="anchor" id="autotoc_md4"></a>
+Building</h4>
 <p >Clone the repository with <code>git clone <a href="https://github.com/Jacgar8/cel.git">https://github.com/Jacgar8/cel.git</a></code> <br  />
 </p>
 <p ><code>cd</code> into the directory and run <code>make</code> to build cel <br  />
-</p><ul>
-<li>All output files can be found in the <code>build</code> directory. </li>
-</ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
+ All output files can be found in the <code>build</code> directory. </p>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Using Cel</h1>
 <p >To use cel, create a class derived from <code><a class="el" href="classcel_1_1project.html">cel::project</a></code> and set up <code><a class="el" href="classcel_1_1project__builder.html">cel::project_builder</a></code> <br  />
  The project is now ready. To compile it, you must link with libcel.so (Linux), which can be found in the <code>build</code> directory. An example project is included with cel, in <code>src/celtest</code></p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Naming</h1>
 <p >Function names are written in snake case E.g. <code>void do_stuff(int param)</code> <br  />
 </p>
