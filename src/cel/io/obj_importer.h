@@ -1,4 +1,5 @@
 #pragma once
+#if ENABLE_RENDERER && ENABLE_IO
 #include "cel/render/model.h"
 #include <filesystem>
 #include <optional>
@@ -13,3 +14,4 @@ namespace cel::io {
     extern std::optional<cel::render::model> import_obj_model(const std::filesystem::path& file);
     
 }
+#endif

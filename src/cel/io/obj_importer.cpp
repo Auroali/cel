@@ -1,3 +1,4 @@
+#if ENABLE_RENDERER && ENABLE_IO
 #include "obj_importer.h"
 #include <iostream>
 #include <fstream>
@@ -126,3 +127,4 @@ namespace cel::io {
         return {};
     }
 }
+#endif

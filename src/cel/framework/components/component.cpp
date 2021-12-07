@@ -3,13 +3,16 @@
 
 
 namespace cel {
-    REFLECT_COMPONENT_DEFINE(model_component)
-    REFLECT_MEMBER_WITH(model, 0)
-    REFLECT_END()
+    
 
     component::component() {
         this->trans = transform();
     }
+
+    #if ENABLE_RENDERER
+    REFLECT_COMPONENT_DEFINE(model_component)
+    REFLECT_MEMBER_WITH(model, 0)
+    REFLECT_END()
 
     cel::render::model& model_component::get_model() {
         return model;
@@ -25,4 +28,5 @@ namespace cel {
     model_component::model_component(cel::render::model&& m) {
         this->model = m;
     }
+    #endif
 }

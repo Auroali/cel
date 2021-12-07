@@ -1,4 +1,5 @@
 #pragma once
+#if ENABLE_RENDERER
 #include "cel/reflect/reflect.h"
 #include "cel/render/model.h"
 #include "component.h"
@@ -32,3 +33,4 @@ namespace cel {
         cel::render::model& get_model();
     };
 }
+#endif

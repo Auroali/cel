@@ -63,4 +63,9 @@ namespace cel {
     std::weak_ptr<scene> scene::get_active_scene() {
         return active_scene;
     }
+    scene::scene() {
+        #if ENABLE_PHYSICS
+        physics_engine = physics::physics::create();
+        #endif
+    }
 }
