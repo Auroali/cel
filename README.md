@@ -11,14 +11,10 @@ Cel is an open source game engine, developed primarily for linux.
 cel requires a couple of libraries, namely GLFW, glm and bullet. These can be installed via a package manager.
 
 Ubuntu:
-    ```
-    sudo apt-get install libglfw3 libglm-dev libbullet-dev
-    ```
+    `sudo apt-get install libglfw3 libglm-dev libbullet-dev`
 
 Arch:
-    ```
-    sudo pacman -S glm glfw-x11 bullet
-    ```
+    `sudo pacman -S glm glfw-x11 bullet`
 #### Building
 Clone the repository with `git clone https://github.com/Jacgar8/cel.git`                                            
 
