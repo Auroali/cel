@@ -75,11 +75,17 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:afd858cf232201b278f1fa5e057c100c6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1render_1_1render__engine.html#afd858cf232201b278f1fa5e057c100c6">init</a> (uint64_t flags, std::shared_ptr&lt; <a class="el" href="classcel_1_1camera.html">cel::camera</a> &gt; &amp;<a class="el" href="classcel_1_1camera.html">camera</a>)</td></tr>
-<tr class="memdesc:afd858cf232201b278f1fa5e057c100c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the render engine, setting up the post-process quad and render buffer <br  />
+<tr class="memitem:a8357930139b0cf78d54b684cd9e6b6f0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1render_1_1render__engine.html#a8357930139b0cf78d54b684cd9e6b6f0">init</a> (uint64_t flags)</td></tr>
+<tr class="memdesc:a8357930139b0cf78d54b684cd9e6b6f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the render engine, setting up the post-process quad and render buffer <br  />
  <br  />
- Behaviour can be modified by sending a CEL_SIG_RENDER_PARAMS signal.  <a href="classcel_1_1render_1_1render__engine.html#afd858cf232201b278f1fa5e057c100c6">More...</a><br /></td></tr>
-<tr class="separator:afd858cf232201b278f1fa5e057c100c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+ Behaviour can be modified by sending a CEL_SIG_RENDER_PARAMS signal.  <a href="classcel_1_1render_1_1render__engine.html#a8357930139b0cf78d54b684cd9e6b6f0">More...</a><br /></td></tr>
+<tr class="separator:a8357930139b0cf78d54b684cd9e6b6f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37bcb3842245a539e676afe56f4793c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1render_1_1render__engine.html#ab37bcb3842245a539e676afe56f4793c">set_flags</a> (uint64_t flags)</td></tr>
+<tr class="memdesc:ab37bcb3842245a539e676afe56f4793c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the flags used for <a class="el" href="classcel_1_1render_1_1render__engine.html#a8357930139b0cf78d54b684cd9e6b6f0" title="Initializes the render engine, setting up the post-process quad and render buffer     Behaviour can b...">init()</a>  <a href="classcel_1_1render_1_1render__engine.html#ab37bcb3842245a539e676afe56f4793c">More...</a><br /></td></tr>
+<tr class="separator:ab37bcb3842245a539e676afe56f4793c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ee8419c39624aaa9a753f98454c872"><td class="memItemLeft" align="right" valign="top">static std::weak_ptr&lt; <a class="el" href="classcel_1_1camera.html">cel::camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1render_1_1render__engine.html#af6ee8419c39624aaa9a753f98454c872">get_camera</a> ()</td></tr>
+<tr class="memdesc:af6ee8419c39624aaa9a753f98454c872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current camera.  <a href="classcel_1_1render_1_1render__engine.html#af6ee8419c39624aaa9a753f98454c872">More...</a><br /></td></tr>
+<tr class="separator:af6ee8419c39624aaa9a753f98454c872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3917f1d8482436f68972e90710019a25"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1render_1_1render__engine.html#a3917f1d8482436f68972e90710019a25">depth_test</a> (bool enable)</td></tr>
 <tr class="memdesc:a3917f1d8482436f68972e90710019a25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls whether or not depth testing is enabled.  <a href="classcel_1_1render_1_1render__engine.html#a3917f1d8482436f68972e90710019a25">More...</a><br /></td></tr>
 <tr class="separator:a3917f1d8482436f68972e90710019a25"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,8 +137,36 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>cel_app::render</b> (
 
 </div>
 </div>
-<a id="afd858cf232201b278f1fa5e057c100c6" name="afd858cf232201b278f1fa5e057c100c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd858cf232201b278f1fa5e057c100c6">&#9670;&nbsp;</a></span>init()</h2>
+<a id="af6ee8419c39624aaa9a753f98454c872" name="af6ee8419c39624aaa9a753f98454c872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6ee8419c39624aaa9a753f98454c872">&#9670;&nbsp;</a></span>get_camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::weak_ptr&lt; <a class="el" href="classcel_1_1camera.html">cel::camera</a> &gt; cel::render::render_engine::get_camera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the current camera. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::weak_ptr&lt;cel::camera&gt; the current camera </dd></dl>
+
+</div>
+</div>
+<a id="a8357930139b0cf78d54b684cd9e6b6f0" name="a8357930139b0cf78d54b684cd9e6b6f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8357930139b0cf78d54b684cd9e6b6f0">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,18 +178,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>cel_app::render</b> (
           <td class="memname">static void cel::render::render_engine::init </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>flags</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classcel_1_1camera.html">cel::camera</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>camera</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -168,11 +192,45 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>cel_app::render</b> (
 <p>Initializes the render engine, setting up the post-process quad and render buffer <br  />
  <br  />
  Behaviour can be modified by sending a CEL_SIG_RENDER_PARAMS signal. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacecel.html#a37e7763eaec64ea0e724efd0f1ab83c9" title="Used to communicate with the engine     Available signals are:   CEL_SIG_CAM_REQ: Takes a cel::camera...">cel::send_signal</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcel_1_1render_1_1render__engine.html#ab37bcb3842245a539e676afe56f4793c" title="Sets the flags used for init()">cel::render::render_engine::set_flags()</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">flags</td><td>the flags to use for initialization </td></tr>
     <tr><td class="paramname">camera</td><td>a reference to a camera pointer, will be set depending on the 2D flag </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab37bcb3842245a539e676afe56f4793c" name="ab37bcb3842245a539e676afe56f4793c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37bcb3842245a539e676afe56f4793c">&#9670;&nbsp;</a></span>set_flags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void cel::render::render_engine::set_flags </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the flags used for <a class="el" href="classcel_1_1render_1_1render__engine.html#a8357930139b0cf78d54b684cd9e6b6f0" title="Initializes the render engine, setting up the post-process quad and render buffer     Behaviour can b...">init()</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>the flags to use </td></tr>
   </table>
   </dd>
 </dl>

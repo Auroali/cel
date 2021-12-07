@@ -1,6 +1,7 @@
 var searchData=
 [
   ['scene_0',['scene',['../classcel_1_1scene.html',1,'cel']]],
-  ['shader_1',['shader',['../classcel_1_1render_1_1shader.html',1,'cel::render']]],
-  ['solver_2',['solver',['../classcel_1_1reflection_1_1solver.html',1,'cel::reflection']]]
+  ['scene_5fio_1',['scene_io',['../classcel_1_1io_1_1scene__io.html',1,'cel::io']]],
+  ['shader_2',['shader',['../classcel_1_1render_1_1shader.html',1,'cel::render']]],
+  ['solver_3',['solver',['../classcel_1_1reflection_1_1solver.html',1,'cel::reflection']]]
 ];

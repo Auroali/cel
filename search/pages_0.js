@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['cel_0',['Cel',['../index.html',1,'']]],
-  ['cel_1',['cel',['../md_README.html',1,'']]]
+  ['cel_0',['cel',['../index.html',1,'']]]
 ];

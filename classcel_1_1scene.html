@@ -100,9 +100,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a977cb36fe1c3b394e44dcb837bb28e02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcel_1_1node.html">node</a>&lt; std::shared_ptr&lt; <a class="el" href="classcel_1_1object.html">object</a> &gt; &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1scene.html#a977cb36fe1c3b394e44dcb837bb28e02">get_node_by_object</a> (std::weak_ptr&lt; <a class="el" href="classcel_1_1object.html">object</a> &gt; obj)</td></tr>
 <tr class="memdesc:a977cb36fe1c3b394e44dcb837bb28e02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node from the object tree that contains obj.  <a href="classcel_1_1scene.html#a977cb36fe1c3b394e44dcb837bb28e02">More...</a><br /></td></tr>
 <tr class="separator:a977cb36fe1c3b394e44dcb837bb28e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3662db7d69fcf8b3675dca4f21ab070"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1scene.html#af3662db7d69fcf8b3675dca4f21ab070">write</a> (const std::filesystem::path &amp;path)</td></tr>
-<tr class="memdesc:af3662db7d69fcf8b3675dca4f21ab070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the scene to a file on disk.  <a href="classcel_1_1scene.html#af3662db7d69fcf8b3675dca4f21ab070">More...</a><br /></td></tr>
-<tr class="separator:af3662db7d69fcf8b3675dca4f21ab070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -113,9 +110,6 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_active</
 <tr class="memitem:a8b59ba81a2a0494addbaf98344434e99"><td class="memItemLeft" align="right" valign="top">static std::weak_ptr&lt; <a class="el" href="classcel_1_1scene.html">scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1scene.html#a8b59ba81a2a0494addbaf98344434e99">get_active_scene</a> ()</td></tr>
 <tr class="memdesc:a8b59ba81a2a0494addbaf98344434e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the active scene object.  <a href="classcel_1_1scene.html#a8b59ba81a2a0494addbaf98344434e99">More...</a><br /></td></tr>
 <tr class="separator:a8b59ba81a2a0494addbaf98344434e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bf472811c46c5b13b0bda8ee9ec306f"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classcel_1_1scene.html">scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1scene.html#a2bf472811c46c5b13b0bda8ee9ec306f">read</a> (const std::filesystem::path &amp;path)</td></tr>
-<tr class="memdesc:a2bf472811c46c5b13b0bda8ee9ec306f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the scene from a file on disk.  <a href="classcel_1_1scene.html#a2bf472811c46c5b13b0bda8ee9ec306f">More...</a><br /></td></tr>
-<tr class="separator:a2bf472811c46c5b13b0bda8ee9ec306f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Tree-based container for objects </p>
@@ -248,41 +242,6 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_active</
 
 </div>
 </div>
-<a id="a2bf472811c46c5b13b0bda8ee9ec306f" name="a2bf472811c46c5b13b0bda8ee9ec306f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bf472811c46c5b13b0bda8ee9ec306f">&#9670;&nbsp;</a></span>read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static std::shared_ptr&lt; <a class="el" href="classcel_1_1scene.html">scene</a> &gt; cel::scene::read </td>
-          <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reads the scene from a file on disk. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>the file to read from </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>std::shared_ptr&lt;scene&gt; the scene created from the file </dd></dl>
-
-</div>
-</div>
 <a id="a0c7bd31aba3fbaf433d2998df8e8550d" name="a0c7bd31aba3fbaf433d2998df8e8550d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c7bd31aba3fbaf433d2998df8e8550d">&#9670;&nbsp;</a></span>set_active()</h2>
 
@@ -322,33 +281,6 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_active</
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>the object to remove </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="af3662db7d69fcf8b3675dca4f21ab070" name="af3662db7d69fcf8b3675dca4f21ab070"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3662db7d69fcf8b3675dca4f21ab070">&#9670;&nbsp;</a></span>write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void cel::scene::write </td>
-          <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Writes the scene to a file on disk. </p>
-<p >The scene is stored in a binary file, consisting of a 22 byte header followed by the object tree.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>the output path of the file </td></tr>
   </table>
   </dd>
 </dl>

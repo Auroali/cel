@@ -5,7 +5,7 @@ var indexSectionsWithContent =
   2: "c",
   3: "_abcdefghimnoprstuw",
   4: "dfnpuv",
-  5: "c"
+  5: "cd"
 };
 
 var indexSectionNames =

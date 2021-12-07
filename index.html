@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Cel: Cel</title>
+<title>Cel: cel</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,32 +62,36 @@ $(function() {
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Cel </div></div>
+  <div class="headertitle"><div class="title">cel </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="info"></a>
-Info</h1>
-<p >Cel is an open source game engine, developed primarily for linux. </p>
-<h1><a class="anchor" id="setup"></a>
+<div class="textblock"><p ><a class="anchor" id="md_README"></a>Cel is an open source game engine, developed primarily for linux.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
 Setup</h1>
 <p >Linux: <br  />
- Clone the repository with <code>git clone <a href="https://github.com/Jacgar8/cel.git">https://github.com/Jacgar8/cel.git</a></code> <br  />
- <code>cd</code> into the directory and run <code>make</code> to build cel <br  />
- All output files can be found in the <code>build</code> directory. </p>
-<h1><a class="anchor" id="use"></a>
+</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Dependencies</h2>
+<p >cel requires a couple of libraries, namely GLFW, glm and bullet. These can be installed via a package manager.</p>
+<p >Ubuntu: ``` sudo apt-get install libglfw3 libglm-dev libbullet-dev ```</p>
+<p >Arch: ``` sudo pacman -S glm glfw-x11 bullet ```</p>
+<p >Clone the repository with <code>git clone <a href="https://github.com/Jacgar8/cel.git">https://github.com/Jacgar8/cel.git</a></code> <br  />
+</p>
+<p ><code>cd</code> into the directory and run <code>make</code> to build cel <br  />
+</p><ul>
+<li>All output files can be found in the <code>build</code> directory. </li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Using Cel</h1>
 <p >To use cel, create a class derived from <code><a class="el" href="classcel_1_1project.html">cel::project</a></code> and set up <code><a class="el" href="classcel_1_1project__builder.html">cel::project_builder</a></code> <br  />
- The project is now ready. To compile it, you must link with libcel.so (Linux), which can be found in the <code>build</code> directory. <br  />
- An example project is included with cel, in <code>src/celtest</code></p>
-<h1><a class="anchor" id="name"></a>
+ The project is now ready. To compile it, you must link with libcel.so (Linux), which can be found in the <code>build</code> directory. An example project is included with cel, in <code>src/celtest</code></p>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Naming</h1>
-<p >Function names are written in snake case <br  />
- E.g. <code>void do_stuff(int param)</code> <br  />
- <br  />
- Variable names are written in snake case <br  />
- E.g. <code>int variable_name</code> <br  />
- <br  />
- Functions/Classes beginning with two underscores are intended for internal use, but exposed in the event that they are needed. It is not recommended to use these. </p>
+<p >Function names are written in snake case E.g. <code>void do_stuff(int param)</code> <br  />
+</p>
+<p >Variable names are written in snake case E.g. <code>int variable_name</code> <br  />
+</p>
+<p >Functions/Classes beginning with two underscores are intended for internal use, but exposed in the event that they are needed. It is not recommended to use these. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
