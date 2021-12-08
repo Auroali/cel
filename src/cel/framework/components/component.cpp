@@ -9,7 +9,6 @@ namespace cel {
         this->trans = transform();
     }
 
-    #if ENABLE_RENDERER
     REFLECT_COMPONENT_DEFINE(model_component)
     REFLECT_MEMBER_WITH(model, 0)
     REFLECT_END()
@@ -28,5 +27,4 @@ namespace cel {
     model_component::model_component(cel::render::model&& m) {
         this->model = m;
     }
-    #endif
 }

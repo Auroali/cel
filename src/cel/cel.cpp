@@ -9,13 +9,11 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "io/stb_image.h"
 #undef STB_IMAGE_IMPLEMENTATION
-#if ENABLE_RENDERER
 #include "cel/render/model.h"
 #include "cel/render/framebuffer.h"
 #include "cel/render/texture.h"
 #include "cel/render/renderer.h"
 #include "cel/render/matrix_stack.h"
-#endif
 
 cel_app* cel_app::inst;
 int exitCode;
@@ -24,14 +22,12 @@ double cel::time::fixed_delta_time = 1.f/60.f;
 std::vector<cel::project_builder_base*>* cel::project::projects;
 uint64_t render_engine_flags = 0;
 
-#if ENABLE_RENDERER
 /**
  * Definitions for variables and functions in constants.h
  */
 cel::render::shader cel::globals::main_shader;
 cel::render::shader cel::globals::quad_shader;
 cel::render::shader cel::globals::basic_shader;
-#endif
 
 void cel::globals::init_shaders() {
     #if ENABLE_RENDERER
@@ -116,7 +112,6 @@ void print_glfw_err() {
 }
 
 bool cel_app::on_init() {
-    #if ENABLE_RENDERER
     if(!glfwInit()) {
         std::cerr << "Failed to initialize GLFW!\n";
         print_glfw_err();
@@ -142,7 +137,6 @@ bool cel_app::on_init() {
         std::cerr << "Failed to get GLFW proc address!\n";
         return false;
     }
-    #endif
 
     for(cel::project* p : cel::project::build_projects()) {
         if(!p->init()) {
@@ -157,7 +151,6 @@ bool cel_app::on_init() {
         return false;
     }
     std::cout << "Initialized " << projects.size() << " projects!" << std::endl;
-    #if ENABLE_RENDERER
     glfwSetWindowTitle(handle, projects[0]->get_name().c_str());
     //this->cam = std::make_shared<cel::camera3d>();
 
@@ -167,18 +160,15 @@ bool cel_app::on_init() {
     win_main.set_main();
     
     cel::render::render_engine::init(render_engine_flags);
-    #endif
 	return true;
 }
 
 void cel_app::render() {
-    #if ENABLE_RENDERER
     cel::render::matrix_stack stack;
     cel::render::render_engine::render(stack, projects, cel::scene::get_active_scene());
     
     //Push buffer to screen
     cel::window::main()->swap();
-    #endif
 }
 
 void cel_app::cleanup() {

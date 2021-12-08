@@ -1,4 +1,3 @@
-#if ENABLE_RENDERER
 #include "model.h"
 #include "shader.h"
 #include "framebuffer.h"
@@ -288,4 +287,3 @@ namespace cel::render {
         return camera;
     }
 }
-#endif

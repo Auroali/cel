@@ -4,9 +4,8 @@
 #include <memory>
 #include <filesystem>
 
-#if ENABLE_PHYSICS
 #include "cel/physics/physics.h"
-#endif
+
 
 namespace cel {
     class object;
@@ -16,9 +15,7 @@ namespace cel {
      */
     class scene : public std::enable_shared_from_this<scene> {
         tree<std::shared_ptr<object>> objs;
-        #if ENABLE_PHYSICS
         std::unique_ptr<cel::physics::physics> physics_engine;
-        #endif
         static std::shared_ptr<scene> active_scene;
     public:
         scene();
