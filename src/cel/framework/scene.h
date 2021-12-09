@@ -17,6 +17,7 @@ namespace cel {
         tree<std::shared_ptr<object>> objs;
         std::unique_ptr<cel::physics::physics> physics_engine;
         static std::shared_ptr<scene> active_scene;
+        friend int cel_app::on_execute();
     public:
         scene();
         /**

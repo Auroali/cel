@@ -15,6 +15,9 @@
 #include "cel/render/renderer.h"
 #include "cel/render/matrix_stack.h"
 
+#include "cel/framework/object.h"
+#include "cel/framework/components/component.h"
+
 cel_app* cel_app::inst;
 int exitCode;
 double cel::time::delta_time = 1;
@@ -30,11 +33,9 @@ cel::render::shader cel::globals::quad_shader;
 cel::render::shader cel::globals::basic_shader;
 
 void cel::globals::init_shaders() {
-    #if ENABLE_RENDERER
     main_shader = cel::render::shader("./assets/main.vs", "./assets/main.fs");
     quad_shader = cel::render::shader("./assets/post.vs", "./assets/post.fs");
     basic_shader = cel::render::shader("./assets/basic.vs", "./assets/basic.fs");
-    #endif
 }
 
 class exit_request : std::exception {};
@@ -52,9 +53,7 @@ void cel_app::receive_signal(uint64_t sig, void* ptr) {
     switch (sig)
     {
     case CEL_SIG_CAM_REQ:
-        #if ENABLE_RENDERER
         *(cel::camera**)ptr = cel::render::render_engine::get_camera().lock().get();
-        #endif
         break;
     case CEL_SIG_RENDER_PARAMS:
         render_engine_flags = *reinterpret_cast<uint64_t*>(ptr);
@@ -86,17 +85,41 @@ int cel_app::on_execute() {
         double new_time = glfwGetTime();
         cel::time::delta_time = new_time - current;
         current = new_time;
-                
+        std::vector<std::weak_ptr<cel::component>> components;
+        if(cel::scene::active_scene) {
+            
+            // Add all updateable components to the components vector
+            for(auto obj : cel::scene::active_scene->get_obj_tree().get_sorted()) {
+                for(auto c : obj->val->get_components()) {
+                    components.push_back(c);
+                }
+            }
+        }
         glfwPollEvents();
         accumulator += cel::time::delta_time;
         for(cel::project* p : projects) {
             p->update();
         }
+        // Call update for all updateable components
+        for(auto c : components) {
+            if(auto c_locked = c.lock()) {
+                c_locked->fixed_update();
+            }
+        }        
         while (accumulator >= cel::time::fixed_delta_time) {
             cel::window::main()->get_input_handler().process_mouse();
 		    for(cel::project* p : projects) {
 		        p->fixed_update();
+                
 		    }
+            // Step the physics engine
+            cel::scene::active_scene->physics_engine->step();
+            // Call fixed update for all updateable components
+            for(auto c : components) {
+                if(auto c_locked = c.lock()) {
+                    c_locked->fixed_update();
+                }
+            }
             accumulator -= cel::time::fixed_delta_time;
         }
         render();

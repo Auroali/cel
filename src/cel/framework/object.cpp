@@ -56,6 +56,7 @@ namespace cel {
         component->parent = shared_from_this();
         component->trans.parent = &component->trans;
         components.push_back(component);
+        component->on_attach(shared_from_this());
     }
     std::vector<std::weak_ptr<component>> object::get_components() {
         std::vector<std::weak_ptr<component>> comps;

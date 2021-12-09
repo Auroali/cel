@@ -7,25 +7,7 @@
 #include <algorithm>
 #include <iterator>
 
-std::vector<std::string> split(std::string str, char delimeter=' '){
-    std::string t = std::string();
-    std::vector<std::string> str_v;
-    for(char c : str) {
-        if(c != delimeter) {
-            t += c;
-        } else if(t != std::string() + delimeter && t != std::string()) {
-            str_v.push_back(t);
-            t = "";
-        }
-    }
-    str_v.push_back(t);
-
-	if(str_v.size() == 0) {
-		str_v.push_back(std::string() + delimeter);
-	}
-
-    return str_v;
-}
+#include "cel/util.h"
 
 namespace cel::io {
     std::optional<cel::render::model> import_obj_model(const std::filesystem::path& file) {
@@ -67,7 +49,7 @@ namespace cel::io {
                     render::vertex v2;
                     render::vertex v3;
                     // Vertex 1
-                    std::vector<std::string> face = split(vstrings[1], '/');
+                    std::vector<std::string> face = cel::split(vstrings[1], '/');
                     if(!face[0].empty())
                         v1.pos = vertices[std::stoull(face[0])-1];
                     if(face.size() >= 2 && !face[1].empty())
@@ -75,7 +57,7 @@ namespace cel::io {
                     if(face.size() >= 3 && !face[2].empty())
                         v1.normals = normals[std::stoull(face[2])-1];
                     // Vertex 2
-                    face = split(vstrings[2], '/');
+                    face = cel::split(vstrings[2], '/');
                     if(!face[0].empty())
                         v2.pos = vertices[std::stoull(face[0])-1];
                     if(face.size() >= 2 && !face[1].empty())
@@ -83,7 +65,7 @@ namespace cel::io {
                     if(face.size() >= 3 && !face[2].empty())
                         v2.normals = normals[std::stoull(face[2])-1];
                     // Vertex 3
-                    face = split(vstrings[3], '/');
+                    face = cel::split(vstrings[3], '/');
                     if(!face[0].empty())
                         v3.pos = vertices[std::stoull(face[0])-1];
                     if(face.size() >= 2 && !face[1].empty())

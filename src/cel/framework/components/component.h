@@ -18,7 +18,7 @@ namespace cel {
      * Base class for components that can be attached to objects
      */
     class component {
-    private:
+    protected:
         // The owning object of this component
         std::weak_ptr<object> parent;
         friend class object;
@@ -30,6 +30,20 @@ namespace cel {
         // The component's name
         std::string name;
         component();
+        /**
+         * @brief Called when this component is attached to an object
+         * 
+         * @param obj the object this component has been attached to
+         */
+        virtual void on_attach(std::shared_ptr<object> obj);
+        /**
+         * @brief Called a fixed number of times per second
+         */
+        virtual void fixed_update() {}
+        /**
+         * @brief Called once every frame
+         */
+        virtual void update() {}
         virtual ~component() {}
     };
 }
