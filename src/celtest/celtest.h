@@ -19,6 +19,9 @@
 #include <cel/framework/components/model_component.h>
 
 #include <memory>
+
+#include <cel/physics/components/rigidbody.h>
+
 cel::render::model m(0,0);
 
 class test_comp : public cel::component {
@@ -39,6 +42,7 @@ public:
         obj->add_component(std::make_shared<cel::model_component>(cel::io::import_obj_model("./assets/newell_teaset/teapot.obj").value_or(cel::render::model())));
         s1->add_object(obj);
         s1->set_active();
+        obj->add_component(std::make_shared<cel::rigidbody_component>());
         float vertices[] = {
             -1,-1,0,
             0,1,0,
@@ -81,8 +85,8 @@ public:
     }
     virtual void render(cel::render::matrix_stack& stack) override {
         stack.push();
-        stack.translate(glm::vec3(0,-5,-2));
-        stack.rotate(glm::quat(glm::vec3(0,glm::radians(90.f), 0)));
+        stack.rotate(glm::quat(glm::vec3(0,0,glm::radians(90.f))));
+        stack.translate(glm::vec3(0,-5,0));
         stack.apply(cel::globals::main_shader);
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);

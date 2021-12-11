@@ -13,7 +13,7 @@ namespace cel::render {
     class framebuffer {
         unsigned int buf;
         unsigned int rbo;
-        texture tex;
+        std::vector<texture> tex;
         friend void cel_app::render();
     public:
         /**
@@ -41,7 +41,19 @@ namespace cel::render {
         void free();
         /**
          * @brief Gets the framebuffer's draw texture
+         * 
+         * @param index the texture index to use (in order of attach_texture calls)
          */
-        texture& get_texture();
+        texture& get_texture(size_t index);
+        /**
+         * @brief Attaches a texture to the framebuffer
+         * 
+         * @param width the width of the texture
+         * @param height the height of the texture
+         * @param attachment the attachment to use (GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_DEPTH_STENCIL_ATTACHMENT, etc...)
+         */
+        void attach_texture(int width, int height, GLenum attachment);
+
+        void draw_buffers(std::vector<GLenum> attachments);
     };
 }

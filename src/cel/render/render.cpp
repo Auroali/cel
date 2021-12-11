@@ -13,6 +13,8 @@
 #include "cel/framework/components/component.h"
 #include <memory>
 
+#include "cel/logger.h"
+
 const char* FALLBACK_FRAGMENT = 
 "#version 450 core\n"
 "out vec4 FragColor;\n"
@@ -68,7 +70,7 @@ namespace cel::render {
             glGetShaderiv(vert, GL_COMPILE_STATUS, &success);
             if(!success) {
                 glGetShaderInfoLog(vert, 512, NULL, infoLog);
-                std::cout << infoLog << std::endl;
+                LOG_ERROR(infoLog);
                 glDeleteShader(vert);
                 vert = glCreateShader(GL_VERTEX_SHADER);
                 glShaderSource(vert, 1, &FALLBACK_VERTEX, NULL);
@@ -82,7 +84,7 @@ namespace cel::render {
             glGetShaderiv(frag, GL_COMPILE_STATUS, &success);
             if(!success) {
                 glGetShaderInfoLog(frag, 512, NULL, infoLog);
-                std::cout << infoLog << std::endl;
+                LOG_ERROR(infoLog);
                 glDeleteShader(frag);
                 frag = glCreateShader(GL_FRAGMENT_SHADER);
                 glShaderSource(vert, 1, &FALLBACK_FRAGMENT, NULL);
@@ -96,13 +98,13 @@ namespace cel::render {
             glGetProgramiv(program, GL_LINK_STATUS, &success);
             if(!success) {
                 glGetProgramInfoLog(program, 512, NULL, infoLog);
-                std::cout << infoLog << std::endl;
+                LOG_ERROR(infoLog);
             }
             glDeleteShader(frag);
             glDeleteShader(vert);
-            std::cout << "Loaded shader " << v << ", " << f << " with ID " << program << std::endl;
+            LOG_INFO(fmt::format("Loaded shaders {}, {} with ID {} ", v, f, program));
         } catch (const std::ifstream::failure& e) {
-            std::cout << e.what() << std::endl;
+            LOG_ERROR(e.what());
         }
         
     }
@@ -134,12 +136,6 @@ namespace cel::render {
     framebuffer::framebuffer(int width, int height) {
         glGenFramebuffers(1, &buf);
         glBindFramebuffer(GL_FRAMEBUFFER, buf);
-        tex = texture(width, height);
-        if(!tex.is_valid()) {
-            std::cerr << "Unable to create texture for framebuffer!\n";
-            cel::request_exit(CEL_ERROR_FRAMEBUFFER);
-        }
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, tex, 0);
 
         glGenRenderbuffers(1, &rbo);
         glBindRenderbuffer(GL_RENDERBUFFER, rbo);
@@ -148,9 +144,20 @@ namespace cel::render {
         glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
         
         if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-            std::cerr << "Unable to complete framebuffer!\n";
+            LOG_ERROR("Unable to complete framebuffer!");
             cel::request_exit(CEL_ERROR_FRAMEBUFFER);
         }
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    }
+    void framebuffer::attach_texture(int width, int height, GLenum attachment) {
+        glBindFramebuffer(GL_FRAMEBUFFER, buf);
+        texture tex_ = texture(width, height);
+        if(!tex_.is_valid()) {
+            LOG_ERROR("Unable to create texture for framebuffer!");
+            cel::request_exit(CEL_ERROR_FRAMEBUFFER);
+        }
+        glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, tex_, 0);
+        tex.push_back(tex_);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
     void framebuffer::bind() {
@@ -159,16 +166,18 @@ namespace cel::render {
     void framebuffer::unbind() {
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
-    texture& framebuffer::get_texture() {
-        return tex;
+    texture& framebuffer::get_texture(size_t index) {
+        return tex[index];
     }
     void framebuffer::free() {
         //std::cout << "Out of scope, destroying..." << std::endl;
         if(buf != 0 && glIsFramebuffer(buf)) {
             if(glIsRenderbuffer(rbo))
                 glDeleteRenderbuffers(1, &rbo);
-            if(tex.is_valid())
-                tex.free();
+            for(auto& tex_ : tex) {
+                if(tex_.is_valid())
+                    tex_.free();
+            }
             glDeleteFramebuffers(1, &buf);
         }
     }
@@ -176,7 +185,8 @@ namespace cel::render {
         cel::window* window = cel::window::main();
         // Setup the render framebuffer
         render_buffer = cel::render::framebuffer(window->get_width(), window->get_height());
-
+        render_buffer.attach_texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_COLOR_ATTACHMENT0);
+        
         // Setup the post process quad
         float vertices[] = {  
             // positions   // texCoords
@@ -207,10 +217,13 @@ namespace cel::render {
         glBindVertexArray(0);
         post_quad = model(vao, 6);
 
-        if(flags & CEL_RENDERFLAG_2D)
+        if(flags & CEL_RENDERFLAG_2D) {
             camera = std::make_shared<camera2d>();
-        else
+            LOG_ERROR("WARNING: 2D mode is not complete! Things may not work as intended.");
+        } else
             camera = std::make_shared<camera3d>();
+        if(flags & CEL_RENDERFLAG_MULTISAMPLE_AA)
+            glEnable(GL_MULTISAMPLE);
     }
     
     void walk_scene_tree(cel::node<std::shared_ptr<cel::object>>& n, matrix_stack& stack) {
@@ -248,10 +261,11 @@ namespace cel::render {
 
     void render_engine::render(matrix_stack& stack, std::vector<cel::project*> projects, std::weak_ptr<cel::scene> scene) {
         glViewport(0,0,cel::window::main()->get_width(),cel::window::main()->get_height());
-        if(render_buffer.get_texture().width() != cel::window::main()->get_width() || render_buffer.get_texture().height() != cel::window::main()->get_height()) {
-            std::cout << "Render Buffer size doesn't match screen size! Resizing... (Expected " << cel::window::main()->get_width() << ',' << cel::window::main()->get_height() << " but got " << render_buffer.get_texture().width() << ',' << render_buffer.get_texture().height() << ")" << std::endl;
+        if(render_buffer.get_texture(0).width() != cel::window::main()->get_width() || render_buffer.get_texture(0).height() != cel::window::main()->get_height()) {
+            LOG_INFO(fmt::format("Render Buffer size doesn't match screen size! Resizing... (Expected {}x{}, got {}x{}", cel::window::main()->get_width(), cel::window::main()->get_height(), render_buffer.get_texture(0).width(), render_buffer.get_texture(0).height()));
             render_buffer.free();
             render_buffer = cel::render::framebuffer(cel::window::main()->get_width(),cel::window::main()->get_height());
+            render_buffer.attach_texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_COLOR_ATTACHMENT0);
         }
         
         render_buffer.bind();
@@ -275,7 +289,7 @@ namespace cel::render {
         glDisable(GL_DEPTH_TEST);
         glDisable(GL_STENCIL_TEST);
 
-        set_texture(GL_TEXTURE0, render_buffer.get_texture());
+        set_texture(GL_TEXTURE0, render_buffer.get_texture(0));
         post_quad.render();
 
     }
@@ -285,5 +299,8 @@ namespace cel::render {
     }
     std::weak_ptr<cel::camera> render_engine::get_camera() {
         return camera;
+    }
+    void framebuffer::draw_buffers(std::vector<GLenum> attachments) {
+        glDrawBuffers(attachments.size(), attachments.data());
     }
 }

@@ -7,7 +7,9 @@
 
 namespace cel {
     std::shared_ptr<scene> scene::active_scene;
-    
+    cel::physics::physics* scene::get_phys() {
+        return this->physics_engine.get();
+    }
     tree<std::shared_ptr<object>>& scene::get_obj_tree() {
         return objs;
     }
@@ -64,8 +66,6 @@ namespace cel {
         return active_scene;
     }
     scene::scene() {
-        #if ENABLE_PHYSICS
         physics_engine = physics::physics::create();
-        #endif
     }
 }

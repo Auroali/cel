@@ -6,10 +6,8 @@
 #include "cel/framework/scene.h"
 #include <memory>
 
-/**
-* @brief Controls whether or not tbe render engine starts in 2D mode
-*/
-#define CEL_RENDERFLAG_2D 0x01
+#define CEL_RENDERFLAG_2D             0x01
+#define CEL_RENDERFLAG_MULTISAMPLE_AA 0x02
 
 /**
  * @namespace cel::render Cel render 

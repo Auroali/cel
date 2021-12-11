@@ -18,12 +18,14 @@
 #include "cel/framework/object.h"
 #include "cel/framework/components/component.h"
 
+#include "cel/logger.h"
+
 cel_app* cel_app::inst;
 int exitCode;
 double cel::time::delta_time = 1;
 double cel::time::fixed_delta_time = 1.f/60.f;
 std::vector<cel::project_builder_base*>* cel::project::projects;
-uint64_t render_engine_flags = 0;
+uint64_t render_engine_flags = CEL_RENDERFLAG_MULTISAMPLE_AA;
 
 /**
  * Definitions for variables and functions in constants.h
@@ -86,10 +88,10 @@ int cel_app::on_execute() {
         cel::time::delta_time = new_time - current;
         current = new_time;
         std::vector<std::weak_ptr<cel::component>> components;
-        if(cel::scene::active_scene) {
+        if(auto scene = cel::scene::get_active_scene().lock()) {
             
             // Add all updateable components to the components vector
-            for(auto obj : cel::scene::active_scene->get_obj_tree().get_sorted()) {
+            for(auto obj : scene->get_obj_tree().get_sorted()) {
                 for(auto c : obj->val->get_components()) {
                     components.push_back(c);
                 }
@@ -113,7 +115,9 @@ int cel_app::on_execute() {
                 
 		    }
             // Step the physics engine
-            cel::scene::active_scene->physics_engine->step();
+            if(auto scene = cel::scene::get_active_scene().lock())
+                if(scene->get_phys())
+                    scene->get_phys()->step();
             // Call fixed update for all updateable components
             for(auto c : components) {
                 if(auto c_locked = c.lock()) {
@@ -131,12 +135,12 @@ int cel_app::on_execute() {
 void print_glfw_err() {
     const char* errorPtr = NULL;
     glfwGetError(&errorPtr);
-    std::cerr << errorPtr << '\n';
+    cel::logger->error(errorPtr);
 }
 
 bool cel_app::on_init() {
     if(!glfwInit()) {
-        std::cerr << "Failed to initialize GLFW!\n";
+        cel::logger->error("Failed to initialize GLFW!");
         print_glfw_err();
         return false;
     }
@@ -149,7 +153,7 @@ bool cel_app::on_init() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     if(!(handle = glfwCreateWindow(480, 480, "", NULL, NULL))) {
-        std::cerr << "Failed to create window!\n";
+        cel::logger->error("Failed to create window!");
         print_glfw_err();
         return false;
     }
@@ -157,23 +161,23 @@ bool cel_app::on_init() {
     glfwMakeContextCurrent(handle);
     
     if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        std::cerr << "Failed to get GLFW proc address!\n";
+        cel::logger->error("Failed to get GLFW proc address!\n");
         return false;
     }
 
     for(cel::project* p : cel::project::build_projects()) {
         if(!p->init()) {
-            std::cerr << "An error occured whilst initializing projects: Failed to initialize project " << p->get_name() << "\n";
+            cel::logger->error(fmt::format("An error occured whilst initializing projects: Failed to initialize project {}", p->get_name()));
             return false;
         }
         projects.push_back(p);
     }
     
     if(projects.size() <= 0) {
-        std::cerr << "An error occured whilst initializing projects: list was empty\n";
+        cel::logger->error("An error occured whilst initializing projects: list was empty");
         return false;
     }
-    std::cout << "Initialized " << projects.size() << " projects!" << std::endl;
+    LOG_INFO(fmt::format("Initialized {} projects!", projects.size()));
     glfwSetWindowTitle(handle, projects[0]->get_name().c_str());
     //this->cam = std::make_shared<cel::camera3d>();
 

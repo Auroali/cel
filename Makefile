@@ -1,9 +1,9 @@
 CC=gcc
 CCX=g++
-CFLAGS=-g3 -Wall -Wno-invalid-offsetof -Lbuild ${LIBRARIES} ${INCLUDES}
+CFLAGS=-g3 -DSPDLOG_FMT_EXTERNAL=ON -Wall -Wno-invalid-offsetof -Lbuild ${LIBRARIES} ${INCLUDES}
 CXXFLAGS=${CFLAGS}
 
-LIBRARIES=-lBulletCollision -lLinearMath -lBulletDynamics -lglfw -lGL -ldl
+LIBRARIES=-lBulletCollision -lLinearMath -lBulletDynamics -lglfw -lGL -ldl -lfmt
 INCLUDES=-Isrc -I/usr/include/bullet -Iinclude
 
 CEL_SRC=\
@@ -14,10 +14,10 @@ src/cel/framework/scene.cpp \
 src/cel/framework/object.cpp \
 src/cel/framework/components/component.cpp \
 src/cel/reflect/reflect.cpp \
-src/cel/physics/physics.cpp \
 src/cel/render/render.cpp \
 src/cel/io/binary_stream.cpp \
-src/cel/io/obj_importer.cpp
+src/cel/io/obj_importer.cpp \
+src/cel/physics/physics.cpp \
 
 CEL_TEST_SRC=src/celtest/celtest.cpp
 

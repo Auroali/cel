@@ -5,7 +5,7 @@ in vec3 WorldPos;
 in vec3 Normal;
 
 void main() {
-    vec3 lightPos = vec3(0,2,0);
+    vec3 lightPos = vec3(1.2, 1.0, 2.0);
     vec3 lightColor = vec3(1,1,1);
     vec3 objectColor = vec3(1,1,1);
     vec3 ambient = objectColor * 0.1;

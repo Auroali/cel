@@ -5,6 +5,8 @@
 #include "cel/framework/object.h"
 #include "cel/cel.h"
 
+#include "cel/logger.h"
+
 namespace cel::io {
     void write_header(cel::io::binary_ofstream& stream) {
         // Identifier
@@ -141,10 +143,10 @@ namespace cel::io {
         
         if(header_txt == "\%CELSCENE\%") {
             if(stream.read<int>() != SCENE_FORMAT_VER_MAJOR)
-                std::cerr << "ERROR: Scene format incompatible!\n";
+                LOG_ERROR("Scene format incompatible!");
                 cel::request_exit(CEL_ERROR_FILEIO);
             if(stream.read<int>() != SCENE_FORMAT_VER_MINOR)
-                std::cerr << "WARNING: Scene format version mismatch, things may not work as intended.\n";
+                LOG_WARN("Scene format version mismatch, things may not work as intended.");
             stream.read<int>();
             std::shared_ptr<scene> scene_ptr = std::make_shared<scene>();
             size_t num_nodes = stream.read<size_t>();
@@ -156,7 +158,7 @@ namespace cel::io {
                 throw "Number of nodes do not match!";
             return scene_ptr;
         }
-        std::cerr << "ERROR: Scene Header Invalid! Are you sure this is the right file? (At '" << std::filesystem::absolute(path) << "', expected '\%CELSCENE\%, got '" << header_txt << "')\n";
+        LOG_ERROR(fmt::format("Scene Header Invalid! Are you sure this is the right file? (At '{}', expected '\%CELSCENE\%, got '{}')", std::filesystem::absolute(path), header_txt));
         return std::shared_ptr<scene>();
     }
 }

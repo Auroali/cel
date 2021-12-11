@@ -35,7 +35,7 @@ namespace cel {
          * 
          * @param obj the object this component has been attached to
          */
-        virtual void on_attach(std::shared_ptr<object> obj);
+        virtual void on_attach(std::shared_ptr<object> obj) {}
         /**
          * @brief Called a fixed number of times per second
          */

@@ -12,6 +12,7 @@ namespace cel {
         btRigidBody* rb;
     public:
         rigidbody_component();
+        ~rigidbody_component();
         virtual void on_attach(std::shared_ptr<cel::object> obj) override;
         virtual void fixed_update() override;
     };
