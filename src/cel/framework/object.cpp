@@ -51,12 +51,16 @@ namespace cel {
     object::object(){
         this->trans = transform();
         this->parent = std::weak_ptr<object>();
+        this->name = "Object";
     }
     void object::add_component(std::shared_ptr<component> component) {
         component->parent = shared_from_this();
         component->trans.parent = &component->trans;
         components.push_back(component);
         component->on_attach(shared_from_this());
+        if(auto locked_container = container.lock()) {
+            component->on_scene_added(locked_container);
+        }
     }
     std::vector<std::weak_ptr<component>> object::get_components() {
         std::vector<std::weak_ptr<component>> comps;

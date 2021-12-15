@@ -52,6 +52,7 @@ namespace cel {
     void scene::add_object(std::shared_ptr<object> obj) {
         obj->container = shared_from_this();
         objs.push_back(node<std::shared_ptr<object>>(obj));
+        std::for_each(obj->components.begin(), obj->components.end(), [&](std::shared_ptr<component> c) { c->on_scene_added(shared_from_this()); });
     }
 
     void scene::set_active() {

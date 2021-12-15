@@ -23,14 +23,14 @@ CEL_TEST_SRC=src/celtest/celtest.cpp
 
 .PHONY: docs
 
-all: test_project
+all: cel test_project
 
 cel:
 	$(info Building Cel Library...)
 	mkdir -p build
 	${CXX} ${CXXFLAGS} -fPIC -shared -o build/libcel.so ${CEL_SRC}
 
-test_project: cel assets
+test_project: assets
 	$(info Building Test Project...)
 	mkdir -p build
 	$(info Clearing old shader directory...)

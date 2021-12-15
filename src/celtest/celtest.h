@@ -21,6 +21,9 @@
 #include <memory>
 
 #include <cel/physics/components/rigidbody.h>
+#include <cel/physics/components/cube_collider.h>
+
+#include <cel/render/renderer.h>
 
 cel::render::model m(0,0);
 
@@ -41,8 +44,10 @@ public:
         std::shared_ptr<cel::object> obj = std::make_shared<cel::object>();
         obj->add_component(std::make_shared<cel::model_component>(cel::io::import_obj_model("./assets/newell_teaset/teapot.obj").value_or(cel::render::model())));
         s1->add_object(obj);
-        s1->set_active();
+        obj->add_component(std::make_shared<cel::cube_collider_component>());
         obj->add_component(std::make_shared<cel::rigidbody_component>());
+        s1->set_active();
+        
         float vertices[] = {
             -1,-1,0,
             0,1,0,
@@ -68,20 +73,20 @@ public:
     float pitch = 0;
     virtual void fixed_update() override {
         cel::window::main()->set_cursor_mode(cel::cursor_mode::LOCKED);
-        cel::camera* cam;
-        cel::send_signal(CEL_SIG_CAM_REQ, &cam);
-        if(cel::window::main()->get_input_handler().key_down(cel::keyboard::S))
-            cam->translate(-cam->get_forward() * (float)cel::time::fixed_delta_time);
-        if(cel::window::main()->get_input_handler().key_down(cel::keyboard::W))
-            cam->translate(cam->get_forward() * (float)cel::time::fixed_delta_time);
-        if(cel::window::main()->get_input_handler().key_down(cel::keyboard::A))
-            cam->translate(-cam->get_right() * (float) cel::time::fixed_delta_time);
-        if(cel::window::main()->get_input_handler().key_down(cel::keyboard::D))
-            cam->translate(cam->get_right() * (float) cel::time::fixed_delta_time);
-        yaw -= cel::window::main()->get_input_handler().get_mouse_delta_x() * 10 * cel::time::fixed_delta_time;
-        pitch += cel::window::main()->get_input_handler().get_mouse_delta_y() * 10 * cel::time::fixed_delta_time;
-        pitch = std::clamp(pitch, -89.f, 89.f);
-        cam->set_rot_euler(glm::radians(pitch),glm::radians(yaw),0);
+        if(auto cam = cel::render::render_engine::get_camera().lock()) {
+            if(cel::window::main()->get_input_handler().key_down(cel::keyboard::S))
+                cam->translate(-cam->get_forward() * (float)cel::time::fixed_delta_time);
+            if(cel::window::main()->get_input_handler().key_down(cel::keyboard::W))
+                cam->translate(cam->get_forward() * (float)cel::time::fixed_delta_time);
+            if(cel::window::main()->get_input_handler().key_down(cel::keyboard::A))
+                cam->translate(-cam->get_right() * (float) cel::time::fixed_delta_time);
+            if(cel::window::main()->get_input_handler().key_down(cel::keyboard::D))
+                cam->translate(cam->get_right() * (float) cel::time::fixed_delta_time);
+            yaw -= cel::window::main()->get_input_handler().get_mouse_delta_x() * 10 * cel::time::fixed_delta_time;
+            pitch += cel::window::main()->get_input_handler().get_mouse_delta_y() * 10 * cel::time::fixed_delta_time;
+            pitch = std::clamp(pitch, -89.f, 89.f);
+            cam->set_rot_euler(glm::radians(pitch),glm::radians(yaw),0);
+        }
     }
     virtual void render(cel::render::matrix_stack& stack) override {
         stack.push();

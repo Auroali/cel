@@ -10,7 +10,7 @@
 #define CEL_RENDERFLAG_MULTISAMPLE_AA 0x02
 
 /**
- * @namespace cel::render Cel render 
+ * @namespace cel::render Contains cel rendering code
  */
 namespace cel::render {
     class project;

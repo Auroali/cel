@@ -4,6 +4,7 @@
 #include "cel/reflect/reflect.h"
 #include <iostream>
 
+
 /**
  * Version of REFLECT_DEFINE that sets up
  * component-specific values
@@ -14,6 +15,7 @@ REFLECT_MEMBER_WITH(name, 0) \
 REFLECT_MEMBER_WITH(trans, SERIALIZE)
 
 namespace cel {
+    class scene;
     /**
      * Base class for components that can be attached to objects
      */
@@ -36,6 +38,12 @@ namespace cel {
          * @param obj the object this component has been attached to
          */
         virtual void on_attach(std::shared_ptr<object> obj) {}
+        /**
+         * @brief Called when this component's parent object is added to a scene
+         * 
+         * @param scene the scene the parent object has been added to
+         */
+        virtual void on_scene_added(std::shared_ptr<scene> scene) {}
         /**
          * @brief Called a fixed number of times per second
          */

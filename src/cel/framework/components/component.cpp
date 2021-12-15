@@ -1,6 +1,6 @@
 #include "component.h"
 #include "model_component.h"
-
+#include "cel/framework/scene.h"
 
 namespace cel {
     
