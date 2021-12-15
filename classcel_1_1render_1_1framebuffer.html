@@ -96,10 +96,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>unbind</b> ()</td></t
 void&#160;</td><td class="memItemRight" valign="bottom"><b>free</b> ()</td></tr>
 <tr class="memdesc:a9d2f82a86c37aca01874c0c87fed951c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the framebuffer. <br /></td></tr>
 <tr class="separator:a9d2f82a86c37aca01874c0c87fed951c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea74507a76341cc6201512f4368204e3"><td class="memItemLeft" align="right" valign="top"><a id="aea74507a76341cc6201512f4368204e3" name="aea74507a76341cc6201512f4368204e3"></a>
-<a class="el" href="classcel_1_1render_1_1texture.html">texture</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_texture</b> ()</td></tr>
-<tr class="memdesc:aea74507a76341cc6201512f4368204e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the framebuffer's draw texture. <br /></td></tr>
-<tr class="separator:aea74507a76341cc6201512f4368204e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f540ca1de95e8b5e9faa230a4b68004"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcel_1_1render_1_1texture.html">texture</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1render_1_1framebuffer.html#a0f540ca1de95e8b5e9faa230a4b68004">get_texture</a> (size_t index)</td></tr>
+<tr class="memdesc:a0f540ca1de95e8b5e9faa230a4b68004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the framebuffer's draw texture.  <a href="classcel_1_1render_1_1framebuffer.html#a0f540ca1de95e8b5e9faa230a4b68004">More...</a><br /></td></tr>
+<tr class="separator:a0f540ca1de95e8b5e9faa230a4b68004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b7975c9a84b6f564b8bae73d852c714"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1render_1_1framebuffer.html#a2b7975c9a84b6f564b8bae73d852c714">attach_texture</a> (int width, int height, GLenum attachment)</td></tr>
+<tr class="memdesc:a2b7975c9a84b6f564b8bae73d852c714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches a texture to the framebuffer.  <a href="classcel_1_1render_1_1framebuffer.html#a2b7975c9a84b6f564b8bae73d852c714">More...</a><br /></td></tr>
+<tr class="separator:a2b7975c9a84b6f564b8bae73d852c714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa20fc278d1a8cfbc0f6832f94a4922c"><td class="memItemLeft" align="right" valign="top"><a id="afa20fc278d1a8cfbc0f6832f94a4922c" name="afa20fc278d1a8cfbc0f6832f94a4922c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw_buffers</b> (std::vector&lt; GLenum &gt; attachments)</td></tr>
+<tr class="separator:afa20fc278d1a8cfbc0f6832f94a4922c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -141,6 +146,77 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>cel_app::render</b> (
   <table class="params">
     <tr><td class="paramname">width</td><td>the width of the framebuffer </td></tr>
     <tr><td class="paramname">height</td><td>the height of the framebuffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2b7975c9a84b6f564b8bae73d852c714" name="a2b7975c9a84b6f564b8bae73d852c714"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b7975c9a84b6f564b8bae73d852c714">&#9670;&nbsp;</a></span>attach_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cel::render::framebuffer::attach_texture </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLenum&#160;</td>
+          <td class="paramname"><em>attachment</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attaches a texture to the framebuffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>the width of the texture </td></tr>
+    <tr><td class="paramname">height</td><td>the height of the texture </td></tr>
+    <tr><td class="paramname">attachment</td><td>the attachment to use (GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_DEPTH_STENCIL_ATTACHMENT, etc...) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0f540ca1de95e8b5e9faa230a4b68004" name="a0f540ca1de95e8b5e9faa230a4b68004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f540ca1de95e8b5e9faa230a4b68004">&#9670;&nbsp;</a></span>get_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcel_1_1render_1_1texture.html">texture</a> &amp; cel::render::framebuffer::get_texture </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the framebuffer's draw texture. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>the texture index to use (in order of attach_texture calls) </td></tr>
   </table>
   </dd>
 </dl>

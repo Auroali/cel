@@ -69,6 +69,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#friends">Friends</a>  </div>
   <div class="headertitle"><div class="title">cel::component Class Reference</div></div>
 </div><!--header-->
@@ -81,7 +82,11 @@ Inheritance diagram for cel::component:</div>
  <div class="center">
   <img src="classcel_1_1component.png" usemap="#cel::component_map" alt=""/>
   <map id="cel::component_map" name="cel::component_map">
-<area href="classcel_1_1model__component.html" alt="cel::model_component" shape="rect" coords="0,56,136,80"/>
+<area href="classcel_1_1collider__component.html" alt="cel::collider_component" shape="rect" coords="100,56,291,80"/>
+<area href="classcel_1_1model__component.html" alt="cel::model_component" shape="rect" coords="301,56,492,80"/>
+<area href="classcel_1_1rigidbody__component.html" alt="cel::rigidbody_component" shape="rect" coords="502,56,693,80"/>
+<area href="classcel_1_1cube__collider__component.html" alt="cel::cube_collider_component" shape="rect" coords="0,112,191,136"/>
+<area href="classcel_1_1sphere__collider__component.html" alt="cel::sphere_collider_component" shape="rect" coords="201,112,392,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -90,6 +95,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8efdec357046b54887fb4ebdaab5b0b"><td class="memItemLeft" align="right" valign="top"><a id="ae8efdec357046b54887fb4ebdaab5b0b" name="ae8efdec357046b54887fb4ebdaab5b0b"></a>
 virtual <a class="el" href="structcel_1_1reflection_1_1type.html">cel::reflection::type</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
 <tr class="separator:ae8efdec357046b54887fb4ebdaab5b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c8df8d57d5360205bf8af17acc0522"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1component.html#a05c8df8d57d5360205bf8af17acc0522">on_attach</a> (std::shared_ptr&lt; <a class="el" href="classcel_1_1object.html">object</a> &gt; obj)</td></tr>
+<tr class="memdesc:a05c8df8d57d5360205bf8af17acc0522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when this component is attached to an object.  <a href="classcel_1_1component.html#a05c8df8d57d5360205bf8af17acc0522">More...</a><br /></td></tr>
+<tr class="separator:a05c8df8d57d5360205bf8af17acc0522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492f1535a750cceb0754c2f49f75dd35"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1component.html#a492f1535a750cceb0754c2f49f75dd35">on_scene_added</a> (std::shared_ptr&lt; <a class="el" href="classcel_1_1scene.html">scene</a> &gt; <a class="el" href="classcel_1_1scene.html">scene</a>)</td></tr>
+<tr class="memdesc:a492f1535a750cceb0754c2f49f75dd35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when this component's parent object is added to a scene.  <a href="classcel_1_1component.html#a492f1535a750cceb0754c2f49f75dd35">More...</a><br /></td></tr>
+<tr class="separator:a492f1535a750cceb0754c2f49f75dd35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab074fbe5a5b58e9b61241d4e1699ae61"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcel_1_1component.html#ab074fbe5a5b58e9b61241d4e1699ae61">fixed_update</a> ()</td></tr>
+<tr class="memdesc:ab074fbe5a5b58e9b61241d4e1699ae61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called a fixed number of times per second.  <a href="classcel_1_1component.html#ab074fbe5a5b58e9b61241d4e1699ae61">More...</a><br /></td></tr>
+<tr class="separator:ab074fbe5a5b58e9b61241d4e1699ae61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dc4635601b6b337a0358fd01ab58ccb"><td class="memItemLeft" align="right" valign="top"><a id="a8dc4635601b6b337a0358fd01ab58ccb" name="a8dc4635601b6b337a0358fd01ab58ccb"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
+<tr class="memdesc:a8dc4635601b6b337a0358fd01ab58ccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called once every frame. <br /></td></tr>
+<tr class="separator:a8dc4635601b6b337a0358fd01ab58ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -100,6 +118,12 @@ Data Fields</h2></td></tr>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
 <tr class="separator:a4fe1a6ac39348735cd72796b39641e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:af99a1da6d48b6bedb35a77d9b3703907"><td class="memItemLeft" align="right" valign="top"><a id="af99a1da6d48b6bedb35a77d9b3703907" name="af99a1da6d48b6bedb35a77d9b3703907"></a>
+std::weak_ptr&lt; <a class="el" href="classcel_1_1object.html">object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parent</b></td></tr>
+<tr class="separator:af99a1da6d48b6bedb35a77d9b3703907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a3d4dcacb8171b99f783396bb6a337c65"><td class="memItemLeft" align="right" valign="top"><a id="a3d4dcacb8171b99f783396bb6a337c65" name="a3d4dcacb8171b99f783396bb6a337c65"></a>
@@ -108,7 +132,109 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>object</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Base class for components that can be attached to objects </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab074fbe5a5b58e9b61241d4e1699ae61" name="ab074fbe5a5b58e9b61241d4e1699ae61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab074fbe5a5b58e9b61241d4e1699ae61">&#9670;&nbsp;</a></span>fixed_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void cel::component::fixed_update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called a fixed number of times per second. </p>
+
+<p>Reimplemented in <a class="el" href="classcel_1_1rigidbody__component.html#ac985b97215d1217df89d890afafbd70c">cel::rigidbody_component</a>.</p>
+
+</div>
+</div>
+<a id="a05c8df8d57d5360205bf8af17acc0522" name="a05c8df8d57d5360205bf8af17acc0522"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05c8df8d57d5360205bf8af17acc0522">&#9670;&nbsp;</a></span>on_attach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void cel::component::on_attach </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classcel_1_1object.html">object</a> &gt;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when this component is attached to an object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>the object this component has been attached to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classcel_1_1collider__component.html#a6e9ad65090065774848ee0a29c65c0a1">cel::collider_component</a>, <a class="el" href="classcel_1_1cube__collider__component.html#aaf9aa83a75c67e613f5a3d868de84032">cel::cube_collider_component</a>, and <a class="el" href="classcel_1_1sphere__collider__component.html#a1fa968d1207853524d701ef2b178e6ce">cel::sphere_collider_component</a>.</p>
+
+</div>
+</div>
+<a id="a492f1535a750cceb0754c2f49f75dd35" name="a492f1535a750cceb0754c2f49f75dd35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492f1535a750cceb0754c2f49f75dd35">&#9670;&nbsp;</a></span>on_scene_added()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void cel::component::on_scene_added </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classcel_1_1scene.html">scene</a> &gt;&#160;</td>
+          <td class="paramname"><em>scene</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when this component's parent object is added to a scene. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scene</td><td>the scene the parent object has been added to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classcel_1_1rigidbody__component.html#a00369f70958fd01a009433d9e28f4154">cel::rigidbody_component</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/cel/framework/components/<a class="el" href="component_8h_source.html">component.h</a></li>
 </ul>
 </div><!-- contents -->
