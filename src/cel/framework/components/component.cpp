@@ -9,7 +9,7 @@ namespace cel {
         this->trans = transform();
     }
 
-    REFLECT_COMPONENT_DEFINE(model_component)
+    REFLECT_COMPONENT_DEFINE(cel::model_component)
     REFLECT_MEMBER_WITH(model, 0)
     REFLECT_END()
 

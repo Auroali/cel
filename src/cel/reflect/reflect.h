@@ -168,6 +168,13 @@ namespace cel::reflection {
         static void __register(type* type);
 
         /**
+         * @brief Returns all registered reflection types
+         * 
+         * @return std::vector<type*> the vector containing all reflection types
+         */
+        static std::vector<type*> get_all();
+
+        /**
          * @brief Gets reflection type info by class name
          * 
          * @param name the name of the class

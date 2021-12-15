@@ -31,6 +31,9 @@ namespace cel::physics {
 
 REFLECT_COMPONENT_DEFINE(cel::rigidbody_component)
 REFLECT_MEMBER_WITH(rb, 0)
+REFLECT_MEMBER(friction)
+REFLECT_MEMBER(mass)
+REFLECT_MEMBER(is_kinematic)
 REFLECT_END()
 
 void cel::rigidbody_component::fixed_update() {

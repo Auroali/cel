@@ -142,9 +142,10 @@ namespace cel::io {
         std::string header_txt = stream.read_str(10);
         
         if(header_txt == "\%CELSCENE\%") {
-            if(stream.read<int>() != SCENE_FORMAT_VER_MAJOR)
+            if(stream.read<int>() != SCENE_FORMAT_VER_MAJOR) {
                 LOG_ERROR("Scene format incompatible!");
                 cel::request_exit(CEL_ERROR_FILEIO);
+            }
             if(stream.read<int>() != SCENE_FORMAT_VER_MINOR)
                 LOG_WARN("Scene format version mismatch, things may not work as intended.");
             stream.read<int>();
@@ -158,7 +159,7 @@ namespace cel::io {
                 throw "Number of nodes do not match!";
             return scene_ptr;
         }
-        LOG_ERROR(fmt::format("Scene Header Invalid! Are you sure this is the right file? (At '{}', expected '\%CELSCENE\%, got '{}')", std::filesystem::absolute(path), header_txt));
+        LOG_ERROR(fmt::format("Scene Header Invalid! Are you sure this is the right file? (At '{}', expected '\%CELSCENE\%, got '{}')", std::filesystem::absolute(path).string(), header_txt));
         return std::shared_ptr<scene>();
     }
 }

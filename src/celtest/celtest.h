@@ -25,6 +25,8 @@
 
 #include <cel/render/renderer.h>
 
+#include <cel/io/scene_io.h>
+
 cel::render::model m(0,0);
 
 class test_comp : public cel::component {
@@ -34,12 +36,23 @@ public:
     int test2;
 };
 
+void dump_reflect_entries() {
+    auto types = cel::reflection::solver::get_all();
+    for(auto t : types) {
+        std::cout << "TYPENAME: " << t->name << '\n';
+        for(auto m : t->members) {
+            std::cout << "  M_NAME: " << m.name << " M_SIZE: " << m.size << " M_OFFSET: " << m.offset << " M_FLAGS: " << m.attribs << '\n';
+        }
+        std::cout << std::endl;
+    }
+}
 class proj : public cel::project {
 public:
     static cel::project_builder<proj> builder;
     unsigned int vao = 0;
     
     virtual bool init() override {
+        dump_reflect_entries();
         std::shared_ptr<cel::scene> s1 = std::make_shared<cel::scene>();
         std::shared_ptr<cel::object> obj = std::make_shared<cel::object>();
         obj->add_component(std::make_shared<cel::model_component>(cel::io::import_obj_model("./assets/newell_teaset/teapot.obj").value_or(cel::render::model())));

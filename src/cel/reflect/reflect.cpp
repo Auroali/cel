@@ -2,6 +2,9 @@
 
 std::vector<cel::reflection::type*> cel::reflection::solver::ref_types;
 
+std::vector<cel::reflection::type*> cel::reflection::solver::get_all() {
+    return ref_types;
+}
 void cel::reflection::solver::__register(cel::reflection::type* type) {
     ref_types.push_back(type);
 }
