@@ -149,11 +149,10 @@ namespace cel::render {
         }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
-    void framebuffer::attach_texture(int width, int height, GLenum attachment) {
+    void framebuffer::attach_texture(texture tex_, GLenum attachment) {
         glBindFramebuffer(GL_FRAMEBUFFER, buf);
-        texture tex_ = texture(width, height);
         if(!tex_.is_valid()) {
-            LOG_ERROR("Unable to create texture for framebuffer!");
+            LOG_ERROR("Attempted to attach invalid texture to framebuffer!");
             cel::request_exit(CEL_ERROR_FRAMEBUFFER);
         }
         glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, tex_, 0);
@@ -170,7 +169,6 @@ namespace cel::render {
         return tex[index];
     }
     void framebuffer::free() {
-        //std::cout << "Out of scope, destroying..." << std::endl;
         if(buf != 0 && glIsFramebuffer(buf)) {
             if(glIsRenderbuffer(rbo))
                 glDeleteRenderbuffers(1, &rbo);
@@ -185,8 +183,10 @@ namespace cel::render {
         cel::window* window = cel::window::main();
         // Setup the render framebuffer
         render_buffer = cel::render::framebuffer(window->get_width(), window->get_height());
-        render_buffer.attach_texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_COLOR_ATTACHMENT0);
-        
+        render_buffer.attach_texture(texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_RGB, GL_RGB16F), GL_COLOR_ATTACHMENT0);
+        render_buffer.attach_texture(texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_RGB, GL_RGB16F), GL_COLOR_ATTACHMENT1);
+        render_buffer.attach_texture(texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_RGBA, GL_RGBA), GL_COLOR_ATTACHMENT2);
+        render_buffer.draw_buffers({ GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 });
         // Setup the post process quad
         float vertices[] = {  
             // positions   // texCoords
@@ -219,7 +219,7 @@ namespace cel::render {
 
         if(flags & CEL_RENDERFLAG_2D) {
             camera = std::make_shared<camera2d>();
-            LOG_ERROR("WARNING: 2D mode is not complete! Things may not work as intended.");
+            LOG_ERROR("2D mode is not complete! Things may not work as intended.");
         } else
             camera = std::make_shared<camera3d>();
         if(flags & CEL_RENDERFLAG_MULTISAMPLE_AA)
@@ -265,7 +265,10 @@ namespace cel::render {
             LOG_INFO(fmt::format("Render Buffer size doesn't match screen size! Resizing... (Expected {}x{}, got {}x{}", cel::window::main()->get_width(), cel::window::main()->get_height(), render_buffer.get_texture(0).width(), render_buffer.get_texture(0).height()));
             render_buffer.free();
             render_buffer = cel::render::framebuffer(cel::window::main()->get_width(),cel::window::main()->get_height());
-            render_buffer.attach_texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_COLOR_ATTACHMENT0);
+            render_buffer.attach_texture(texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_RGB, GL_RGB16F), GL_COLOR_ATTACHMENT0);
+            render_buffer.attach_texture(texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_RGB, GL_RGB16F), GL_COLOR_ATTACHMENT1);
+            render_buffer.attach_texture(texture(cel::window::main()->get_width(), cel::window::main()->get_height(), GL_RGBA, GL_RGBA), GL_COLOR_ATTACHMENT2);
+            render_buffer.draw_buffers({ GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 });
         }
         
         render_buffer.bind();
@@ -282,7 +285,9 @@ namespace cel::render {
         
         // Render quad
         cel::globals::quad_shader.use();
-        cel::globals::quad_shader.set_int("sceneTex", 0);
+        cel::globals::quad_shader.set_int("position", 0);
+        cel::globals::quad_shader.set_int("normals", 1);
+        cel::globals::quad_shader.set_int("colour", 2);
         glClearColor(0.f,0.f,0.f,1.f);
         glClear(GL_COLOR_BUFFER_BIT);
         
@@ -290,6 +295,8 @@ namespace cel::render {
         glDisable(GL_STENCIL_TEST);
 
         set_texture(GL_TEXTURE0, render_buffer.get_texture(0));
+        set_texture(GL_TEXTURE1, render_buffer.get_texture(1));
+        set_texture(GL_TEXTURE2, render_buffer.get_texture(2));
         post_quad.render();
 
     }

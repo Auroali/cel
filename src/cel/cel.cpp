@@ -216,8 +216,6 @@ int main() {
     }
 }
 
-#if ENABLE_RENDERER
 void cel::render::render_engine::set_flags(uint64_t flags) {
     render_engine_flags = flags;
 }
-#endif

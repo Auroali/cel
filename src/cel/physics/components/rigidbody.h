@@ -4,11 +4,16 @@
 #include <bullet/btBulletDynamicsCommon.h>
 
 #include "cel/framework/components/component.h"
+#include "collider.h"
 #include "cel/reflect/reflect.h"
 
 namespace cel {
     /**
      * Component that enables an object to have physics
+     * <br> Requires the parent object to have a collider component of some kind
+     * <br> The collider component can be added after the rigidbody, as long as it is before the parent object is attached to a scene.
+     * <br> If the parent object is already attached to a scene, it MUST already have a collider component, or things will not work properly!
+     * <br> A collider can be set via rigidbody_component::set_collider
      */
     class rigidbody_component : public component {
         REFLECT();
@@ -57,5 +62,12 @@ namespace cel {
          * @param mass the mass of this rigidbody
          */
         void set_mass(float mass);
+        /**
+         * @brief In the event that either the wrong collider was used,
+         * or that a collider was not detected, it can be manually set here.
+         * 
+         * @param collider the collider component to use
+         */
+        void set_collider(std::weak_ptr<cel::collider_component> collider);
     };
 }

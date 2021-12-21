@@ -5,6 +5,7 @@
 #include "components/collider.h"
 #include "components/cube_collider.h"
 #include "components/sphere_collider.h"
+#include "components/capsule_collider.h"
 #include "cel/logger.h"
 
 namespace cel::physics {
@@ -111,6 +112,18 @@ void cel::rigidbody_component::set_mass(float mass) {
         rb->setMassProps(mass, intertia);
     }
 }
+void cel::rigidbody_component::set_collider(std::weak_ptr<cel::collider_component> collider) {
+    if(auto c = collider.lock()) {
+        if(c->shape) {
+            btVector3 intertia;
+            rb->setCollisionShape(c->shape);
+            rb->getCollisionShape()->calculateLocalInertia(mass, intertia);
+            rb->setMassProps(mass, intertia);
+            if(auto obj = parent.lock())
+                rb->getCollisionShape()->setLocalScaling(btVector3(obj->trans.scale.x,obj->trans.scale.y,obj->trans.scale.z));
+        }
+    }
+}
 /**
  * 
  * Collider Definitions
@@ -131,6 +144,12 @@ namespace cel {
     REFLECT_MEMBER(size)
     REFLECT_MEMBER_WITH(shape, 0)
     REFLECT_END()
+    // Capsule Collision
+    REFLECT_COMPONENT_DEFINE(cel::capsule_collider_component)
+    REFLECT_MEMBER(size)
+    REFLECT_MEMBER(radius)
+    REFLECT_MEMBER_WITH(shape, 0)
+    REFLECT_END()
 
     collider_component::~collider_component() {
         if(shape)
@@ -146,5 +165,8 @@ namespace cel {
     }
     void sphere_collider_component::on_attach(std::shared_ptr<object> obj) {
         shape = new btSphereShape(radius);
+    }
+    void capsule_collider_component::on_attach(std::shared_ptr<object> obj) {
+        shape = new btCapsuleShape(radius, size);
     }
 }

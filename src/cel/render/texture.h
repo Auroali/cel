@@ -36,17 +36,55 @@ namespace cel::render {
                 glBindTexture(GL_TEXTURE_2D, 0);
             }
         }
+        /**
+         * @brief Create a new empty texture with a specified width and height
+         * 
+         * @param width the width of the texture
+         * @param height the height of the texture
+         */
         texture(int width, int height) {
             glGenTextures(1, &tex);
             glBindTexture(GL_TEXTURE_2D, tex);
-            
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
             
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
             w = width;
             h = height;
+        }
+        /**
+         * @brief Create a new empty texture with a specified width, height, format and internal format
+         * 
+         * @param width the width of the texture
+         * @param height the height of the texture
+         * @param format the format of the texture
+         * @param internal_format the internal format of the texture (e.g. GL_RGB16F, GL_RGBA, GL_RGB...)
+         */
+        texture(int width, int height, GLint format, GLint internal_format) {
+            glGenTextures(1, &tex);
+            glBindTexture(GL_TEXTURE_2D, tex);
+            
+            glTexImage2D(GL_TEXTURE_2D, 0, internal_format, width, height, 0, format, GL_UNSIGNED_BYTE, NULL);
+            
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+            w = width;
+            h = height;
+        }
+        /**
+         * @brief Create a new empty texture with a specified width, height and format
+         * 
+         * @param width the width of the texture
+         * @param height the height of the texture
+         * @param format the format of the texture
+         * 
+         * @note This makes just calls texture(width, height, format, internal_format) with internal_format set to format
+         */
+        texture(int width, int height, GLint format) {
+            texture(width, height, format, format);
         }
         texture(unsigned int id, int width, int height) {
             tex = id;

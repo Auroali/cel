@@ -36,7 +36,7 @@ namespace cel::render {
          */
         void unbind();
         /**
-         * @brief Deletes the framebuffer
+         * @brief Deletes the framebuffer and all attachments
          */
         void free();
         /**
@@ -48,11 +48,10 @@ namespace cel::render {
         /**
          * @brief Attaches a texture to the framebuffer
          * 
-         * @param width the width of the texture
-         * @param height the height of the texture
+         * @param tex the texture to attach
          * @param attachment the attachment to use (GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_DEPTH_STENCIL_ATTACHMENT, etc...)
          */
-        void attach_texture(int width, int height, GLenum attachment);
+        void attach_texture(texture tex, GLenum attachment);
 
         void draw_buffers(std::vector<GLenum> attachments);
     };
