@@ -12,10 +12,12 @@ namespace cel::render {
          * Removes the last item from the stack 
          */
         void pop();
+
         /**
          * Pushes a new glm::mat4 to the stack
          */
         void push();
+
         /**
          * @brief Translates the current matrix
          * 
@@ -29,12 +31,14 @@ namespace cel::render {
          * @param rot the quaternion to rotate the matrix by
          */
         void rotate(glm::quat rot);
+
         /**
          * @brief Scales the current matrix
          * 
          * @param scale the vec3 to scale the matrix by
          */
         void scale(glm::vec3 scale);
+
         /**
          * @brief Applies the matrix stack to a shader
          * 

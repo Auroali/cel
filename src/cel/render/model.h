@@ -29,6 +29,7 @@ namespace cel::render {
          * @brief Constructs an empty model with no render information
          */
         model() {}
+
         /**
          * @brief Constructs a model with the specified VAO
          * 
@@ -39,6 +40,7 @@ namespace cel::render {
             this->vao = vao;
             this->size = len;
         }
+        
         /**
          * @brief Renders the model to the current framebuffer
          */

@@ -141,25 +141,34 @@ namespace cel::io {
         cel::io::binary_ifstream stream(path);
         std::string header_txt = stream.read_str(10);
         
-        if(header_txt == "\%CELSCENE\%") {
-            if(stream.read<int>() != SCENE_FORMAT_VER_MAJOR) {
-                LOG_ERROR("Scene format incompatible!");
-                cel::request_exit(CEL_ERROR_FILEIO);
-            }
-            if(stream.read<int>() != SCENE_FORMAT_VER_MINOR)
-                LOG_WARN("Scene format version mismatch, things may not work as intended.");
-            stream.read<int>();
-            std::shared_ptr<scene> scene_ptr = std::make_shared<scene>();
-            size_t num_nodes = stream.read<size_t>();
-            std::vector<node<std::shared_ptr<object>>*> node_stack;
-            while(stream.read<uint8_t>() != 4) {
-                read_node(scene_ptr, stream, node_stack);
-            }
-            if(scene_ptr->get_obj_tree().get_sorted().size() != num_nodes)
-                throw "Number of nodes do not match!";
-            return scene_ptr;
+        // Check for %CELSCENE% in the header, if it's not there then this isn't a scene file and we exit
+        if(header_txt != "\%CELSCENE\%") {
+            LOG_ERROR(fmt::format("Scene Header Invalid! Are you sure this is the right file? (At '{}', expected '\%CELSCENE\%, got '{}')", std::filesystem::absolute(path).string(), header_txt));
+            cel::request_exit(CEL_ERROR_FILEIO);
         }
-        LOG_ERROR(fmt::format("Scene Header Invalid! Are you sure this is the right file? (At '{}', expected '\%CELSCENE\%, got '{}')", std::filesystem::absolute(path).string(), header_txt));
-        return std::shared_ptr<scene>();
+        // Check the scene major version, if it doesn't match the loader version then we exit
+        if(stream.read<int>() != SCENE_FORMAT_VER_MAJOR) {
+            LOG_ERROR("Scene format incompatible!");
+            cel::request_exit(CEL_ERROR_FILEIO);
+        }
+        // Check the scene minor version, if it doesn't match the loader version then log a warning
+        if(stream.read<int>() != SCENE_FORMAT_VER_MINOR)
+            LOG_WARN("Scene format version mismatch, things may not work as intended.");
+        // The scene patch version, can be safely ignored as a patch update will always be backwards compatible
+        stream.read<int>();
+
+        // Instantiate a new, empty scene
+        std::shared_ptr<scene> scene_ptr = std::make_shared<scene>();
+        // Get the number of nodes in the scene tree, this will be used for error checking
+        size_t num_nodes = stream.read<size_t>();
+        // Load the scene tree
+        std::vector<node<std::shared_ptr<object>>*> node_stack;
+        while(stream.read<uint8_t>() != 4) {
+            read_node(scene_ptr, stream, node_stack);
+        }
+        // Verify that the scene tree contains the correct number of nodes
+        if(scene_ptr->get_obj_tree().get_sorted().size() != num_nodes)
+            throw "Number of nodes do not match!";
+        return scene_ptr;
     }
 }

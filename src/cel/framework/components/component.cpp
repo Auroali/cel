@@ -24,6 +24,7 @@ namespace cel {
     model_component::model_component() {
         
     }
+    
     model_component::model_component(cel::render::model&& m) {
         this->model = m;
     }

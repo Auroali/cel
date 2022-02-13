@@ -8,6 +8,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "cel/logger.h"
+
 namespace cel::render {
     class texture {
     private:
@@ -107,16 +109,17 @@ namespace cel::render {
         void free() {
             glDeleteTextures(1, &tex);
         }
-        static std::optional<texture> load(const std::filesystem::path& name) {
-            if(std::filesystem::exists(name) && std::filesystem::is_regular_file(name)) {
+        static std::optional<texture> load(const std::filesystem::path& file) {
+            if(std::filesystem::exists(file)) {
                 int x,y,channels;
-                unsigned char* data = stbi_load(name.c_str(), &x, &y, &channels, 0);
+                unsigned char* data = stbi_load(file.c_str(), &x, &y, &channels, 0);
                 texture tex = texture(data, x, y, channels);
                 stbi_image_free(data);
                 if(tex.is_valid()) {
                     return tex;
                 }
             }
+            cel::logger->error(fmt::format("File at '{}' doesn't exist", file.string()));
             return {};
         }
         int width() {

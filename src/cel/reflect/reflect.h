@@ -51,6 +51,7 @@ namespace cel::reflection {
         virtual std::shared_ptr<void> make_shared() { return std::shared_ptr<void>(); }
         virtual ~factory_base() {}
     };
+
     /**
      * Class derived from cel::reflection::factory_base
      * for instantiating objects of type T
@@ -78,6 +79,7 @@ namespace cel::reflection {
             return std::static_pointer_cast<void>(std::make_shared<T>());
         }
     };
+
     struct member {
         std::string name;
         size_t offset;
@@ -130,6 +132,10 @@ namespace cel::reflection {
             return attribs & attrib;
         }
     };
+
+    /**
+     * Containes information about a type, such as its members
+     */
     struct type {
         type(const std::string& tname, std::function<void(type*)> func) {
             this->name = tname;
@@ -150,6 +156,7 @@ namespace cel::reflection {
             delete fact;
         }
     };
+
     /**
      * Utilities for getting reflection info
      * from various sources

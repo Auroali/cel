@@ -51,20 +51,6 @@ void cel::request_exit(int code) {
     throw exit_request();
 }
 
-void cel_app::receive_signal(uint64_t sig, void* ptr) {
-    switch (sig)
-    {
-    case CEL_SIG_CAM_REQ:
-        *(cel::camera**)ptr = cel::render::render_engine::get_camera().lock().get();
-        break;
-    case CEL_SIG_RENDER_PARAMS:
-        render_engine_flags = *reinterpret_cast<uint64_t*>(ptr);
-        break;
-    default:
-        break;
-    }
-}
-
 double cel::time::get_current() {
     return glfwGetTime();
 }
@@ -73,6 +59,7 @@ cel_app::cel_app() : win_main(nullptr) {
     running = true;
     inst = this;
 }
+
 
 int cel_app::on_execute() {
     if(!on_init()) {

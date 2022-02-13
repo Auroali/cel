@@ -14,59 +14,75 @@ namespace cel {
     class camera {
     public:
         /**
-         * Gets the camera's x position in worldspace
+         * @brief Gets the camera's x position in worldspace
          * @return the x position of the camera
          */
         virtual double get_x() { return 0; }
+
         /**
-         * Gets the camera's y position in worldspace
+         * @brief Gets the camera's y position in worldspace
          * @return the y position of the camera
          */
         virtual double get_y() { return 0; }
+
         /**
-         * Gets the camera's z position in worldspace
+         * @brief Gets the camera's z position in worldspace
          * @return the z position of the camera
          */
         virtual double get_z() { return 0; }
 
         /**
-         * Get the camera's forward vector
+         * @brief Get the camera's forward vector
          * @return the forward vector
          */
         virtual glm::vec3 get_forward() { return cel::globals::forward; }
+
         /**
-         * Get the camera's up vector
+         * @brief Get the camera's up vector
          * @return the up vector
          */
         virtual glm::vec3 get_up() { return cel::globals::up; }
+
         /**
-         * Get the camera's right vector
+         * @brief Get the camera's right vector
          * @return the right vector 
          */
         virtual glm::vec3 get_right() { return cel::globals::right; }
+
         /**
-         * Moves the camera relative to its position
+         * @brief Moves the camera to a specified location
+         * 
+         * @param x the x position to move to
+         * @param y the y position to move to
+         * @param z the z position to move to
+         */
+        virtual void set_xyz(double x, double y, double z) {}
+
+        /**
+         * @brief Move the camera relative to its position
          * 
          * @param x the distance to move along the x axis
          * @param y the distance to move along the y axis
          * @param z the distance to move along the z axis
          */
-        virtual void set_xyz(double x, double y, double z) {}
         virtual void translate(double x, double y, double z) {}
+
         /**
-         * Sets the camera's position
+         * @brief Sets the camera's position
          * 
          * @param pos the position to move to
          */
         virtual void set_xyz(glm::vec3 pos) {}
+
         /**
-         * Moves the camera relative to its position
+         * @brief Moves the camera relative to its position
          * 
          * @param pos the vector to move the camera by
          */
         virtual void translate(glm::vec3 pos) {}
+
         /**
-         * Sets the euler rotation of the camera
+         * @brief Sets the euler rotation of the camera
          * @note all values are in radians
          * 
          * @param x the roll of the camera
@@ -74,80 +90,108 @@ namespace cel {
          * @param z the pitch of the camera
          */
         virtual void set_rot_euler(double x, double y, double z) {}
+
         virtual void shader_setup(cel::render::shader& stack) {}
     };
+    
     /**
-     * Camera for view 2D space
+     * Camera for viewing 2D space
      */
     class camera2d : public camera {
         glm::vec2 pos;
     public:
         /**
-         * Gets the camera's x position in worldspace
+         * @brief Gets the camera's x position in worldspace
          * @return the x position of the camera
          */
         virtual double get_x() { return pos.x; }
+
         /**
-         * Gets the camera's y position in worldspace
+         * @brief Gets the camera's y position in worldspace
          * @return the y position of the camera
          */
         virtual double get_y() { return pos.y; }
+
         /**
-         * Gets the camera's z position in worldspace
+         * @brief Gets the camera's z position in worldspace
          * @return the z position of the camera
          */
         virtual double get_z() { return -15; }
 
         /**
-         * Get the camera's forward vector
+         * @brief Get the camera's forward vector
          * @return the forward vector
          */
         virtual glm::vec3 get_forward() { return cel::globals::forward; }
+
         /**
-         * Get the camera's up vector
+         * @brief Get the camera's up vector
          * @return the up vector
          */
         virtual glm::vec3 get_up() { return cel::globals::up; }
+        
         /**
-         * Get the camera's right vector
+         * @brief Get the camera's right vector
          * @return the right vector 
          */
         virtual glm::vec3 get_right() { return cel::globals::right; }
+        
         /**
-         * Moves the camera relative to its position
+         * @brief Moves the camera to a specified location
+         * 
+         * @note The z value will be ignored
+         * 
+         * @param x the x position to move to
+         * @param y the y position to move to
+         * @param z the z position to move to
+         */
+        virtual void set_xyz(double x, double y, double z) {
+            pos = glm::vec2(x,y);
+        }
+
+        /**
+         * @brief Move the camera relative to its position
+         * 
+         * @note The z value will be ignored
          * 
          * @param x the distance to move along the x axis
          * @param y the distance to move along the y axis
          * @param z the distance to move along the z axis
          */
-        virtual void set_xyz(double x, double y, double z) {
-            pos = glm::vec2(x,y);
-        }
         virtual void translate(double x, double y, double z) {
             pos += glm::vec2(x,y);
         }
+
         /**
          * Sets the camera's position
+         * 
+         * @note The z value will be ignored
          * 
          * @param pos the position to move to
          */
         virtual void set_xyz(glm::vec3 pos) {
             this->pos = glm::vec2(pos.x, pos.y);
         }
+
         /**
          * Moves the camera relative to its position
+         * 
+         * @note The z value will be ignored
          * 
          * @param pos the vector to move the camera by
          */
         virtual void translate(glm::vec3 pos) {
             this->pos += glm::vec2(pos.x, pos.y);
         }
+
         /**
          * @note This isn't implemented for the 2D camera, as it cannot rotate
          */
         virtual void set_rot_euler(double x, double y, double z) {}
+
         virtual void shader_setup(cel::render::shader& stack) {}
     };
+
     /**
      * Camera for viewing 3D space
      */

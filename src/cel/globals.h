@@ -1,8 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
-#if ENABLE_RENDERER
 #include "render/shader.h"
-#endif
+
 /**
  * @namespace cel::globals Global variables such as constants and shaders
  */

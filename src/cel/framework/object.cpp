@@ -27,23 +27,23 @@ namespace cel {
     }
 
     bool object::set_parent(std::weak_ptr<object> new_parent) {
-        if(auto con_locked = container.lock()) {
-            if(auto new_parent_obj = new_parent.lock()) {
-                //shared_ptr to this, to prevent ovject from being deleted while swapping parent nodes
-                std::shared_ptr<object> self_ptr = shared_from_this();
-                
-                node<std::shared_ptr<object>>* new_parent_node = con_locked->get_node_by_object(new_parent);
-                if(new_parent_node) {
-                    //Remove the object from the scene, if present
-                    con_locked->try_remove_obj(self_ptr);
+        auto con_locked = container.lock();
+        auto new_parent_obj = new_parent.lock();
+        if(!con_locked || !new_parent_obj)
+            return false;
+        //shared_ptr to this, to prevent ovject from being deleted while swapping parent nodes
+        std::shared_ptr<object> self_ptr = shared_from_this();
+        
+        node<std::shared_ptr<object>>* new_parent_node = con_locked->get_node_by_object(new_parent);
+        if(new_parent_node) {
+            //Remove the object from the scene, if present
+            con_locked->try_remove_obj(self_ptr);
 
-                    //Re-add the object to the scene under the new parent
-                    new_parent_node->emplace_back(self_ptr);
-                    parent = new_parent;
-                    trans.parent = &new_parent_obj->trans;
-                    return true;
-                }
-            }
+            //Re-add the object to the scene under the new parent
+            new_parent_node->emplace_back(self_ptr);
+            parent = new_parent;
+            trans.parent = &new_parent_obj->trans;
+            return true;
         }
         return false;
     }
@@ -53,21 +53,21 @@ namespace cel {
         this->parent = std::weak_ptr<object>();
         this->name = "Object";
     }
+
     void object::add_component(std::shared_ptr<component> component) {
         component->parent = shared_from_this();
         component->trans.parent = &component->trans;
         components.push_back(component);
         component->on_attach(shared_from_this());
-        if(auto locked_container = container.lock()) {
+        if(auto locked_container = container.lock())
             component->on_scene_added(locked_container);
-        }
     }
+
     std::vector<std::weak_ptr<component>> object::get_components() {
         std::vector<std::weak_ptr<component>> comps;
         comps.reserve(components.size());
-        for(std::shared_ptr<component> c : components) {
+        for(std::shared_ptr<component> c : components)
             comps.push_back(c);
-        }
         return comps;
         
     }

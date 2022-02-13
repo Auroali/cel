@@ -20,6 +20,7 @@ namespace cel::render {
          * @brief Constructs an empty framebuffer
          */
         framebuffer() {}
+        
         /**
          * @brief Constructs a framebuffer for drawing with the dimensions of `width` by `height`
          * 
@@ -27,24 +28,29 @@ namespace cel::render {
          * @param height the height of the framebuffer
          */
         framebuffer(int width, int height);
+
         /**
          * @brief Binds this framebuffer as the active framebuffer
          */
         void bind();
+
         /**
          * @brief Unbinds the currently active framebuffer
          */
         void unbind();
+
         /**
          * @brief Deletes the framebuffer and all attachments
          */
         void free();
+
         /**
          * @brief Gets the framebuffer's draw texture
          * 
          * @param index the texture index to use (in order of attach_texture calls)
          */
         texture& get_texture(size_t index);
+
         /**
          * @brief Attaches a texture to the framebuffer
          * 
@@ -53,6 +59,11 @@ namespace cel::render {
          */
         void attach_texture(texture tex, GLenum attachment);
 
+        /**
+         * @brief Specify attachments to use as draw bufers
+         * 
+         * @param attachments the attachments to use
+         */
         void draw_buffers(std::vector<GLenum> attachments);
     };
 }

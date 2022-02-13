@@ -20,15 +20,18 @@ namespace cel {
     public:
         cel::physics::physics* get_phys();
         scene();
+        
         /**
-         * Sets the active scene to this scene object
+         * @brief Sets the active scene to this scene object
          */
         void set_active();
+        
         /**
          * @brief Clears the active scene
          * 
          */
         static void clear_active();
+
         /**
          * @brief Get the active scene object
          * 
@@ -42,6 +45,7 @@ namespace cel {
          * @param object the object to add
          */
         void add_object(std::shared_ptr<object> object);
+
         /**
          * @brief Tries to remove the specified object from the scene
          * 
@@ -65,6 +69,7 @@ namespace cel {
          * @return std::weak_ptr<object> a weak_ptr to the object, if found
          */
         std::weak_ptr<object> get_object_by_name(const std::string& name);
+        
         /**
          * @brief Get the node from the object tree that contains obj
          * 

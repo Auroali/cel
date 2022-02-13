@@ -130,10 +130,6 @@ namespace cel {
         node<T>& operator[](size_t&& index) {
             return nodes[index];
         }
-
-        tree() {
-            
-        }
         
         /**
          * @brief Prints the tree in a readable format
@@ -143,6 +139,7 @@ namespace cel {
                 print_nodes(n, "");
             }
         }
+
         /**
          * @brief Gets all the top level nodes of the tree
          * 
@@ -151,6 +148,7 @@ namespace cel {
         std::vector<node<T>>& get_nodes() {
             return nodes;
         }
+
         /**
          * @brief Returns the node at the specified index
          * 
@@ -160,6 +158,7 @@ namespace cel {
         node<T>& at(size_t index) {
             return nodes[index];
         }
+
         /**
          * @brief Adds a node to the tree
          * 
@@ -170,6 +169,7 @@ namespace cel {
             nodes.push_back(node);
             return *(nodes.end()-1);
         }
+
         /**
          * @brief Constructs a node then adds it to the tree
          * 
@@ -181,6 +181,7 @@ namespace cel {
             nodes.emplace_back(__args...);
             return *(nodes.end()-1);
         }
+
         /**
          * @brief Generates a sorted list of nodes
          * 

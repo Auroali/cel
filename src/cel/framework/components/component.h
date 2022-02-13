@@ -27,31 +27,39 @@ namespace cel {
     public:
         // Only exists for using reflect::solver::get_from() on a component pointer
         virtual cel::reflection::type* get_type() { return nullptr; }
+
         // The component's local transform
         transform trans;
+
         // The component's name
         std::string name;
+
         component();
+
         /**
          * @brief Called when this component is attached to an object
          * 
          * @param obj the object this component has been attached to
          */
         virtual void on_attach(std::shared_ptr<object> obj) {}
+
         /**
          * @brief Called when this component's parent object is added to a scene
          * 
          * @param scene the scene the parent object has been added to
          */
         virtual void on_scene_added(std::shared_ptr<scene> scene) {}
+
         /**
          * @brief Called a fixed number of times per second
          */
         virtual void fixed_update() {}
+
         /**
          * @brief Called once every frame
          */
         virtual void update() {}
+        
         virtual ~component() {}
     };
 }
