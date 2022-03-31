@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/gl-861e5a55520b8be2/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/gl_loader-ad615af5d1ec6ccf/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/glfw-sys-969671ed790471b4/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/kernel32-sys-09bd1d6579665faa/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/khronos_api-d5eea5bf128f660c/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/libc-77386bc854380118/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/log-4b962d7bdc6f7774/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/num-integer-6eafeb320df78bdc/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/num-iter-d71437e03a8febc7/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/num-traits-0650c42bdb0ec681/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/gl-7b7ee5adc65dda28/out" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
